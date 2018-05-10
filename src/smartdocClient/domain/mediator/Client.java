@@ -12,7 +12,7 @@ public class Client {
 		ClientView clientView = new ClientView();
 		clientModel.addObserver(clientView);
 		
-		ClientController clientController = new ClientController(clientView,clientModel);
+		ClientController clientController =  ClientController.getInstance();
 		clientView.startView(clientController);
 		
 	}

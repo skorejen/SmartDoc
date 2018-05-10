@@ -38,7 +38,6 @@ public class ClientView implements IClientView {
 			if (choice == 0) {
 				continueWorking = false;
 			} else {
-				clientController.execute(choice);
 			}
 		}
 	}

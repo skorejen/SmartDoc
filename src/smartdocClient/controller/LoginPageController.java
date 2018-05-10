@@ -31,10 +31,12 @@ public class LoginPageController implements Initializable {
 	private Button signin;
 
 
-	private ClientModel clientModel;
+	private ClientController clientController;
 	
-	public LoginPageController() {
-		clientModel = new ClientModelManager();
+	
+	public LoginPageController() 
+	{
+		clientController = ClientController.getInstance();
 	}
 	
 	public void signInButtonPressed(ActionEvent event) throws IOException {
@@ -42,7 +44,7 @@ public class LoginPageController implements Initializable {
 			String password1 = pass.getText();
 			String username1 = user.getText();
 
-			if (clientModel.verifyLogin(username1, password1)) {
+			if (clientController.verifyLogin(username1, password1)) {
 				Parent signin = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
 				Scene home_page_scene = new Scene(signin);
 				Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
