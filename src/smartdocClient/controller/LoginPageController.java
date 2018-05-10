@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import smartdocClient.domain.mediator.ClientModel;
 import smartdocClient.domain.mediator.ClientModelManager;
-import smartdocClient.view.ClientView;
 import javafx.event.ActionEvent;
 
 public class LoginPageController implements Initializable {
