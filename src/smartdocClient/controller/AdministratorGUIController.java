@@ -22,6 +22,8 @@ public class AdministratorGUIController implements Initializable {
 	private Button modifyDoctor;
 	@FXML
 	private Button deleteDoctor;
+	@FXML
+	private Button signOut;
 
 	public void createDoctorPressed(ActionEvent event) throws IOException {
 		{
@@ -52,6 +54,18 @@ public class AdministratorGUIController implements Initializable {
 			app_stage.show();
 		}
 	}
+	
+	public void signOutPressed(ActionEvent event) throws IOException {
+		{
+			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
+			Scene home_page_scene = new Scene(register);
+			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			app_stage.setScene(home_page_scene);
+			app_stage.show();
+		}
+	}
+	
+	
 	
 	
 

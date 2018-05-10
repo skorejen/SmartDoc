@@ -11,6 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -51,11 +53,10 @@ public class LoginPageController implements Initializable {
 				app_stage.show();
 				
 			} else {
-				Parent signin = FXMLLoader.load(getClass().getResource("../view/FAILED.fxml"));
-				Scene home_page_scene = new Scene(signin);
-				Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				app_stage.setScene(home_page_scene);
-				app_stage.show();
+				Alert alert = new Alert(AlertType.INFORMATION);
+		           alert.setTitle("Please try again!");
+		           alert.setContentText("There was an error with your username or password combination.Please try again.");
+		           alert.showAndWait();
 			}
 		}
 
