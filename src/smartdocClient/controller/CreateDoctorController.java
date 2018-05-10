@@ -57,6 +57,37 @@ public class CreateDoctorController implements Initializable{
 
 	}
 	
+	public void clearButtonPressed(ActionEvent event) throws IOException {
+		{
+			Parent register = FXMLLoader.load(getClass().getResource("../view/CreateDoctor.fxml"));
+			Scene home_page_scene = new Scene(register);
+			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			app_stage.setScene(home_page_scene);
+			app_stage.show();
+		}
+
+	}
+	
+	public void submitButtonPressed(ActionEvent event) throws IOException {
+		{
+			String firstnamE=firstName.getText();
+			String lastnamE=lastName.getText();
+			String cpR=cPR.getText();
+			String agE=age.getText();
+			String specialitY=speciality.getText();
+			String phonenO=phoneNo.getText();
+			
+			
+			
+			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
+			Scene home_page_scene = new Scene(register);
+			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			app_stage.setScene(home_page_scene);
+			app_stage.show();
+		}
+
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
