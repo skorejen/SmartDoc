@@ -44,7 +44,7 @@ public class LoginPageController implements Initializable {
 			String username1 = user.getText();
 
 			if (clientController.verifyLogin(username1, password1)) {
-				Parent signin = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
+				Parent signin = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
 				Scene home_page_scene = new Scene(signin);
 				Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				app_stage.setScene(home_page_scene);
