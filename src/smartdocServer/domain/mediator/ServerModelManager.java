@@ -48,8 +48,8 @@ public class ServerModelManager extends AbstractRemoteSubject<String> implements
 
 	@Override
 	public boolean createDoctor(String fname, String lname, int cpr, int phone, int age, String speciality) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return dbsPersistance.createDoctor(fname, lname, cpr, phone, age, speciality);
 	}
 	
 //	public synchronized void addMember(String name, String lastName, boolean payment) 
