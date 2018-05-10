@@ -30,4 +30,9 @@ public class ClientController {
 		return clientModel.verifyLogin(login, password);
 	}
 	
+	public boolean createDoctor(String fname,String lname,int cpr,int phone,int age,String speciality) throws RemoteException
+	{
+		return clientModel.createDoctor(fname,lname,cpr,phone,age,speciality);
+		 
+	}
 }

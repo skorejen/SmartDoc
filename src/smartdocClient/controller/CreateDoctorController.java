@@ -44,7 +44,7 @@ public class CreateDoctorController implements Initializable{
 	@FXML
 	private Button back;
 	
-	
+	private ClientController clientController;
 	
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
@@ -77,6 +77,12 @@ public class CreateDoctorController implements Initializable{
 			String specialitY=speciality.getText();
 			String phonenO=phoneNo.getText();
 			
+			int cpr = Integer.parseInt(cpR);
+			int phoneNo = Integer.parseInt(phonenO);
+			int age = Integer.parseInt(agE);
+			
+		clientController  = ClientController.getInstance();
+		clientController.createDoctor(firstnamE, lastnamE, cpr, phoneNo, age, specialitY);
 			
 			
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));

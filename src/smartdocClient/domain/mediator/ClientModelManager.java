@@ -54,6 +54,14 @@ public class ClientModelManager extends Observable implements ClientModel {
 		return false;
 	}
 
+
+	@Override
+	public boolean createDoctor(String fname, String lname, int cpr, int phone, int age, String speciality) 
+	{
+		
+		return server.createDoctor(fname, lname, cpr, phone, age, speciality);
+	}
+
 	
 
 }
