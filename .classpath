@@ -3,9 +3,9 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/coste/Desktop/Sync/SmartDoc/jfoenix-8.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/coste/Desktop/Sync/SmartDoc/MyDatabase.jar"/>
-	<classpathentry kind="lib" path="C:/Users/coste/Desktop/Sync/SmartDoc/postgresql-42.2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/coste/Desktop/Sync/SmartDoc/RemoteObserverDelegate-April2018.jar"/>
+	<classpathentry kind="lib" path="jfoenix-8.0.1.jar"/>
+	<classpathentry kind="lib" path="MyDatabase.jar"/>
+	<classpathentry kind="lib" path="postgresql-42.2.2.jar"/>
+	<classpathentry kind="lib" path="RemoteObserverDelegate-April2018.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
