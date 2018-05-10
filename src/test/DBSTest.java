@@ -29,7 +29,7 @@ class DBSTest {
 		dbs = new DBS();
 		try {
 			myDatabase = new MyDatabase("org.postgresql.Driver",
-					"jdbc:postgresql://localhost:5432/Clinique", "postgres", "hTrEa9982231");
+					"jdbc:postgresql://localhost:5432/Clinique", "postgres", "");
 		} catch (ClassNotFoundException e) {
 			
 			e.printStackTrace();
