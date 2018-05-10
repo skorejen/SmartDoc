@@ -64,6 +64,12 @@ private MyDatabase myDatabase;
 		
 		
 	}
+
+	@Override
+	public boolean createDoctor(String fname, String lname, int cpr, int phone, int age, String speciality) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }
 	

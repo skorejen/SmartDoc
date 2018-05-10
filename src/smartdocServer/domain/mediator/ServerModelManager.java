@@ -45,6 +45,12 @@ public class ServerModelManager extends AbstractRemoteSubject<String> implements
 	public boolean verifyLogin(String login, String password) {
 		return dbsPersistance.verifyLogin(login, password);
 	}
+
+	@Override
+	public boolean createDoctor(String fname, String lname, int cpr, int phone, int age, String speciality) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 //	public synchronized void addMember(String name, String lastName, boolean payment) 
 //	{
