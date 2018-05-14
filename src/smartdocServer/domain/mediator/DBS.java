@@ -14,7 +14,7 @@ private MyDatabase myDatabase;
 	public DBS() {
 		try {
 			myDatabase = new MyDatabase("org.postgresql.Driver",
-					"jdbc:postgresql://localhost:5432/Clinique", "postgres", "sallie");
+					"jdbc:postgresql://localhost:5432/Clinique", "postgres", "hTrEa9982231");
 		} catch (ClassNotFoundException e) {
 			
 			e.printStackTrace();

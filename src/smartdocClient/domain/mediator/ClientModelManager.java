@@ -59,7 +59,13 @@ public class ClientModelManager extends Observable implements ClientModel {
 	public boolean createDoctor(String fname, String lname, int cpr, int phone, int age, String speciality) 
 	{
 		
-		return server.createDoctor(fname, lname, cpr, phone, age, speciality);
+		try {
+			return server.createDoctor(fname, lname, cpr, phone, age, speciality);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	

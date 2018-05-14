@@ -43,7 +43,9 @@ public class ServerModelManager extends AbstractRemoteSubject<String> implements
 	
 
 	public boolean verifyLogin(String login, String password) {
-		return dbsPersistance.verifyLogin(login, password);
+		boolean ifPassed;
+		ifPassed =  dbsPersistance.verifyLogin(login, password);
+		return ifPassed;
 	}
 
 	@Override

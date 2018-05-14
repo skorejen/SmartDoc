@@ -27,7 +27,7 @@ public class AdministratorGUIController implements Initializable {
 
 	public void createDoctorPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/CreateDoctor.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("./CreateDoctor.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -37,7 +37,7 @@ public class AdministratorGUIController implements Initializable {
 	
 	public void modifyDoctorPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("./SUCCESS.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
