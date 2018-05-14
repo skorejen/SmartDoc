@@ -7,19 +7,24 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Observable;
 
 import utility.observer.AbstractRemoteSubject;
+import utility.observer.RemoteObserver;
+import utility.observer.RemoteSubjectDelegate;
 
-public class ServerModelManager extends AbstractRemoteSubject<String> implements ServerModel 
+public class ServerModelManager extends Observable implements ServerModel 
 {
 
 	private static ServerModelManager instance;
 	private  DbsPersistance dbsPersistance;
+	RemoteSubjectDelegate<String> subject;
 
 	
 	private ServerModelManager()
 	{
 		try {
+			subject = new RemoteSubjectDelegate<>(this);
 			dbsPersistance = new DBS();
 			Registry reg = LocateRegistry.createRegistry(1099);
 			UnicastRemoteObject.exportObject(this, 0);
@@ -53,6 +58,20 @@ public class ServerModelManager extends AbstractRemoteSubject<String> implements
 		
 		return dbsPersistance.createDoctor(fname, lname, cpr, phone, age, speciality);
 	}
+
+	@Override
+	public void addObserver(RemoteObserver<String> o) throws RemoteException {
+		subject.addObserver(o);
+		
+	}
+
+	@Override
+	public void deleteObserver(RemoteObserver<String> o) throws RemoteException {
+		subject.deleteObserver(o);
+		
+	}
+
+	
 	
 //	public synchronized void addMember(String name, String lastName, boolean payment) 
 //	{
