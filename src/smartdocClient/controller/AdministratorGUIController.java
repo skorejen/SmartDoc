@@ -37,11 +37,9 @@ public class AdministratorGUIController implements Initializable {
 	
 	public void modifyDoctorPressed(ActionEvent event) throws IOException {
 		{
-<<<<<<< Updated upstream
+
 			Parent register = FXMLLoader.load(getClass().getResource("../view/DoctorEdit.fxml"));
-=======
-			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
->>>>>>> Stashed changes
+
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
