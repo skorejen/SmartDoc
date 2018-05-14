@@ -55,7 +55,7 @@ public class LoginPageController implements Initializable {
 			} else {
 				Alert alert = new Alert(AlertType.INFORMATION);
 		           alert.setTitle("Please try again!");
-		           alert.setContentText("There was an error with your username or password combination.Please try again.");
+		           alert.setContentText("There was an error with your username or password combination.Please try again or reset your password");
 		           alert.showAndWait();
 			}
 		}
@@ -64,7 +64,18 @@ public class LoginPageController implements Initializable {
 
 	public void registerButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("UserPage.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));
+			Scene home_page_scene = new Scene(register);
+			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			app_stage.setScene(home_page_scene);
+			app_stage.show();
+		}
+
+	}
+	
+	public void forgotPasswordButtonPressed(ActionEvent event) throws IOException {
+		{
+			Parent register = FXMLLoader.load(getClass().getResource("../view/ForgotPassword.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);

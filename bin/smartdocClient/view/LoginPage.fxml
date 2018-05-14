@@ -47,7 +47,7 @@
       </ImageView>
       <JFXButton buttonType="RAISED" layoutX="537.0" layoutY="309.0" text="Sign-In" textFill="#fcfcfc" onAction="#signInButtonPressed" />
       <JFXButton buttonType="RAISED" layoutX="627.0" layoutY="309.0" text="Register" textFill="#fcfcfc"  onAction="#registerButtonPressed"/>
-      <JFXButton buttonType="RAISED" layoutX="711.0" layoutY="309.0" text="Forgot Password?" textFill="#fcfcfc" />
+      <JFXButton buttonType="RAISED" layoutX="711.0" layoutY="309.0" text="Forgot Password?" textFill="#fcfcfc" onAction="#forgotPasswordButtonPressed" />
       <ImageView fitHeight="402.0" fitWidth="441.0" layoutX="56.0" pickOnBounds="true">
          <image>
             <Image url="@GuiResources/Doctor%2003%20exposed.png" />
