@@ -45,7 +45,7 @@ private MyDatabase myDatabase;
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String sql = "SELECT * from accounts where (login=? and password=?)";
+		String sql = "SELECT * from account where (login=? and password=?)";
 		try {
 			System.out.println(passwordHex);
 			ArrayList<Object[]> array = myDatabase.query(sql, login, passwordHex);
