@@ -2,6 +2,7 @@ package smartdocClient.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -95,13 +96,13 @@ public class CreateDoctorController implements Initializable{
 			String firstnamE=firstName.getText();
 			String lastnamE=lastName.getText();
 			String cpR=cPR.getText();
-			String agE=dob.getText();
+			
 			String specialitY=speciality.getText();
 			String phonenO=phoneNo.getText();
 			
 			int cpr = Integer.parseInt(cpR);
 			int phoneNo = Integer.parseInt(phonenO);
-			int age = Integer.parseInt(agE);
+			
 			
 		clientController  = ClientController.getInstance();
 //		clientController.createDoctor(firstnamE, lastnamE, cpr, phoneNo, dob, specialitY);
