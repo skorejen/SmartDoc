@@ -38,7 +38,7 @@ class DBSTest {
 	
 	@Test
 	void insertAccount() {
-		String sql = "insert into accounts values ('admin','8D23CF6C86E834A7AA6EDED54C26CE2BB2E7493538C61BDD5D2197997AB2F72')";
+		String sql = "insert into account values ('1111112222','admin','8D23CF6C86E834A7AA6EDED54C26CE2BB2E7493538C61BDD5D2197997AB2F72')";
 		try {
 			myDatabase.update(sql);
 		} catch (SQLException e) {
