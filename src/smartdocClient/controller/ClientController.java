@@ -1,6 +1,7 @@
 package smartdocClient.controller;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 
 import smartdocClient.domain.mediator.ClientModel;
 import smartdocClient.domain.mediator.ClientModelManager;
@@ -30,9 +31,9 @@ public class ClientController {
 		return clientModel.verifyLogin(login, password);
 	}
 	
-	public boolean createDoctor(String fname,String lname,int cpr,int phone,int age,String speciality) throws RemoteException
+	public boolean createDoctor(String fname,String lname,int cpr,int phone,Date dob,String speciality) throws RemoteException
 	{
-		return clientModel.createDoctor(fname,lname,cpr,phone,age,speciality);
+		return clientModel.createDoctor(fname,lname,cpr,phone,dob,speciality);
 		 
 	}
 }

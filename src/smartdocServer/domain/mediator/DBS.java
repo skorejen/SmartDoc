@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import utility.persistence.MyDatabase;
 
@@ -66,9 +67,9 @@ private MyDatabase myDatabase;
 	}
 
 	@Override
-	public boolean createDoctor(String fname, String lname, int cpr, int phone, int age, String speciality) {
+	public boolean createDoctor(String fname, String lname, int cpr, int phone, Date dob, String speciality) {
 		
-		String sql = "";
+		String sql = "insert into ";
 		return false;
 	}
 	

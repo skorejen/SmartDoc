@@ -7,6 +7,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Observable;
 
 import utility.observer.AbstractRemoteSubject;
@@ -57,9 +58,9 @@ public class ServerModelManager extends Observable implements ServerModel
 
 
 	@Override
-	public boolean createDoctor(String fname, String lname, int cpr, int phone, int age, String speciality) {
+	public boolean createDoctor(String fname, String lname, int cpr, int phone, Date dob, String speciality) {
 		
-		return dbsPersistance.createDoctor(fname, lname, cpr, phone, age, speciality);
+		return dbsPersistance.createDoctor(fname, lname, cpr, phone, dob, speciality);
 	}
 
 	@Override

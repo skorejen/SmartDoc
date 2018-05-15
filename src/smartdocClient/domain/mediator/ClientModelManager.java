@@ -7,6 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Observable;
 
 import smartdocServer.domain.mediator.ServerModel;
@@ -56,11 +57,11 @@ public class ClientModelManager extends Observable implements ClientModel {
 
 
 	@Override
-	public boolean createDoctor(String fname, String lname, int cpr, int phone, int age, String speciality) 
+	public boolean createDoctor(String fname, String lname, int cpr, int phone, Date dob, String speciality) 
 	{
 		
 		try {
-			return server.createDoctor(fname, lname, cpr, phone, age, speciality);
+			return server.createDoctor(fname, lname, cpr, phone, dob, speciality);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

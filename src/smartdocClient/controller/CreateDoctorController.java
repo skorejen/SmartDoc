@@ -25,7 +25,7 @@ public class CreateDoctorController implements Initializable{
 	@FXML
 	private TextField cPR;
 	@FXML
-	private TextField age;
+	private TextField dob;
 	@FXML
 	private TextField speciality;
 	@FXML
@@ -95,7 +95,7 @@ public class CreateDoctorController implements Initializable{
 			String firstnamE=firstName.getText();
 			String lastnamE=lastName.getText();
 			String cpR=cPR.getText();
-			String agE=age.getText();
+			String agE=dob.getText();
 			String specialitY=speciality.getText();
 			String phonenO=phoneNo.getText();
 			
@@ -104,7 +104,7 @@ public class CreateDoctorController implements Initializable{
 			int age = Integer.parseInt(agE);
 			
 		clientController  = ClientController.getInstance();
-		clientController.createDoctor(firstnamE, lastnamE, cpr, phoneNo, age, specialitY);
+//		clientController.createDoctor(firstnamE, lastnamE, cpr, phoneNo, dob, specialitY);
 			
 			
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
