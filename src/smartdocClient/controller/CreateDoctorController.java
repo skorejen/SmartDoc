@@ -108,12 +108,16 @@ public class CreateDoctorController implements Initializable{
 			int cprNo = Integer.parseInt(cprVar);
 			int phoneNoVar = Integer.parseInt(phonenoVar);
 			
+			String usernameVar = username.getText();
+			String passwordVar = pass.getText();
+			String emailVar = email.getText();
+			
 			String gender= genderchoice.getValue().toString();
 			String doctype= doctortype.getValue().toString();
 			
-			
+			// PASSING DOCTOR INFO TO CLIENT
 		clientController  = ClientController.getInstance();
-//		clientController.createDoctor(login, password, firstnameVar, lastnameVar, cprNo, phoneNoVar, dateOfBirthVar, specialityVar);
+		clientController.createDoctor(usernameVar, passwordVar, firstnameVar, lastnameVar, cprNo, phoneNoVar, emailVar, dateOfBirthVar, specialityVar);
 			
 			
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));

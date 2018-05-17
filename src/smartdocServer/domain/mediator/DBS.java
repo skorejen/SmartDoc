@@ -22,29 +22,32 @@ private MyDatabase myDatabase;
 		}
 	}
 	
-	public String fromByteToHex(byte[] digest) {
+	public String fromByteToHex(String password) {
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		byte[] buffer = password.getBytes();
+		md.update(buffer);
+		byte[] digest = md.digest();
+		
 		StringBuffer sb = new StringBuffer();
 		for (byte b : digest) {
 			sb.append(Integer.toHexString((int) (b & 0xff)));
 		}
-		String returnSb = sb.toString();
-		return returnSb.toUpperCase();
+		String passwordHex = sb.toString();
+		return passwordHex.toUpperCase();
 	}
 
 	@Override
 	public boolean verifyLogin(String login, String password) {
 		String passwordHex = "";
-		try {
-			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			byte[] buffer = password.getBytes();
-			md.update(buffer);
-			byte[] digest = md.digest();
 			
-			passwordHex = fromByteToHex(digest);
-		} catch (NoSuchAlgorithmException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+			passwordHex = fromByteToHex(password);
+		
 		String sql = "SELECT * from account where (login=? and password=?)";
 		try {
 			System.out.println(passwordHex);
@@ -67,9 +70,9 @@ private MyDatabase myDatabase;
 	}
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, Date dob, String speciality) {
+	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, String email, Date dob, String speciality) {
 		
-		String sql = "insert into ";
+		String sql = "insert into account values (?,'?',)";
 		return false;
 	}
 	

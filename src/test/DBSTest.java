@@ -37,8 +37,18 @@ class DBSTest {
 	}
 	
 	@Test
-	void insertAccount() {
-		String sql = "insert into account values ('1111112222','admin','8D23CF6C86E834A7AA6EDED54C26CE2BB2E7493538C61BDD5D2197997AB2F72')";
+	void insertAccountAdmin() {
+		String sql = "insert into account values ('1111112222','admin','8D23CF6C86E834A7AA6EDED54C26CE2BB2E7493538C61BDD5D2197997AB2F72', 'A')";
+		try {
+			myDatabase.update(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	void insertAccountDoctor() {
+		String sql = "insert into account values ('1111111111','doctor1','8D23CF6C86E834A7AA6EDED54C26CE2BB2E7493538C61BDD5D2197997AB2F72', 'D')";
 		try {
 			myDatabase.update(sql);
 		} catch (SQLException e) {
