@@ -56,9 +56,9 @@ public class CreateDoctorController implements Initializable{
 	private Button back;
 	
 	@FXML
-	private JFXComboBox genderchoice;
+	private JFXComboBox<String> genderchoice;
 	@FXML
-	private JFXComboBox doctortype;
+	private JFXComboBox<String> doctortype;
 	
 	
 	private ClientController clientController;
@@ -101,7 +101,6 @@ public class CreateDoctorController implements Initializable{
 			try {
 				dateOfBirthVar = formatter.parse(dob.getText());
 			} catch (ParseException e) {
-				System.out.println(dateOfBirthVar.toString());
 				e.printStackTrace();
 			}
 			
@@ -113,11 +112,29 @@ public class CreateDoctorController implements Initializable{
 			String emailVar = email.getText();
 			
 			String gender= genderchoice.getValue().toString();
+			
 			String doctype= doctortype.getValue().toString();
+			if(doctype.equals("General")) {
+				doctype = "G";
+			} else
+			{
+				doctype = "D";
+			}
+			
+			if(gender.equals("Male")) {
+				gender = "M";
+			} else if (gender.equals("Female"))
+			{
+				gender = "F";
+			} else
+			{
+				gender = "M";
+			}
+			
 			
 			// PASSING DOCTOR INFO TO CLIENT
 		clientController  = ClientController.getInstance();
-		clientController.createDoctor(usernameVar, passwordVar, firstnameVar, lastnameVar, cprNo, phoneNoVar, emailVar, dateOfBirthVar, specialityVar);
+		clientController.createDoctor(usernameVar, passwordVar, firstnameVar, lastnameVar, cprNo, phoneNoVar, emailVar, dateOfBirthVar, specialityVar, doctype, gender);
 			
 			
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));

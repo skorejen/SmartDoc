@@ -22,7 +22,7 @@ private MyDatabase myDatabase;
 		}
 	}
 	
-	public String fromByteToHex(String password) {
+	public String passwordToHex(String password) {
 		MessageDigest md = null;
 		try {
 			md = MessageDigest.getInstance("SHA-256");
@@ -46,7 +46,7 @@ private MyDatabase myDatabase;
 	public boolean verifyLogin(String login, String password) {
 		String passwordHex = "";
 			
-			passwordHex = fromByteToHex(password);
+			passwordHex =  passwordToHex(password);
 		
 		String sql = "SELECT * from account where (login=? and password=?)";
 		try {
@@ -70,9 +70,14 @@ private MyDatabase myDatabase;
 	}
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, String email, Date dob, String speciality) {
+	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, String email, Date dob, String speciality, String type, String gender) {
 		
-		String sql = "insert into account values (?,'?',)";
+		String passwordHex = passwordToHex(password);
+		
+		String sql = "insert into account values (?,'?','?','?')";
+		System.out.println("Adding a new doctor with these data: "+ login +" " + password +" "+ cpr + " " + type);
+		
+		
 		return false;
 	}
 	
