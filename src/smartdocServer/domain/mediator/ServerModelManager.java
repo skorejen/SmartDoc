@@ -58,9 +58,9 @@ public class ServerModelManager extends Observable implements ServerModel
 
 
 	@Override
-	public boolean createDoctor(String fname, String lname, int cpr, int phone, Date dob, String speciality) {
+	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, Date dob, String speciality) {
 		
-		return dbsPersistance.createDoctor(fname, lname, cpr, phone, dob, speciality);
+		return dbsPersistance.createDoctor(login, password, fname, lname, cpr, phone, dob, speciality);
 	}
 
 	@Override

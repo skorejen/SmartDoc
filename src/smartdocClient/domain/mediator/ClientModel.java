@@ -11,5 +11,5 @@ public interface ClientModel extends Remote, RemoteObserver<String> {
 
 	public boolean verifyLogin(String login, String password) throws RemoteException;
 
-	public boolean createDoctor(String fname, String lname, int cpr, int phone, Date date, String speciality) throws RemoteException;
+	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, Date dob, String speciality) throws RemoteException;
 }

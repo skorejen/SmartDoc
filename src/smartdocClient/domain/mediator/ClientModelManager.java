@@ -57,11 +57,11 @@ public class ClientModelManager extends Observable implements ClientModel {
 
 
 	@Override
-	public boolean createDoctor(String fname, String lname, int cpr, int phone, Date dob, String speciality) 
+	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, Date dob, String speciality) 
 	{
 		
 		try {
-			return server.createDoctor(fname, lname, cpr, phone, dob, speciality);
+			return server.createDoctor(login, password, fname, lname, cpr, phone, dob, speciality);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

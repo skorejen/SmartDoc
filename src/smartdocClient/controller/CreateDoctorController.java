@@ -2,7 +2,11 @@ package smartdocClient.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
@@ -85,22 +89,31 @@ public class CreateDoctorController implements Initializable{
 	
 	public void registerButtonPressed(ActionEvent event) throws IOException {
 		{
-			String firstnamE=firstName.getText();
-			String lastnamE=lastName.getText();
-			String cpR=cPR.getText();
+			String firstnameVar=firstName.getText();
+			String lastnameVar=lastName.getText();
+			String cprVar=cPR.getText();
 			
-			String specialitY=speciality.getText();
-			String phonenO=phoneNo.getText();
+			String specialityVar=speciality.getText();
+			String phonenoVar=phoneNo.getText();
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+			 
+			Date dateOfBirthVar = null;
+			try {
+				dateOfBirthVar = formatter.parse(dob.getText());
+			} catch (ParseException e) {
+				System.out.println(dateOfBirthVar.toString());
+				e.printStackTrace();
+			}
 			
-			int cpr = Integer.parseInt(cpR);
-			int phoneNo = Integer.parseInt(phonenO);
+			int cprNo = Integer.parseInt(cprVar);
+			int phoneNoVar = Integer.parseInt(phonenoVar);
 			
 			String gender= genderchoice.getValue().toString();
 			String doctype= doctortype.getValue().toString();
 			
 			
 		clientController  = ClientController.getInstance();
-//		clientController.createDoctor(firstnamE, lastnamE, cpr, phoneNo, dob, specialitY);
+//		clientController.createDoctor(login, password, firstnameVar, lastnameVar, cprNo, phoneNoVar, dateOfBirthVar, specialityVar);
 			
 			
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
