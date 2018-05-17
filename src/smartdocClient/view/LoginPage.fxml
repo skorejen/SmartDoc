@@ -11,17 +11,17 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.LoginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.LoginPageController">
    <children>
       <ImageView fitHeight="402.0" fitWidth="926.0" pickOnBounds="true">
          <image>
             <Image url="@GuiResources/32b877ed4aa7778cc7d43ebb7d95a6f1.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a4adb5" height="329.0" layoutX="497.0" layoutY="52.0" opacity="0.25" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="399.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="497.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="52.0"  />
-      <Label contentDisplay="CENTER" layoutX="515.0" layoutY="63.0" prefHeight="80.0" prefWidth="363.0" text="Welcome to SmartDoc 1.1" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="259.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a4adb5" height="329.0" layoutX="497.0" layoutY="52.0" opacity="0.25" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="399.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="497.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="52.0" />
+      <Label contentDisplay="CENTER" layoutX="515.0" layoutY="63.0" prefHeight="80.0" prefWidth="363.0" text="Welcome to SmartDoc 1.3.1" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="259.0">
          <font>
-            <Font name="Wingdings 3" size="30.0" />
+            <Font name="Wingdings 3" size="28.0" />
          </font>
          <effect>
             <DropShadow />
@@ -45,9 +45,9 @@
             <Image url="@GuiResources/icons8-show_password.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="537.0" layoutY="309.0" text="Sign-In" textFill="#fcfcfc" onAction="#signInButtonPressed" />
-      <JFXButton buttonType="RAISED" layoutX="627.0" layoutY="309.0" text="Register" textFill="#fcfcfc"  onAction="#registerButtonPressed"/>
-      <JFXButton buttonType="RAISED" layoutX="711.0" layoutY="309.0" text="Forgot Password?" textFill="#fcfcfc" onAction="#forgotPasswordButtonPressed" />
+      <JFXButton buttonType="RAISED" layoutX="537.0" layoutY="309.0" onAction="#signInButtonPressed" text="Sign-In" textFill="#fcfcfc" />
+      <JFXButton buttonType="RAISED" layoutX="627.0" layoutY="309.0" onAction="#registerButtonPressed" text="Register" textFill="#fcfcfc" />
+      <JFXButton buttonType="RAISED" layoutX="711.0" layoutY="309.0" onAction="#forgotPasswordButtonPressed" text="Forgot Password?" textFill="#fcfcfc" />
       <ImageView fitHeight="402.0" fitWidth="441.0" layoutX="56.0" pickOnBounds="true">
          <image>
             <Image url="@GuiResources/Doctor%2003%20exposed.png" />
