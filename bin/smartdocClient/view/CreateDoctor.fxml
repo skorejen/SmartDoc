@@ -41,6 +41,6 @@
       <JFXPasswordField fx:id="pass" layoutX="697.0" layoutY="335.0" promptText="Password" />
       <JFXComboBox fx:id="genderchoice" layoutX="574.0" layoutY="444.0" promptText="Gender" />
       <JFXComboBox fx:id="doctortype" layoutX="688.0" layoutY="444.0" promptText="Type" />
-      <JFXTextField fx:id="username" layoutX="483.0" layoutY="335.0" promptText="E-mail" text="Username" />
+      <JFXTextField fx:id="username" layoutX="483.0" layoutY="335.0" promptText="Username" />
    </children>
 </AnchorPane>

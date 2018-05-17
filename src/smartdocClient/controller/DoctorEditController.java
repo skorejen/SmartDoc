@@ -17,13 +17,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.TreeTableColumn;
 import javafx.stage.Stage;
 
-public class DoctorEditController implements Initializable{
+public class DoctorEditController implements Initializable {
 
 	@FXML
 	private Button back;
 	@FXML
 	private JFXTreeTableView tableview;
-	
+
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
 			Parent register = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
@@ -34,18 +34,18 @@ public class DoctorEditController implements Initializable{
 		}
 
 	}
-	
-	@Override
+
 	public void initialize(URL arg0, ResourceBundle arg1) {
-TreeTableColumn firstName = new TreeTableColumn("First Name");
-TreeTableColumn lastName = new TreeTableColumn("Last Name");
-TreeTableColumn cPR = new TreeTableColumn("CPR");
-TreeTableColumn age = new TreeTableColumn("Age");
-TreeTableColumn speciality = new TreeTableColumn("Speciality");
-TreeTableColumn phoneNo = new TreeTableColumn("Phone Number");
-TreeTableColumn gender = new TreeTableColumn("Gender");	
+		TreeTableColumn firstName = new TreeTableColumn("First Name");
+		TreeTableColumn lastName = new TreeTableColumn("Last Name");
+		TreeTableColumn cpr = new TreeTableColumn("CPR");
+		TreeTableColumn age = new TreeTableColumn("Birthday");
+		TreeTableColumn speciality = new TreeTableColumn("Speciality");
+		TreeTableColumn phoneNo = new TreeTableColumn("Phone Number");
+		TreeTableColumn username = new TreeTableColumn("Username");
+		TreeTableColumn password = new TreeTableColumn("Password");
+		TreeTableColumn email = new TreeTableColumn("E-mail");
 
-tableview.getColumns().addAll(firstName,lastName,cPR,age,speciality,phoneNo,gender);
+		tableview.getColumns().addAll(firstName, lastName, cpr, age, speciality, phoneNo, username, password, email);
 	}
-
 }
