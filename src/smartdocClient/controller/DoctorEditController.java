@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.stage.Stage;
 
@@ -45,7 +46,10 @@ public class DoctorEditController implements Initializable {
 		TreeTableColumn username = new TreeTableColumn("Username");
 		TreeTableColumn password = new TreeTableColumn("Password");
 		TreeTableColumn email = new TreeTableColumn("E-mail");
+		TreeTableColumn gender = new TreeTableColumn("E-mail");
+		
+		
 
-		tableview.getColumns().addAll(firstName, lastName, cpr, age, speciality, phoneNo, username, password, email);
+		tableview.getColumns().addAll(firstName, lastName, cpr, age,gender, speciality, phoneNo, username, password, email);
 	}
 }
