@@ -6,17 +6,18 @@ public class Doctor {
 	
 	private String fname;
 	private String lname;
-	private int cpr;
+	private String cpr;
 	private int phone;
-	private int age;
+	private String email;
+	private String type;
+	private String gender;
 	private String speciality;
-	public Doctor(String fname, String lname, int cpr, int phone, int age, String speciality, Date dob) {
+	public Doctor(String fname, String lname, String cpr, int phone, int age, String speciality, Date dob) {
 		super();
 		this.fname = fname;
 		this.lname = lname;
 		this.cpr = cpr;
 		this.phone = phone;
-		this.age = age;
 		this.speciality = speciality;
 		this.dob = dob;
 	}
@@ -32,10 +33,10 @@ public class Doctor {
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
-	public int getCpr() {
+	public String getCpr() {
 		return cpr;
 	}
-	public void setCpr(int cpr) {
+	public void setCpr(String cpr) {
 		this.cpr = cpr;
 	}
 	public int getPhone() {
@@ -43,12 +44,6 @@ public class Doctor {
 	}
 	public void setPhone(int phone) {
 		this.phone = phone;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
 	}
 	public String getSpeciality() {
 		return speciality;
@@ -61,6 +56,24 @@ public class Doctor {
 	}
 	public void setDob(Date dob) {
 		this.dob = dob;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	private Date dob;
 
