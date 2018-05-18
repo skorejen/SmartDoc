@@ -15,7 +15,7 @@ private MyDatabase myDatabase;
 	public DBS() {
 		try {
 			myDatabase = new MyDatabase("org.postgresql.Driver",
-					"jdbc:postgresql://localhost:5432/Clinique", "postgres", "sallie");
+					"jdbc:postgresql://localhost:5432/smartdocdatabase", "postgres", "sallie");
 		} catch (ClassNotFoundException e) {
 			
 			e.printStackTrace();
@@ -70,12 +70,19 @@ private MyDatabase myDatabase;
 	}
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, String email, Date dob, String speciality, String type, String gender) {
+	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, Date dob, String speciality, String type, String gender) {
 		
 		String passwordHex = passwordToHex(password);
 		
 		String sql = "insert into account values (?,'?','?','?')";
 		System.out.println("Adding a new doctor with these data: "+ login +" " + password +" "+ cpr + " " + type);
+		
+		try {
+			myDatabase.update(sql, cpr, login, password, type);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Adding unsuccesfull");
+		}
 		
 		
 		return false;

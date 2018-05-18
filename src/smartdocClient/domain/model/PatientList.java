@@ -47,7 +47,7 @@ public class PatientList
 	{
 		for(int i = 0;i<patients.size();i++)
 		{
-			if(patients.get(i).getFname() == fname)
+			if(patients.get(i).getFname().equals(fname))
 			{
 				return patients.get(i);
 			}
@@ -60,7 +60,7 @@ public class PatientList
 	{
 		for(int i = 0;i<patients.size();i++)
 		{
-			if(patients.get(i).getLname() == lname)
+			if(patients.get(i).getLname().equals(lname))
 			{
 				return patients.get(i);
 			}
@@ -73,7 +73,7 @@ public class PatientList
 	{
 		for(int i = 0;i<patients.size();i++)
 		{
-			if(patients.get(i).getCpr() == cpr)
+			if(patients.get(i).getCpr().equals(cpr))
 			{
 				return patients.get(i);
 			}

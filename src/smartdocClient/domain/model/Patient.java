@@ -2,7 +2,7 @@ package smartdocClient.domain.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 public class Patient 
 {
@@ -25,6 +25,12 @@ public class Patient
 		this.email = email;
 		this.cpr = cpr;
 		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "Patient [fname=" + fname + ", lname=" + lname + ", phone=" + phone + ", dob=" + dob + ", email=" + email
+				+ ", cpr=" + cpr + ", gender=" + gender + "]";
 	}
 
 	public String getFname() {
@@ -53,7 +59,7 @@ public class Patient
 
 	public Date getDob() throws ParseException {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
-		Date dobFormatted = formatter.parse(formatter.format(dob)); 
+		Date dobFormatted = (Date) formatter.parse(formatter.format(dob)); 
 		return dobFormatted;
 	}
 
