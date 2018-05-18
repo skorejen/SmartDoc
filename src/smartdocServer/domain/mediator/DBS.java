@@ -81,6 +81,7 @@ private MyDatabase myDatabase;
 		String sql = "insert into account values (?,?,?)";
 		System.out.println("Adding a new doctor with these data: "+ login +" " + password +" "+ cpr + " " + type);
 		String sql1 = "insert into account_data values (?,?,?,?,?,?,?,?)";
+		String sql2 = "insert into doctor_speciality values (?)";
 		
 		
 		 
@@ -90,15 +91,37 @@ private MyDatabase myDatabase;
 		System.out.println(dob.toString());
 		
 			try {
-				myDatabase.update(sql, cpr, login, password);
+				myDatabase.update(sql, cpr, login, passwordHex);
 				myDatabase.update(sql1, cpr, fname,lname,phone,dateSQL,email,type,gender);
+				myDatabase.update(sql2, cpr, speciality);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 		
 		
-		return false;
+		return true;
+	}
+	
+	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String gender) {
+		
+		String passwordHex = passwordToHex(password);
+		String sql = "insert into account values (?,?,?)";
+		String sql1 = "insert into account_data values(?,?,?,?,?,?,?,?)";
+
+		Date dateSQL = parseDateToDbs(dob);
+		String type = "P";
+
+		try {
+			myDatabase.update(sql, cpr, login, passwordHex);
+			myDatabase.update(sql1, cpr, fname,lname,phone,dateSQL,email,type,gender);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 	public Date parseDateToDbs(LocalDate date) {

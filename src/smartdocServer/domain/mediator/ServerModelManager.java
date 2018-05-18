@@ -79,7 +79,13 @@ public class ServerModelManager extends Observable implements ServerModel
 		
 	}
 
-	
+	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String gender) throws RemoteException{
+		boolean ifsuccessful;
+		ifsuccessful=dbsPersistance.createPatient(login,password,fname,lname,cpr,phone,email,dob,gender);
+		super.setChanged();
+		super.notifyObservers(ifsuccessful);
+		return ifsuccessful; 
+	}
 	
 //	public synchronized void addMember(String name, String lastName, boolean payment) 
 //	{

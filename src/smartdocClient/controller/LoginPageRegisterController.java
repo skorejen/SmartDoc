@@ -2,6 +2,7 @@ package smartdocClient.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
@@ -24,9 +25,9 @@ import javafx.stage.Stage;
 public class LoginPageRegisterController implements Initializable{
 
 	@FXML
-	private TextField firstName;
+	private TextField firstname;
 	@FXML
-	private TextField lastName;
+	private TextField lastname;
 	@FXML
 	private TextField cpr;
 	@FXML
@@ -86,20 +87,44 @@ public class LoginPageRegisterController implements Initializable{
 	
 	public void registerButtonPressed(ActionEvent event) throws IOException {
 		{
-			String firstnamE=firstName.getText();
-			String lastnamE=lastName.getText();
-			String cpR=cpr.getText();
 			
-			String Email=email.getText();
-			String phonenO=phoneno.getText();
+			String loginVar = username.getText();
+			String passwordVar = pass.getText();
+			String firstnameVar=firstname.getText();
+			String lastnameVar=lastname.getText();
+			String cprVar=cpr.getText();
 			
-			int cpr = Integer.parseInt(cpR);
-			int phoneNo = Integer.parseInt(phonenO);
+			String emailVar=email.getText();
+			String phoneNoVar=phoneno.getText();
 			
-			String gender= genderchoice.getValue().toString();
+			int phoneNo = Integer.parseInt(phoneNoVar);
+			
+			String genderVar= genderchoice.getValue().toString();
+
+			String date = dob.getText();
+			String [] dateVariables = new String[2];
+			dateVariables = date.split("-");
+			String trimYear = dateVariables[0];
+			String trimMonth = dateVariables[1];
+			String trimDay = dateVariables[2];
+			
+			System.out.println(trimYear+" "+trimMonth+" "+trimDay);
+			
+			LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth), Integer.parseInt(trimDay));
+
+
+			if(genderVar.equals("Male")) {
+				genderVar = "M";
+			} else if (genderVar.equals("Female"))
+			{
+				genderVar = "F";
+			} else
+			{
+				genderVar = "M";
+			}
 			
 		clientController  = ClientController.getInstance();
-//		clientController.createDoctor(firstnamE, lastnamE, cpr, phoneNo, dob, specialitY);
+		clientController.createPatient(loginVar, passwordVar, firstnameVar, lastnameVar, cprVar, phoneNo, emailVar, dateOfBirthVar, genderVar);
 			
 			
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));

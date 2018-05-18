@@ -70,6 +70,20 @@ public class ClientModelManager extends Observable implements ClientModel {
 		return false;
 	}
 
+
+	@Override
+	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone,
+			String email, LocalDate dob, String gender){
+		
+		try {
+			return server.createPatient(login, password, fname, lname, cpr, phone, email, dob, gender);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	
 
 }
