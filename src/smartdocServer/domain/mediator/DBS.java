@@ -5,8 +5,10 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.sql.*;
+
+import com.mysql.jdbc.PreparedStatement;
+
+import java.sql.Date;
 
 import utility.persistence.MyDatabase;
 
@@ -80,11 +82,16 @@ private MyDatabase myDatabase;
 		System.out.println("Adding a new doctor with these data: "+ login +" " + password +" "+ cpr + " " + type);
 		String sql1 = "insert into account_data values (?,?,?,?,?,?,?,?)";
 		
-		LocalDate sqlLocalDate;
+		
+		 
+		
+		Date dateSQL = parseDateToDbs(dob);
+		
+		System.out.println(dob.toString());
 		
 			try {
 				myDatabase.update(sql, cpr, login, password);
-				myDatabase.update(sql1, cpr, fname,lname,phone,dob,email,type,gender);
+				myDatabase.update(sql1, cpr, fname,lname,phone,dateSQL,email,type,gender);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -92,6 +99,29 @@ private MyDatabase myDatabase;
 		
 		
 		return false;
+	}
+	
+	public Date parseDateToDbs(LocalDate date) {
+		String[] dateVariables = date.toString().split("-");
+		String trimYear = dateVariables[0];
+		String trimMonth = dateVariables[1];
+		String trimDay = dateVariables[2];
+		
+		System.out.println(trimYear+" "+trimMonth+" "+trimDay);
+		
+		int year = Integer.parseInt(trimYear)-1900;
+		int month = Integer.parseInt(trimMonth);
+		
+			month--;
+		
+		int day = Integer.parseInt(trimDay);
+		
+		Date dateSQL = new Date(year,month,day);
+		return dateSQL;
+	}
+	
+	public LocalDate parseDateFromDbs(Date date) {
+		return null;
 	}
 	
 }

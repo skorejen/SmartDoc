@@ -96,9 +96,19 @@ public class CreateDoctorController implements Initializable{
 			
 			String specialityVar=speciality.getText();
 			String phonenoVar=phoneNo.getText();
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			 
-			LocalDate dateOfBirthVar =  LocalDate.now();
+			
+			
+			String date = dob.getText();
+			String [] dateVariables = new String[2];
+			dateVariables = date.split("-");
+			String trimYear = dateVariables[0];
+			String trimMonth = dateVariables[1];
+			String trimDay = dateVariables[2];
+			
+			System.out.println(trimYear+" "+trimMonth+" "+trimDay);
+			
+			LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth), Integer.parseInt(trimDay));
 			
 			int phoneNoVar = Integer.parseInt(phonenoVar);
 			
