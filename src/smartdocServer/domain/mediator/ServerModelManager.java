@@ -6,6 +6,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Observable;
@@ -58,7 +59,7 @@ public class ServerModelManager extends Observable implements ServerModel
 
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, Date dob, String speciality, String type, String gender) {
+	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String speciality, String type, String gender) {
 		boolean ifsuccessful;
 		ifsuccessful=dbsPersistance.createDoctor(login, password, fname, lname, cpr, phone, email, dob, speciality, type, gender);
 		super.setChanged();

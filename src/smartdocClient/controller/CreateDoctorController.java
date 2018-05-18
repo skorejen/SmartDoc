@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
@@ -95,14 +96,9 @@ public class CreateDoctorController implements Initializable{
 			
 			String specialityVar=speciality.getText();
 			String phonenoVar=phoneNo.getText();
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			 
-			Date dateOfBirthVar = null;
-			try {
-				dateOfBirthVar = formatter.parse(dob.getText());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			LocalDate dateOfBirthVar = null;
 			
 			int phoneNoVar = Integer.parseInt(phonenoVar);
 			

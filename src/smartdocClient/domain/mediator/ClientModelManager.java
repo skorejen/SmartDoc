@@ -7,6 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Observable;
 
@@ -57,7 +58,7 @@ public class ClientModelManager extends Observable implements ClientModel {
 
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, Date dob, String speciality, String type, String gender)
+	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String speciality, String type, String gender)
 	{
 		
 		try {

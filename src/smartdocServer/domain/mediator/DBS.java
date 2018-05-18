@@ -3,8 +3,10 @@ package smartdocServer.domain.mediator;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.sql.*;
 
 import utility.persistence.MyDatabase;
 
@@ -70,19 +72,23 @@ private MyDatabase myDatabase;
 	}
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, Date dob, String speciality, String type, String gender) {
+	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String speciality, String type, String gender) {
 		
 		String passwordHex = passwordToHex(password);
 		
-		String sql = "insert into account values (?,'?','?','?')";
+		String sql = "insert into account values (?,?,?)";
 		System.out.println("Adding a new doctor with these data: "+ login +" " + password +" "+ cpr + " " + type);
+		String sql1 = "insert into account_data values (?,?,?,?,?,?,?,?)";
 		
-		try {
-			myDatabase.update(sql, cpr, login, password, type);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Adding unsuccesfull");
-		}
+		LocalDate sqlLocalDate;
+		
+			try {
+				myDatabase.update(sql, cpr, login, password);
+				myDatabase.update(sql1, cpr, fname,lname,phone,dob,email,type,gender);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		
 		return false;
