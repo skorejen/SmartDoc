@@ -98,7 +98,7 @@ public class CreateDoctorController implements Initializable{
 			String phonenoVar=phoneNo.getText();
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			 
-			LocalDate dateOfBirthVar = null;
+			LocalDate dateOfBirthVar =  LocalDate.now();
 			
 			int phoneNoVar = Integer.parseInt(phonenoVar);
 			
