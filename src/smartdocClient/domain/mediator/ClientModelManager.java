@@ -57,7 +57,7 @@ public class ClientModelManager extends Observable implements ClientModel {
 
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, String email, Date dob, String speciality, String type, String gender)
+	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, Date dob, String speciality, String type, String gender)
 	{
 		
 		try {

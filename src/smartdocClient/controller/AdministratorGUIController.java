@@ -24,7 +24,6 @@ public class AdministratorGUIController implements Initializable {
 	private Button deleteDoctor;
 	@FXML
 	private Button signOut;
-	
 
 	public void createDoctorPressed(ActionEvent event) throws IOException {
 		{

@@ -49,18 +49,21 @@ public class ServerModelManager extends Observable implements ServerModel
 	
 
 	public boolean verifyLogin(String login, String password) {
-		boolean ifLogIn;
-		ifLogIn=dbsPersistance.verifyLogin(login, password);
+		boolean ifsuccessful;
+		ifsuccessful=dbsPersistance.verifyLogin(login, password);
 		super.setChanged();
-		super.notifyObservers(ifLogIn);
-		return ifLogIn;
+		super.notifyObservers(ifsuccessful);
+		return ifsuccessful;
 	}
 
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, int cpr, int phone, String email, Date dob, String speciality, String type, String gender) {
-		
-		return dbsPersistance.createDoctor(login, password, fname, lname, cpr, phone, email, dob, speciality, type, gender);
+	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, Date dob, String speciality, String type, String gender) {
+		boolean ifsuccessful;
+		ifsuccessful=dbsPersistance.createDoctor(login, password, fname, lname, cpr, phone, email, dob, speciality, type, gender);
+		super.setChanged();
+		super.notifyObservers(ifsuccessful);
+		return ifsuccessful; 
 	}
 
 	@Override
