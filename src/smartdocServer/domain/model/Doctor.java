@@ -1,6 +1,7 @@
-package smartdocClient.domain.model;
+package smartdocServer.domain.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Doctor {
 	

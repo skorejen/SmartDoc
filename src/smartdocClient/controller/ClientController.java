@@ -27,7 +27,7 @@ public class ClientController {
 		return instance;
 	}
 	
-	public boolean verifyLogin(String login,String password) throws RemoteException
+	public String verifyLogin(String login,String password) throws RemoteException
 	{
 		return clientModel.verifyLogin(login, password);
 	}

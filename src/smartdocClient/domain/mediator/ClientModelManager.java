@@ -46,14 +46,14 @@ public class ClientModelManager extends Observable implements ClientModel {
 	
 	
 
-	public boolean verifyLogin(String login, String password) {
+	public String verifyLogin(String login, String password) {
 		try {
 			return server.verifyLogin(login, password);
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();
 		}
-		return false;
+		return "0";
 	}
 
 

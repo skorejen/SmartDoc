@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Observable;
 
+import smartdocServer.domain.model.Doctor;
 import utility.observer.AbstractRemoteSubject;
 import utility.observer.RemoteObserver;
 import utility.observer.RemoteSubjectDelegate;
@@ -49,12 +50,12 @@ public class ServerModelManager extends Observable implements ServerModel
 	}
 	
 
-	public boolean verifyLogin(String login, String password) {
-		boolean ifsuccessful;
-		ifsuccessful=dbsPersistance.verifyLogin(login, password);
+	public String verifyLogin(String login, String password) {
+		String cpr;
+		cpr=dbsPersistance.verifyLogin(login, password);
 		super.setChanged();
-		super.notifyObservers(ifsuccessful);
-		return ifsuccessful;
+		super.notifyObservers(cpr);
+		return cpr;
 	}
 
 
@@ -80,11 +81,25 @@ public class ServerModelManager extends Observable implements ServerModel
 	}
 
 	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String gender) throws RemoteException{
-		boolean ifsuccessful;
-		ifsuccessful=dbsPersistance.createPatient(login,password,fname,lname,cpr,phone,email,dob,gender);
-		super.setChanged();
-		super.notifyObservers(ifsuccessful);
-		return ifsuccessful; 
+		
+		return dbsPersistance.createPatient(login,password,fname,lname,cpr,phone,email,dob,gender);
+	}
+	
+	public Doctor getDoctor(String login) {
+		
+		ArrayList<Object[]> array = dbsPersistance.getDoctor(login);
+		String cpr = (String) array.get(0)[0];
+		String fname = (String) array.get(0)[1];
+		String lname = (String) array.get(0)[2];
+		LocalDate dob = (LocalDate) array.get(0)[3];
+		int phone = (int) array.get(0)[4];
+		String email =(String)  array.get(0)[5];
+		String type = (String) array.get(0)[6];
+		String gender =(String)  array.get(0)[7];
+		String speciality =(String)  array.get(0)[8];
+		
+		Doctor doctor = new Doctor(cpr, fname, lname, dob, phone, email, type, gender, speciality);
+		return doctor;
 	}
 	
 //	public synchronized void addMember(String name, String lastName, boolean payment) 

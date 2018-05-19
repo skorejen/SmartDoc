@@ -47,31 +47,33 @@ private MyDatabase myDatabase;
 	}
 
 	@Override
-	public boolean verifyLogin(String login, String password) {
+	public String verifyLogin(String login, String password) {
 		String passwordHex = "";
 			
 			passwordHex =  passwordToHex(password);
 		
-		String sql = "SELECT * from account where (login=? and password=?)";
+		String sql = "SELECT cpr from account where (login=? and password=?)";
 		try {
 			System.out.println(passwordHex);
 			ArrayList<Object[]> array = myDatabase.query(sql, login, passwordHex);
 			
 			if(array.isEmpty())
 			{
-				return false;
+				return "0";
 			} else {
-				return true;
+				return (String) array.get(0)[0];
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return "0";
 			
 		}
 		
 		
 		
 	}
+	
+	
 
 	@Override
 	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String speciality, String type, String gender) {
@@ -144,6 +146,22 @@ private MyDatabase myDatabase;
 	}
 	
 	public LocalDate parseDateFromDbs(Date date) {
+		return null;
+	}
+
+	@Override
+	public ArrayList<Object[]> getDoctor(String login) {
+
+		String sql = "SELECT * from account_data where (login=?)";
+		
+		
+
+		try {
+			ArrayList<Object[]> array = myDatabase.query(sql, login);
+		} catch (SQLException e) {
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
