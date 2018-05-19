@@ -81,7 +81,7 @@ private MyDatabase myDatabase;
 		String sql = "insert into account values (?,?,?)";
 		System.out.println("Adding a new doctor with these data: "+ login +" " + password +" "+ cpr + " " + type);
 		String sql1 = "insert into account_data values (?,?,?,?,?,?,?,?)";
-		String sql2 = "insert into doctor_speciality values (?)";
+		String sql2 = "insert into doctor_speciality values (?,?)";
 		
 		
 		 
