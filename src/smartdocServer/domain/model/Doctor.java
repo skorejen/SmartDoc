@@ -1,9 +1,9 @@
 package smartdocServer.domain.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
-public class Doctor {
+public class Doctor implements Serializable{
 	
 	private String cpr;
 	private String fname;

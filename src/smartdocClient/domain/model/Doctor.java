@@ -1,8 +1,9 @@
 package smartdocClient.domain.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Doctor {
+public class Doctor{
 	
 	private String cpr;
 	private String fname;

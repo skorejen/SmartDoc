@@ -150,20 +150,53 @@ private MyDatabase myDatabase;
 	}
 
 	@Override
-	public ArrayList<Object[]> getDoctor(String login) {
+	public ArrayList<Object[]> getDoctor(String cpr) {
 
-		String sql = "SELECT * from account_data where (login=?)";
+		String sql = "SELECT * from account_data where (cpr=?)";
 		
-		
+		ArrayList<Object[]> array=null;
 
 		try {
-			ArrayList<Object[]> array = myDatabase.query(sql, login);
+			array = myDatabase.query(sql, cpr);
 		} catch (SQLException e) {
 			System.out.println("Failed to retrieve data from database");
 			e.printStackTrace();
 		}
-		return null;
+		return array;
 	}
+
+	@Override
+	public ArrayList<Object[]> getAccount(String cpr) {
+		
+		String sql = "SELECT * from account_data where (cpr=?)";
+		ArrayList<Object[]> array=null;
+		
+
+		try {
+			array = myDatabase.query(sql, cpr);
+		} catch (SQLException e) {
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
+		return array;
+	}
+
+	@Override
+	public ArrayList<Object[]> getSpeciality(String cpr) {
+		String sql = "SELECT speciality from account_data where (cpr=?)";
+		ArrayList<Object[]> array=null;
+		
+
+		try {
+			array = myDatabase.query(sql, cpr);
+		} catch (SQLException e) {
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
+		return array;
+	}
+	
+	
 	
 }
 	

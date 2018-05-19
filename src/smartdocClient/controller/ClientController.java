@@ -41,4 +41,8 @@ public class ClientController {
 	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String gender) throws RemoteException {
 		return clientModel.createPatient(login, password, fname, lname, cpr, phone, email, dob, gender);
 	}
+	
+	public String getAccount(String cpr) throws RemoteException {
+		return clientModel.getAccount(cpr);
+	}
 }

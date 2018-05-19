@@ -1,5 +1,6 @@
 package smartdocServer.domain.mediator;
 
+import java.io.Serializable;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -85,21 +86,70 @@ public class ServerModelManager extends Observable implements ServerModel
 		return dbsPersistance.createPatient(login,password,fname,lname,cpr,phone,email,dob,gender);
 	}
 	
-	public Doctor getDoctor(String login) {
+	public Doctor getDoctor(String cpr) {
 		
-		ArrayList<Object[]> array = dbsPersistance.getDoctor(login);
-		String cpr = (String) array.get(0)[0];
+		ArrayList<Object[]> array = dbsPersistance.getAccount(cpr);
+		
 		String fname = (String) array.get(0)[1];
 		String lname = (String) array.get(0)[2];
-		LocalDate dob = (LocalDate) array.get(0)[3];
-		int phone = (int) array.get(0)[4];
+		int phone = (int) array.get(0)[3];
+
+		System.out.println("DATE: "+array.get(0)[4].toString());
+		LocalDate dob = parseDateFromDbs((Date) array.get(0)[4]);
 		String email =(String)  array.get(0)[5];
 		String type = (String) array.get(0)[6];
 		String gender =(String)  array.get(0)[7];
-		String speciality =(String)  array.get(0)[8];
+		
+		ArrayList<Object[]> arraySpeciality = dbsPersistance.getSpeciality(cpr);
+		String speciality =(String)  array.get(0)[0];
 		
 		Doctor doctor = new Doctor(cpr, fname, lname, dob, phone, email, type, gender, speciality);
 		return doctor;
+	}
+	
+	public LocalDate parseDateFromDbs(Date sqlDate) {
+		String date = sqlDate.toString();
+		String [] dateVariables = new String[2];
+		dateVariables = date.split("-");
+		String trimYear = dateVariables[0];
+		String trimMonth = dateVariables[1];
+		String trimDay = dateVariables[2];
+		
+		System.out.println(trimYear+" "+trimMonth+" "+trimDay);
+		
+		LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth), Integer.parseInt(trimDay));
+		return dateOfBirthVar;
+	}
+
+	@Override
+	public String getType(String cpr) throws RemoteException {
+		System.out.println(cpr);
+		ArrayList<Object[]> array = dbsPersistance.getAccount(cpr);
+		System.out.println(array.get(0)[6].toString());
+		String type = (String) array.get(0)[6];
+		
+		return type;
+	}
+
+	@Override
+	public Object getAccount(String cpr) throws RemoteException {
+		String type = getType(cpr);
+		if(type.equals("D"))
+		{
+			return (Doctor) getDoctor(cpr);
+		} else if (type.equals("G"))
+		{
+			//return general doctor
+		} else if (type.equals("A"))
+		{
+			// return admin
+		} else if (type.equals("P"))
+		{
+			//return patient
+		}
+		System.out.println(type);
+		return null;
+		
 	}
 	
 //	public synchronized void addMember(String name, String lastName, boolean payment) 

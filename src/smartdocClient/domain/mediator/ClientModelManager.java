@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Observable;
 
+import smartdocClient.domain.model.Doctor;
 import smartdocServer.domain.mediator.ServerModel;
 import smartdocServer.domain.mediator.ServerModelManager;
 import utility.observer.RemoteSubject;
@@ -18,6 +19,7 @@ import utility.observer.RemoteSubject;
 public class ClientModelManager extends Observable implements ClientModel {
 
 	private ServerModel server;
+	private static Doctor doctor;
 	
 	public ClientModelManager() {
 			
@@ -83,6 +85,31 @@ public class ClientModelManager extends Observable implements ClientModel {
 		}
 		return false;
 	}
+
+
+	@Override
+	public String getAccount(String cpr) {
+		String type = "0";
+		try {
+			System.out.println(type);
+			 type = server.getType(cpr);
+			 System.out.println(type);
+			Object object = server.getAccount(cpr);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return type;
+	}
+	
+	public void saveObjectToModel(Object obj, String type) {
+		if(type.equals("D"))
+		{
+			doctor = (Doctor) obj;
+			System.out.println(doctor.toString());
+		}
+	}
+	
 
 	
 

@@ -45,17 +45,31 @@ public class LoginPageController implements Initializable {
 			String password1 = pass.getText();
 			String username1 = user.getText();
 
+			String cpr = clientController.verifyLogin(username1, password1);
+			if (!cpr.equals("0")) {
+				
+				if(clientController.getAccount(cpr).equals("D"))
+				{
+					Parent signin = FXMLLoader.load(getClass().getResource("../view/DoctorLoggedIN.fxml"));
 
-			if (clientController.verifyLogin(username1, password1).equals("0")) {
+					Scene home_page_scene = new Scene(signin);
+					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					app_stage.setScene(home_page_scene);
+					app_stage.show();
+				}
 				
+				if(cpr.equals("111111-2222"))
+				{
+					Parent signin = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
+					
+					Scene home_page_scene = new Scene(signin);
+					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					app_stage.setScene(home_page_scene);
+					app_stage.show();
+				}
 				
-				Parent signin = FXMLLoader.load(getClass().getResource("../view/PatientLoggedIN.fxml"));
 
 			
-				Scene home_page_scene = new Scene(signin);
-				Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				app_stage.setScene(home_page_scene);
-				app_stage.show();
 				
 			} else {
 				Alert alert = new Alert(AlertType.INFORMATION);
