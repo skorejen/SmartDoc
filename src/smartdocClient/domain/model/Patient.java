@@ -14,8 +14,10 @@ public class Patient
 	private String email;
 	private String cpr;
 	private char gender;
+	private String type;
 	
 	
+
 	public Patient(String fname, String lname, int phone, Date dob, String email, String cpr, char gender) 
 	{
 		this.fname = fname;
@@ -32,6 +34,15 @@ public class Patient
 		return "Patient [fname=" + fname + ", lname=" + lname + ", phone=" + phone + ", dob=" + dob + ", email=" + email
 				+ ", cpr=" + cpr + ", gender=" + gender + "]";
 	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 
 	public String getFname() {
 		return fname;
@@ -58,7 +69,7 @@ public class Patient
 	}
 
 	public Date getDob() throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date dobFormatted = (Date) formatter.parse(formatter.format(dob)); 
 		return dobFormatted;
 	}
