@@ -48,15 +48,6 @@ public class LoginPageController implements Initializable {
 			String cpr = clientController.verifyLogin(username1, password1);
 			if (!cpr.equals("0")) {
 				
-				if(clientController.getAccount(cpr).equals("D"))
-				{
-					Parent signin = FXMLLoader.load(getClass().getResource("../view/DoctorLoggedIN.fxml"));
-
-					Scene home_page_scene = new Scene(signin);
-					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-					app_stage.setScene(home_page_scene);
-					app_stage.show();
-				}
 				
 				if(cpr.equals("111111-2222"))
 				{
@@ -66,9 +57,17 @@ public class LoginPageController implements Initializable {
 					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 					app_stage.setScene(home_page_scene);
 					app_stage.show();
+				} else if (clientController.getAccount(cpr).equals("D"))
+				
+				{
+					Parent signin = FXMLLoader.load(getClass().getResource("../view/DoctorLoggedIN.fxml"));
+
+					Scene home_page_scene = new Scene(signin);
+					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					app_stage.setScene(home_page_scene);
+					app_stage.show();
 				}
 				
-
 			
 				
 			} else {

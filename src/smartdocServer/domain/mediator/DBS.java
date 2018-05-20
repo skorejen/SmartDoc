@@ -11,11 +11,21 @@ import com.mysql.jdbc.PreparedStatement;
 import java.sql.Date;
 
 import utility.persistence.MyDatabase;
-
+/**
+ * The class is the so called "adapter" for the database.
+ * Its' methods main purpose is to retrieve
+ * or send data to database, and pass the data further to
+ * the system.
+ * @author Michal Ciebien
+ *
+ */
 public class DBS implements DbsPersistance  {
 
 private MyDatabase myDatabase;
-	
+	/**
+	 * The DBS constructor initializes the connection
+	 * with the database.
+	 */
 	public DBS() {
 		try {
 			myDatabase = new MyDatabase("org.postgresql.Driver",
@@ -25,7 +35,12 @@ private MyDatabase myDatabase;
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Changes the parameter password into a new hexadecimal
+	 * String, which is then ready to pass to database
+	 * @param password
+	 * @return password as hexadecimal string
+	 */
 	public String passwordToHex(String password) {
 		MessageDigest md = null;
 		try {
@@ -106,6 +121,7 @@ private MyDatabase myDatabase;
 		return true;
 	}
 	
+	@Override
 	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String gender) {
 		
 		String passwordHex = passwordToHex(password);
@@ -125,7 +141,12 @@ private MyDatabase myDatabase;
 		}
 		return true;
 	}
-	
+	/**
+	 * The method parses the LocalDate parameter into Date object
+	 * that is compatible with postgreSQL database.
+	 * @param date
+	 * @return date object compatible with database
+	 */
 	public Date parseDateToDbs(LocalDate date) {
 		String[] dateVariables = date.toString().split("-");
 		String trimYear = dateVariables[0];
@@ -145,9 +166,7 @@ private MyDatabase myDatabase;
 		return dateSQL;
 	}
 	
-	public LocalDate parseDateFromDbs(Date date) {
-		return null;
-	}
+	
 
 	@Override
 	public ArrayList<Object[]> getDoctor(String cpr) {

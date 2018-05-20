@@ -125,6 +125,7 @@ public class ServerModelManager extends Observable implements ServerModel
 	public String getType(String cpr) throws RemoteException {
 		System.out.println(cpr);
 		ArrayList<Object[]> array = dbsPersistance.getAccount(cpr);
+		
 		System.out.println(array.get(0)[6].toString());
 		String type = (String) array.get(0)[6];
 		
