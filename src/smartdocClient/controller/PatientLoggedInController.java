@@ -23,7 +23,7 @@ public class PatientLoggedInController {
 	@FXML
 	private Label doctorName;
 	
-	public void goToMyPacientsButtonPressed(ActionEvent event) throws IOException {
+	public void goToMyStatusButtonPressed(ActionEvent event) throws IOException {
 		{
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
 			Scene home_page_scene = new Scene(register);

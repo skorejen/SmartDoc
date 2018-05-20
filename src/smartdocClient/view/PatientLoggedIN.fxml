@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,13 +20,13 @@
             <Font name="Calibri Light" size="34.0" />
          </font>
       </Label>
-      <BottomNavigationButton layoutX="1021.0" layoutY="28.0" onAction="#goToMyPacientsButtonPressed" prefHeight="40.0" prefWidth="126.0" text="Go to my status" />
-      <BottomNavigationButton layoutX="1160.0" layoutY="28.0" onAction="#myInfoButtonPressed" prefHeight="40.0" prefWidth="126.0" text="My info" />
-      <BottomNavigationButton layoutX="885.0" layoutY="28.0" onAction="#signOutButtonPressed" prefHeight="40.0" prefWidth="126.0" text="Sign-out" />
       <ImageView fitHeight="453.0" fitWidth="560.0" layoutX="252.0" layoutY="147.0">
          <image>
             <Image url="@GuiResources/pacientbeinghelped.png" />
          </image>
       </ImageView>
+      <Button layoutX="874.0" layoutY="34.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="40.0" prefWidth="126.0" text="Sign-out" />
+      <Button layoutX="1013.0" layoutY="34.0" mnemonicParsing="false" onAction="#goToMyStatusButtonPressed" prefHeight="40.0" prefWidth="126.0" text="Go to my status" />
+      <Button layoutX="1154.0" layoutY="34.0" mnemonicParsing="false" onAction="#myInfoButtonPressed" prefHeight="40.0" prefWidth="126.0" text="My info" />
    </children>
 </AnchorPane>

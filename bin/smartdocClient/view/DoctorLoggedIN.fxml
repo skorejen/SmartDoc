@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,26 +8,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="smartdocClient.controller.DoctorLoggedInController">
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.DoctorLoggedInController">
    <children>
       <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back,                        !" wrappingWidth="431.66943359375">
          <font>
             <Font name="Calibri Light" size="34.0" />
          </font>
       </Text>
-      <Label  layoutX="230.0" layoutY="14.0" prefHeight="40.0" prefWidth="117.0" text="Doctor">
+      <Label layoutX="230.0" layoutY="14.0" prefHeight="40.0" prefWidth="117.0" text="Doctor">
          <font>
             <Font name="Calibri Light" size="34.0" />
          </font>
       </Label>
-      <BottomNavigationButton  layoutX="1021.0" layoutY="28.0" onAction="#goToMyPacientsButtonPressed" prefHeight="40.0" prefWidth="126.0" text="Go to my pacients" />
-      <BottomNavigationButton  layoutX="1160.0" layoutY="28.0" onAction="#myInfoButtonPressed" prefHeight="40.0" prefWidth="126.0" text="My info" />
-      <BottomNavigationButton  layoutX="885.0" layoutY="28.0" onAction="#signOutButtonPressed" prefHeight="40.0" prefWidth="126.0" text="Sign-out" />
       <ImageView fitHeight="345.0" fitWidth="345.0" layoutX="478.0" layoutY="128.0">
          <image>
             <Image url="@GuiResources/ffb3ffd037d6ce09fb200b81605bd45f-old-doctor-character-by-vexels%5B1%5D.png" />
          </image>
       </ImageView>
+      <Button layoutX="884.0" layoutY="30.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="48.0" prefWidth="126.0" text="Sign-out" />
+      <Button layoutX="1020.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToMyPacientsButtonPressed" prefHeight="48.0" prefWidth="126.0" text="Go to my pacients" />
+      <Button layoutX="1160.0" layoutY="30.0" mnemonicParsing="false" onAction="#myInfoButtonPressed" prefHeight="48.0" prefWidth="126.0" text="My info" />
    </children>
 </AnchorPane>
