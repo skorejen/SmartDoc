@@ -6,6 +6,7 @@ import java.util.Date;
 
 import smartdocClient.domain.mediator.ClientModel;
 import smartdocClient.domain.mediator.ClientModelManager;
+import smartdocServer.domain.model.Doctor;
 public class ClientController {
 
 	private static  ClientModel clientModel;
@@ -44,5 +45,9 @@ public class ClientController {
 	
 	public String getAccountAndType(String cpr) throws RemoteException {
 		return clientModel.getAccount(cpr);
+	}
+	
+	public Doctor getDoctorData() throws RemoteException {
+		return clientModel.getDoctorModel();
 	}
 }

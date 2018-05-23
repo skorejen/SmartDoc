@@ -11,9 +11,10 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Observable;
 
-import smartdocClient.domain.model.Doctor;
+
 import smartdocServer.domain.mediator.ServerModel;
 import smartdocServer.domain.mediator.ServerModelManager;
+import smartdocServer.domain.model.Doctor;
 import utility.observer.RemoteSubject;
 
 public class ClientModelManager extends Observable implements ClientModel {
@@ -94,7 +95,7 @@ public class ClientModelManager extends Observable implements ClientModel {
 			System.out.println(type);
 			 type = server.getType(cpr);
 			 System.out.println(type);
-			Object object = server.getAccount(cpr);
+			Object object = server.getAccount(cpr,type);
 			saveObjectToModel(object, type);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -110,6 +111,10 @@ public class ClientModelManager extends Observable implements ClientModel {
 			System.out.println(doctor.toString());
 		}
 	
+	}
+	
+	public Doctor getDoctorModel() {
+		return doctor;
 	}
 	
 

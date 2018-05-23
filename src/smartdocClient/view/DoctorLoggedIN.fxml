@@ -10,12 +10,12 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.DoctorLoggedInController">
    <children>
-      <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back,                        !" wrappingWidth="431.66943359375">
+      <Text layoutX="13.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back," wrappingWidth="216.46946716308594">
          <font>
             <Font name="Calibri Light" size="34.0" />
          </font>
       </Text>
-      <Label layoutX="230.0" layoutY="14.0" prefHeight="40.0" prefWidth="117.0" text="Doctor">
+      <Label fx:id="doctorName" layoutX="220.0" layoutY="10.0" prefHeight="40.0" prefWidth="380.0">
          <font>
             <Font name="Calibri Light" size="34.0" />
          </font>

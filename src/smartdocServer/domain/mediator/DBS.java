@@ -203,7 +203,7 @@ private MyDatabase myDatabase;
 
 	@Override
 	public ArrayList<Object[]> getSpeciality(String cpr) {
-		String sql = "SELECT speciality from account_data where (cpr=?)";
+		String sql = "SELECT speciality from doctor_speciality where (cpr=?)";
 		ArrayList<Object[]> array=null;
 		
 

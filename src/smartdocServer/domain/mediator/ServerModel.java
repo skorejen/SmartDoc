@@ -72,5 +72,5 @@ public interface ServerModel extends Remote, RemoteSubject<String> {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public Object getAccount(String cpr) throws RemoteException;
+	public Object getAccount(String cpr,String type) throws RemoteException;
 }

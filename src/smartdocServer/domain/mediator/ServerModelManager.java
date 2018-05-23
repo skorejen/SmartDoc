@@ -133,8 +133,8 @@ public class ServerModelManager extends Observable implements ServerModel
 	}
 
 	@Override
-	public Object getAccount(String cpr) throws RemoteException {
-		String type = getType(cpr);
+	public Object getAccount(String cpr, String type) throws RemoteException {
+		
 		if(type.equals("D"))
 		{
 			return (Doctor) getDoctor(cpr);
