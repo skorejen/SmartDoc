@@ -101,7 +101,7 @@ public class ServerModelManager extends Observable implements ServerModel
 		String gender =(String)  array.get(0)[7];
 		
 		ArrayList<Object[]> arraySpeciality = dbsPersistance.getSpeciality(cpr);
-		String speciality =(String)  array.get(0)[0];
+		String speciality =(String)  arraySpeciality.get(0)[0];
 		
 		Doctor doctor = new Doctor(cpr, fname, lname, dob, phone, email, type, gender, speciality);
 		return doctor;

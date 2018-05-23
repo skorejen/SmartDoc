@@ -46,19 +46,24 @@ public class LoginPageController implements Initializable {
 			String username1 = user.getText();
 
 			String cpr = clientController.verifyLogin(username1, password1);
-			if (!cpr.equals("0")) {
+			//get cpr from database
+			if (!cpr.equals("0")) { 
 				
+				// if cpr doesn't equal 0 then do following
 				
 				if(cpr.equals("111111-2222"))
 				{
+					// 111111-2222 is a cpr of a admin, so the admin's gui should be displayed
+					
 					Parent signin = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
 					
 					Scene home_page_scene = new Scene(signin);
 					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 					app_stage.setScene(home_page_scene);
 					app_stage.show();
-				} else if (clientController.getAccount(cpr).equals("D"))
-				
+				} else if (clientController.getAccountAndType(cpr).equals("D"))
+				// if cpr equals D that means that the Doctor's GUI should be displayed
+					
 				{
 					Parent signin = FXMLLoader.load(getClass().getResource("../view/DoctorLoggedIN.fxml"));
 

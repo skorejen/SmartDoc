@@ -12,7 +12,7 @@ public class ClientController {
 	
 	private static ClientController instance;
 	
-	private ClientController(ClientModel clientModel) {
+	private ClientController() {
 		
 			this.clientModel= new ClientModelManager();
 	}
@@ -21,7 +21,7 @@ public class ClientController {
 	{
 		if(instance == null)
 		{
-			 instance = new ClientController(clientModel);
+			 instance = new ClientController();
 		}
 		
 		return instance;
@@ -42,7 +42,7 @@ public class ClientController {
 		return clientModel.createPatient(login, password, fname, lname, cpr, phone, email, dob, gender);
 	}
 	
-	public String getAccount(String cpr) throws RemoteException {
+	public String getAccountAndType(String cpr) throws RemoteException {
 		return clientModel.getAccount(cpr);
 	}
 }

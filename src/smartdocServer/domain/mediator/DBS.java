@@ -189,6 +189,7 @@ private MyDatabase myDatabase;
 		
 		String sql = "SELECT * from account_data where (cpr=?)";
 		ArrayList<Object[]> array=null;
+		// array needs to be initialized before try / catch
 		
 
 		try {

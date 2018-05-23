@@ -95,6 +95,7 @@ public class ClientModelManager extends Observable implements ClientModel {
 			 type = server.getType(cpr);
 			 System.out.println(type);
 			Object object = server.getAccount(cpr);
+			saveObjectToModel(object, type);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,6 +109,7 @@ public class ClientModelManager extends Observable implements ClientModel {
 			doctor = (Doctor) obj;
 			System.out.println(doctor.toString());
 		}
+	
 	}
 	
 
