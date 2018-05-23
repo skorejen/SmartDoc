@@ -31,55 +31,57 @@ public class LoginPageController implements Initializable {
 	@FXML
 	private Button signin;
 
-
 	private ClientController clientController;
-	
-	
-	public LoginPageController() 
-	{
+
+	public LoginPageController() {
 		clientController = ClientController.getInstance();
 	}
-	
+
 	public void signInButtonPressed(ActionEvent event) throws IOException {
 		{
 			String password1 = pass.getText();
 			String username1 = user.getText();
 
 			String cpr = clientController.verifyLogin(username1, password1);
-			//get cpr from database
-			if (!cpr.equals("0")) { 
-				
+			String type = "";
+			// get cpr from database
+			if (!cpr.equals("0")) {
+
 				// if cpr doesn't equal 0 then do following
-				
-				if(cpr.equals("111111-2222"))
-				{
+
+				if (cpr.equals("111111-2222")) {
 					// 111111-2222 is a cpr of a admin, so the admin's gui should be displayed
-					
+
 					Parent signin = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
-					
-					Scene home_page_scene = new Scene(signin);
-					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-					app_stage.setScene(home_page_scene);
-					app_stage.show();
-				} else if (clientController.getAccountAndType(cpr).equals("D"))
-				// if cpr equals D that means that the Doctor's GUI should be displayed
-					
-				{
-					Parent signin = FXMLLoader.load(getClass().getResource("../view/DoctorLoggedIN.fxml"));
 
 					Scene home_page_scene = new Scene(signin);
 					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 					app_stage.setScene(home_page_scene);
 					app_stage.show();
+				} else {
+					type = clientController.getAccountAndType(cpr);
+					if (type.equals("D"))
+
+					// if type equals D that means that the Doctor's GUI should be displayed
+
+					{
+						Parent signin = FXMLLoader.load(getClass().getResource("../view/DoctorLoggedIN.fxml"));
+
+						Scene home_page_scene = new Scene(signin);
+						Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+						app_stage.setScene(home_page_scene);
+						app_stage.show();
+					} else if (type.equals("P")) {
+						// load Patient gui
+					}
 				}
-				
-			
-				
+
 			} else {
 				Alert alert = new Alert(AlertType.INFORMATION);
-		           alert.setTitle("Please try again!");
-		           alert.setContentText("There was an error with your username or password combination.Please try again or reset your password");
-		           alert.showAndWait();
+				alert.setTitle("Please try again!");
+				alert.setContentText(
+						"There was an error with your username or password combination.Please try again or reset your password");
+				alert.showAndWait();
 			}
 		}
 
@@ -95,7 +97,7 @@ public class LoginPageController implements Initializable {
 		}
 
 	}
-	
+
 	public void forgotPasswordButtonPressed(ActionEvent event) throws IOException {
 		{
 			Parent register = FXMLLoader.load(getClass().getResource("../view/ForgotPassword.fxml"));

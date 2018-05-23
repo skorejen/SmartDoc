@@ -11,33 +11,36 @@ import com.mysql.jdbc.PreparedStatement;
 import java.sql.Date;
 
 import utility.persistence.MyDatabase;
+
 /**
- * The class is the so called "adapter" for the database.
- * Its' methods main purpose is to retrieve
- * or send data to database, and pass the data further to
+ * The class is the so called "adapter" for the database. Its' methods main
+ * purpose is to retrieve or send data to database, and pass the data further to
  * the system.
+ * 
  * @author Michal Ciebien
  *
  */
-public class DBS implements DbsPersistance  {
+public class DBS implements DbsPersistance {
 
-private MyDatabase myDatabase;
+	private MyDatabase myDatabase;
+
 	/**
-	 * The DBS constructor initializes the connection
-	 * with the database.
+	 * The DBS constructor initializes the connection with the database.
 	 */
 	public DBS() {
 		try {
-			myDatabase = new MyDatabase("org.postgresql.Driver",
-					"jdbc:postgresql://localhost:5432/smartdocdatabase", "postgres", "sallie");
+			myDatabase = new MyDatabase("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/smartdocdatabase",
+					"postgres", "sallie");
 		} catch (ClassNotFoundException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
+
 	/**
-	 * Changes the parameter password into a new hexadecimal
-	 * String, which is then ready to pass to database
+	 * Changes the parameter password into a new hexadecimal String, which is then
+	 * ready to pass to database
+	 * 
 	 * @param password
 	 * @return password as hexadecimal string
 	 */
@@ -52,7 +55,7 @@ private MyDatabase myDatabase;
 		byte[] buffer = password.getBytes();
 		md.update(buffer);
 		byte[] digest = md.digest();
-		
+
 		StringBuffer sb = new StringBuffer();
 		for (byte b : digest) {
 			sb.append(Integer.toHexString((int) (b & 0xff)));
@@ -64,16 +67,15 @@ private MyDatabase myDatabase;
 	@Override
 	public String verifyLogin(String login, String password) {
 		String passwordHex = "";
-			
-			passwordHex =  passwordToHex(password);
-		
+
+		passwordHex = passwordToHex(password);
+
 		String sql = "SELECT cpr from account where (login=? and password=?)";
 		try {
 			System.out.println(passwordHex);
 			ArrayList<Object[]> array = myDatabase.query(sql, login, passwordHex);
-			
-			if(array.isEmpty())
-			{
+
+			if (array.isEmpty()) {
 				return "0";
 			} else {
 				return (String) array.get(0)[0];
@@ -81,49 +83,43 @@ private MyDatabase myDatabase;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return "0";
-			
+
 		}
-		
-		
-		
+
 	}
-	
-	
 
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String speciality, String type, String gender) {
-		
+	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone,
+			String email, LocalDate dob, String speciality, String type, String gender) {
+
 		String passwordHex = passwordToHex(password);
-		
+
 		String sql = "insert into account values (?,?,?)";
-		System.out.println("Adding a new doctor with these data: "+ login +" " + password +" "+ cpr + " " + type);
+		System.out.println("Adding a new doctor with these data: " + login + " " + password + " " + cpr + " " + type);
 		String sql1 = "insert into account_data values (?,?,?,?,?,?,?,?)";
 		String sql2 = "insert into doctor_speciality values (?,?)";
-		
-		
-		 
-		
+
 		Date dateSQL = parseDateToDbs(dob);
-		
+
 		System.out.println(dob.toString());
-		
-			try {
-				myDatabase.update(sql, cpr, login, passwordHex);
-				myDatabase.update(sql1, cpr, fname,lname,phone,dateSQL,email,type,gender);
-				myDatabase.update(sql2, cpr, speciality);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-		
-		
+
+		try {
+			myDatabase.update(sql, cpr, login, passwordHex);
+			myDatabase.update(sql1, cpr, fname, lname, phone, dateSQL, email, type, gender);
+			myDatabase.update(sql2, cpr, speciality);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
 		return true;
 	}
-	
+
 	@Override
-	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String gender) {
-		
+	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone,
+			String email, LocalDate dob, String gender) {
+
 		String passwordHex = passwordToHex(password);
 		String sql = "insert into account values (?,?,?)";
 		String sql1 = "insert into account_data values(?,?,?,?,?,?,?,?)";
@@ -133,7 +129,7 @@ private MyDatabase myDatabase;
 
 		try {
 			myDatabase.update(sql, cpr, login, passwordHex);
-			myDatabase.update(sql1, cpr, fname,lname,phone,dateSQL,email,type,gender);
+			myDatabase.update(sql1, cpr, fname, lname, phone, dateSQL, email, type, gender);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -141,9 +137,11 @@ private MyDatabase myDatabase;
 		}
 		return true;
 	}
+
 	/**
-	 * The method parses the LocalDate parameter into Date object
-	 * that is compatible with postgreSQL database.
+	 * The method parses the LocalDate parameter into Date object that is compatible
+	 * with postgreSQL database.
+	 * 
 	 * @param date
 	 * @return date object compatible with database
 	 */
@@ -152,28 +150,26 @@ private MyDatabase myDatabase;
 		String trimYear = dateVariables[0];
 		String trimMonth = dateVariables[1];
 		String trimDay = dateVariables[2];
-		
-		System.out.println(trimYear+" "+trimMonth+" "+trimDay);
-		
-		int year = Integer.parseInt(trimYear)-1900;
+
+		System.out.println(trimYear + " " + trimMonth + " " + trimDay);
+
+		int year = Integer.parseInt(trimYear) - 1900;
 		int month = Integer.parseInt(trimMonth);
-		
-			month--;
-		
+
+		month--;
+
 		int day = Integer.parseInt(trimDay);
-		
-		Date dateSQL = new Date(year,month,day);
+
+		Date dateSQL = new Date(year, month, day);
 		return dateSQL;
 	}
-	
-	
 
 	@Override
 	public ArrayList<Object[]> getDoctor(String cpr) {
 
 		String sql = "SELECT * from account_data where (cpr=?)";
-		
-		ArrayList<Object[]> array=null;
+
+		ArrayList<Object[]> array = null;
 
 		try {
 			array = myDatabase.query(sql, cpr);
@@ -186,11 +182,10 @@ private MyDatabase myDatabase;
 
 	@Override
 	public ArrayList<Object[]> getAccount(String cpr) {
-		
+
 		String sql = "SELECT * from account_data where (cpr=?)";
-		ArrayList<Object[]> array=null;
+		ArrayList<Object[]> array = null;
 		// array needs to be initialized before try / catch
-		
 
 		try {
 			array = myDatabase.query(sql, cpr);
@@ -204,8 +199,7 @@ private MyDatabase myDatabase;
 	@Override
 	public ArrayList<Object[]> getSpeciality(String cpr) {
 		String sql = "SELECT speciality from doctor_speciality where (cpr=?)";
-		ArrayList<Object[]> array=null;
-		
+		ArrayList<Object[]> array = null;
 
 		try {
 			array = myDatabase.query(sql, cpr);
@@ -215,13 +209,5 @@ private MyDatabase myDatabase;
 		}
 		return array;
 	}
-	
-	
-	
+
 }
-	
-		
-		
-	
-
-

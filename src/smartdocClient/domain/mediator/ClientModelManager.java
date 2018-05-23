@@ -11,20 +11,20 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Observable;
 
-
 import smartdocServer.domain.mediator.ServerModel;
 import smartdocServer.domain.mediator.ServerModelManager;
 import smartdocServer.domain.model.Doctor;
+import smartdocServer.domain.model.Patient;
 import utility.observer.RemoteSubject;
 
 public class ClientModelManager extends Observable implements ClientModel {
 
 	private ServerModel server;
 	private static Doctor doctor;
-	
+	private static Patient patient;
+
 	public ClientModelManager() {
-			
-		
+
 		try {
 			server = (ServerModel) Naming.lookup("rmi://localhost:1099/vipassanaServer");
 			UnicastRemoteObject.exportObject(this, 0);
@@ -40,30 +40,25 @@ public class ClientModelManager extends Observable implements ClientModel {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public synchronized void update(RemoteSubject<String> subject, String updateMsg) throws RemoteException {
-		
-		
+
 	}
-	
-	
 
 	public String verifyLogin(String login, String password) {
 		try {
 			return server.verifyLogin(login, password);
 		} catch (RemoteException e) {
-			
+
 			e.printStackTrace();
 		}
 		return "0";
 	}
 
-
 	@Override
-	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone, String email, LocalDate dob, String speciality, String type, String gender)
-	{
-		
+	public boolean createDoctor(String login, String password, String fname, String lname, String cpr, int phone,
+			String email, LocalDate dob, String speciality, String type, String gender) {
+
 		try {
 			return server.createDoctor(login, password, fname, lname, cpr, phone, email, dob, speciality, type, gender);
 		} catch (RemoteException e) {
@@ -73,11 +68,10 @@ public class ClientModelManager extends Observable implements ClientModel {
 		return false;
 	}
 
-
 	@Override
 	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone,
-			String email, LocalDate dob, String gender){
-		
+			String email, LocalDate dob, String gender) {
+
 		try {
 			return server.createPatient(login, password, fname, lname, cpr, phone, email, dob, gender);
 		} catch (RemoteException e) {
@@ -87,15 +81,14 @@ public class ClientModelManager extends Observable implements ClientModel {
 		return false;
 	}
 
-
 	@Override
-	public String getAccount(String cpr) {
+	public String getAccountAndType(String cpr) {
 		String type = "0";
 		try {
 			System.out.println(type);
-			 type = server.getType(cpr);
-			 System.out.println(type);
-			Object object = server.getAccount(cpr,type);
+			type = server.getType(cpr);
+			System.out.println(type);
+			Object object = server.getAccount(cpr, type);
 			saveObjectToModel(object, type);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -103,21 +96,22 @@ public class ClientModelManager extends Observable implements ClientModel {
 		}
 		return type;
 	}
-	
+
 	public void saveObjectToModel(Object obj, String type) {
-		if(type.equals("D"))
-		{
+		if (type.equals("D")) {
 			doctor = (Doctor) obj;
-			System.out.println(doctor.toString());
+		} else if (type.equals("P")) {
+			patient = (Patient) obj;
 		}
-	
+
+	}
+
+	public Patient getPatientModel() {
+		return patient;
 	}
 	
 	public Doctor getDoctorModel() {
 		return doctor;
 	}
-	
-
-	
 
 }

@@ -26,7 +26,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class CreateDoctorController implements Initializable{
+public class CreateDoctorController implements Initializable {
 
 	@FXML
 	private TextField firstName;
@@ -47,23 +47,21 @@ public class CreateDoctorController implements Initializable{
 	@FXML
 	private PasswordField pass;
 
-	
 	@FXML
 	private Button register;
 	@FXML
 	private Button clear;
-	
+
 	@FXML
 	private Button back;
-	
+
 	@FXML
 	private JFXComboBox<String> genderchoice;
 	@FXML
 	private JFXComboBox<String> doctortype;
-	
-	
+
 	private ClientController clientController;
-	
+
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
 			Parent register = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
@@ -74,7 +72,7 @@ public class CreateDoctorController implements Initializable{
 		}
 
 	}
-	
+
 	public void clearButtonPressed(ActionEvent event) throws IOException {
 		{
 			Parent register = FXMLLoader.load(getClass().getResource("../view/CreateDoctor.fxml"));
@@ -85,63 +83,56 @@ public class CreateDoctorController implements Initializable{
 		}
 
 	}
-	
 
-	
 	public void registerButtonPressed(ActionEvent event) throws IOException {
 		{
-			String firstnameVar=firstName.getText();
-			String lastnameVar=lastName.getText();
-			String cprVar=cPR.getText();
-			
-			String specialityVar=speciality.getText();
-			String phonenoVar=phoneNo.getText();
-			 
-			
-			
+			String firstnameVar = firstName.getText();
+			String lastnameVar = lastName.getText();
+			String cprVar = cPR.getText();
+
+			String specialityVar = speciality.getText();
+			String phonenoVar = phoneNo.getText();
+
 			String date = dob.getText();
-			String [] dateVariables = new String[2];
+			String[] dateVariables = new String[2];
 			dateVariables = date.split("-");
 			String trimYear = dateVariables[0];
 			String trimMonth = dateVariables[1];
 			String trimDay = dateVariables[2];
-			
-			System.out.println(trimYear+" "+trimMonth+" "+trimDay);
-			
-			LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth), Integer.parseInt(trimDay));
-			
+
+			System.out.println(trimYear + " " + trimMonth + " " + trimDay);
+
+			LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth),
+					Integer.parseInt(trimDay));
+
 			int phoneNoVar = Integer.parseInt(phonenoVar);
-			
+
 			String usernameVar = username.getText();
 			String passwordVar = pass.getText();
 			String emailVar = email.getText();
-			
-			String gender= genderchoice.getValue().toString();
-			
-			String doctype= doctortype.getValue().toString();
-			if(doctype.equals("General")) {
+
+			String gender = genderchoice.getValue().toString();
+
+			String doctype = doctortype.getValue().toString();
+			if (doctype.equals("General")) {
 				doctype = "G";
-			} else
-			{
+			} else {
 				doctype = "D";
 			}
-			
-			if(gender.equals("Male")) {
+
+			if (gender.equals("Male")) {
 				gender = "M";
-			} else if (gender.equals("Female"))
-			{
+			} else if (gender.equals("Female")) {
 				gender = "F";
-			} else
-			{
+			} else {
 				gender = "M";
 			}
-			
-			
+
 			// PASSING DOCTOR INFO TO CLIENT
-		clientController  = ClientController.getInstance();
-		clientController.createDoctor(usernameVar, passwordVar, firstnameVar, lastnameVar, cprVar, phoneNoVar, emailVar, dateOfBirthVar, specialityVar, doctype, gender);
-			
-			
+			clientController = ClientController.getInstance();
+			clientController.createDoctor(usernameVar, passwordVar, firstnameVar, lastnameVar, cprVar, phoneNoVar,
+					emailVar, dateOfBirthVar, specialityVar, doctype, gender);
+
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -150,7 +141,7 @@ public class CreateDoctorController implements Initializable{
 		}
 
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		genderchoice.getItems().setAll("Male", "Female", "Other");
