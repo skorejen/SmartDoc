@@ -27,11 +27,7 @@ public class MyInfoPatientController implements Initializable{
 	private Label lNameLabel;
 
 	@FXML
-	private Label usernameLabel;
-
-
-	@FXML
-	private Label birthDayLabel;
+	private Label dobLabel;
 
 	@FXML
 	private Label emailLabel;
@@ -40,11 +36,19 @@ public class MyInfoPatientController implements Initializable{
 	private Label genderLabel;
 
 	@FXML
+	private Label typeLabel;
+
+	@FXML
 	private Label cprLabel;
 	
 	@FXML
 	private Label phoneNumberLabel;
-
+	
+	
+	
+	
+	
+	
 	@FXML
 	private Button signOut;
 	@FXML
@@ -81,6 +85,15 @@ public class MyInfoPatientController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
 			fNameLabel.setText(controller.getPatientData().getFname());
+			lNameLabel.setText(controller.getPatientData().getLname());
+			dobLabel.setText(controller.getPatientData().getDob().toString());
+			emailLabel.setText(controller.getPatientData().getEmail());
+			genderLabel.setText(controller.getPatientData().getGender());
+			System.out.println(controller.getPatientData().getType());
+			typeLabel.setText(controller.getPatientData().getType());
+			cprLabel.setText(controller.getPatientData().getCpr());
+			
+			phoneNumberLabel.setText(controller.getPatientData().getPhone()+ "");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
