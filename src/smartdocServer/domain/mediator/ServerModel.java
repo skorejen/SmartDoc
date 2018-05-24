@@ -6,7 +6,9 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import smartdocServer.domain.model.Doctor;
+import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
+import smartdocServer.domain.model.PatientList;
 import utility.observer.RemoteSubject;
 
 public interface ServerModel extends Remote, RemoteSubject<String> {
@@ -70,7 +72,7 @@ public interface ServerModel extends Remote, RemoteSubject<String> {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public Doctor getDoctor(String login) throws RemoteException;
+	public Doctor getDoctor(String cpr) throws RemoteException;
 
 	/**
 	 * Calls method on DBS class to receive data about the type of account of the
@@ -93,4 +95,6 @@ public interface ServerModel extends Remote, RemoteSubject<String> {
 	 * @throws RemoteException
 	 */
 	public Object getAccount(String cpr, String type) throws RemoteException;
+	public PatientList getPatientList() throws RemoteException;
+	public DoctorList getDoctorList() throws RemoteException;
 }

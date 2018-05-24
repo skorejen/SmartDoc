@@ -14,7 +14,9 @@ import java.util.Observable;
 import smartdocServer.domain.mediator.ServerModel;
 import smartdocServer.domain.mediator.ServerModelManager;
 import smartdocServer.domain.model.Doctor;
+import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
+import smartdocServer.domain.model.PatientList;
 import utility.observer.RemoteSubject;
 
 public class ClientModelManager extends Observable implements ClientModel {
@@ -85,9 +87,8 @@ public class ClientModelManager extends Observable implements ClientModel {
 	public String getAccountAndType(String cpr) {
 		String type = "0";
 		try {
-			System.out.println(type);
 			type = server.getType(cpr);
-			System.out.println(type);
+			System.out.println("TYPE:"+type);
 			Object object = server.getAccount(cpr, type);
 			saveObjectToModel(object, type);
 		} catch (RemoteException e) {
@@ -113,6 +114,30 @@ public class ClientModelManager extends Observable implements ClientModel {
 	
 	public Doctor getDoctorModel() {
 		return doctor;
+	}
+
+	@Override
+	public Patient getPatient(String cpr) throws RemoteException {
+		
+		return server.getPatient(cpr);
+	}
+
+	@Override
+	public Doctor getDoctor(String cpr) throws RemoteException {
+		
+		return server.getDoctor(cpr);
+	}
+
+	@Override
+	public PatientList getPatientList() throws RemoteException {
+		
+		return server.getPatientList();
+	}
+
+	@Override
+	public DoctorList getDoctorList() throws RemoteException {
+		
+		return server.getDoctorList();
 	}
 
 }

@@ -7,7 +7,9 @@ import java.util.Date;
 import smartdocClient.domain.mediator.ClientModel;
 import smartdocClient.domain.mediator.ClientModelManager;
 import smartdocServer.domain.model.Doctor;
+import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
+import smartdocServer.domain.model.PatientList;
 
 public class ClientController {
 
@@ -54,5 +56,21 @@ public class ClientController {
 	
 	public Patient getPatientData() throws RemoteException {
 		return clientModel.getPatientModel();
+	}
+	
+	public Patient getPatient(String cpr) throws RemoteException {
+		return clientModel.getPatient(cpr); 
+	}
+	
+	public Doctor getDoctor(String cpr) throws RemoteException {
+		return clientModel.getDoctor(cpr);
+	}
+	
+	public PatientList getPatientList() throws RemoteException {
+		return clientModel.getPatientList(); // return all patients from database
+	}
+	
+	public DoctorList getDoctorList() throws RemoteException {
+		return clientModel.getDoctorList(); // return all patients from database
 	}
 }

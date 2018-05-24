@@ -1,9 +1,13 @@
 package smartdocServer.domain.mediator;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+
+import smartdocServer.domain.model.DoctorList;
+import smartdocServer.domain.model.PatientList;
 
 public interface DbsPersistance {
 
@@ -70,7 +74,7 @@ public interface DbsPersistance {
 	 * @param cpr
 	 * @return
 	 */
-	public ArrayList<Object[]> getAccount(String cpr);
+	public ArrayList<Object[]> getAccountData(String cpr);
 
 	/**
 	 * Looks for a matching cpr result in the database and returns that row as an
@@ -80,4 +84,6 @@ public interface DbsPersistance {
 	 * @return
 	 */
 	public ArrayList<Object[]> getSpeciality(String cpr);
+	public ArrayList<Object[]> getPatientList() throws RemoteException;
+	public ArrayList<Object[]> getDoctorList() throws RemoteException;
 }

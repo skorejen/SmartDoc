@@ -13,7 +13,9 @@ import java.util.Date;
 import java.util.Observable;
 
 import smartdocServer.domain.model.Doctor;
+import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
+import smartdocServer.domain.model.PatientList;
 import utility.observer.AbstractRemoteSubject;
 import utility.observer.RemoteObserver;
 import utility.observer.RemoteSubjectDelegate;
@@ -49,9 +51,8 @@ public class ServerModelManager extends Observable implements ServerModel {
 	public String verifyLogin(String login, String password) {
 		String cpr;
 		cpr = dbsPersistance.verifyLogin(login, password);
-		
-		if(cpr.equals("0"))
-		{
+
+		if (cpr.equals("0")) {
 			super.setChanged();
 			super.notifyObservers(false);
 		} else {
@@ -92,7 +93,7 @@ public class ServerModelManager extends Observable implements ServerModel {
 
 	public Doctor getDoctor(String cpr) {
 
-		ArrayList<Object[]> array = dbsPersistance.getAccount(cpr);
+		ArrayList<Object[]> array = dbsPersistance.getAccountData(cpr);
 
 		String fname = (String) array.get(0)[1];
 		String lname = (String) array.get(0)[2];
@@ -129,7 +130,7 @@ public class ServerModelManager extends Observable implements ServerModel {
 	@Override
 	public String getType(String cpr) throws RemoteException {
 		System.out.println(cpr);
-		ArrayList<Object[]> array = dbsPersistance.getAccount(cpr);
+		ArrayList<Object[]> array = dbsPersistance.getAccountData(cpr);
 
 		System.out.println(array.get(0)[6].toString());
 		String type = (String) array.get(0)[6];
@@ -143,7 +144,7 @@ public class ServerModelManager extends Observable implements ServerModel {
 		if (type.equals("D")) {
 			return (Doctor) getDoctor(cpr);
 		} else if (type.equals("G")) {
-			// return general doctor
+			return (Doctor) getDoctor(cpr);
 		} else if (type.equals("A")) {
 			// return admin
 		} else if (type.equals("P")) {
@@ -156,8 +157,8 @@ public class ServerModelManager extends Observable implements ServerModel {
 
 	@Override
 	public Patient getPatient(String cpr) throws RemoteException {
-		ArrayList<Object[]> array = dbsPersistance.getAccount(cpr);
-		
+		ArrayList<Object[]> array = dbsPersistance.getAccountData(cpr);
+
 		String fname = (String) array.get(0)[1];
 		String lname = (String) array.get(0)[2];
 		int phone = (int) array.get(0)[3];
@@ -165,62 +166,65 @@ public class ServerModelManager extends Observable implements ServerModel {
 		String email = (String) array.get(0)[5];
 		String type = (String) array.get(0)[6];
 		String gender = (String) array.get(0)[7];
-		
-		Patient patient = new Patient(cpr,fname,lname,dob,phone,email,type,gender);
+
+		Patient patient = new Patient(cpr, fname, lname, dob, phone, email, type, gender);
 		System.out.println(patient.toString());
 		return patient;
 	}
 
-	// public synchronized void addMember(String name, String lastName, boolean
-	// payment)
-	// {
-	// try {
-	// dbsPersistance.addMember(name, lastName, payment);
-	// } catch (SQLException e) {
-	// super.notifyObservers("Info from SERVER: Something went wrong while adding
-	// member");
-	//
-	// System.out.println(e.getMessage());
-	// return;
-	// }
-	// super.notifyObservers("Info from SERVER: Added member successfuly");
-	//
-	// }
+	@Override
+	public PatientList getPatientList() throws RemoteException {
+		
+		
+			
+		PatientList patientList = new PatientList();
+		ArrayList<Object[]> array = dbsPersistance.getPatientList();
+		
+		for(Object[] object: array) 
+		{
+			String cpr = (String) object[0];
+			String fname = (String) object[1];
+			String lname = (String) object[2];
+			int phone = (int) object[3];
 
-	// public synchronized String getMembers() {
-	// ArrayList<Object[]> array = dbsPersistance.getMembers();
-	// members = new MemberList();
-	//
-	// for(int i=0;i<array.size();i++) {
-	// Object[] row = array.get(i);
-	// String name = row[0].toString();
-	// String lastName = row[1].toString();
-	// boolean payment = Boolean.parseBoolean(row[2].toString());
-	// int memberNo = Integer.parseInt(row[3].toString());
-	//
-	// members.addMember(new Member(name,lastName,payment,memberNo));
-	// }
-	//
-	//
-	//
-	// return members.toString();
-	// }
-	//
-	// @Override
-	// public String getNotPaidMembers() throws RemoteException {
-	// ArrayList<Object[]> array = dbsPersistance.getNotPaidMembers();
-	// members = new MemberList();
-	//
-	// for(int i=0;i<array.size();i++) {
-	// Object[] row = array.get(i);
-	// String name = row[0].toString();
-	// String lastName = row[1].toString();
-	// boolean payment = Boolean.parseBoolean(row[2].toString());
-	// int memberNo = Integer.parseInt(row[3].toString());
-	//
-	// members.addMember(new Member(name,lastName,payment,memberNo));
-	// }
-	// return members.toString();
-	// }
+			System.out.println("DATE: " + object[4].toString());
+			LocalDate dob = parseDateFromDbs((Date) object[5]);
+			String email = (String) object[6];
+			String type = (String) object[7];
+			String gender = (String) object[8];
 
+
+			Patient patient = new Patient(cpr, fname, lname, dob, phone, email, type, gender);
+			patientList.addPatient(patient);;
+		}
+		return patientList;
+	}
+
+	@Override
+	public DoctorList getDoctorList() throws RemoteException {
+
+		DoctorList doctorList = new DoctorList();
+		ArrayList<Object[]> array = dbsPersistance.getPatientList();
+		
+		for(Object[] object: array) 
+		{
+			String cpr = (String) object[0];
+			String fname = (String) object[1];
+			String lname = (String) object[2];
+			int phone = (int) object[3];
+
+			System.out.println("DATE: " + object[4].toString());
+			LocalDate dob = parseDateFromDbs((Date) object[5]);
+			String email = (String) object[6];
+			String type = (String) object[7];
+			String gender = (String) object[8];
+
+			ArrayList<Object[]> arraySpeciality = dbsPersistance.getSpeciality(cpr);
+			String speciality = (String) arraySpeciality.get(0)[0];
+
+			Doctor doctor = new Doctor(cpr, fname, lname, dob, phone, email, type, gender, speciality);
+			doctorList.addDoctor(doctor);
+		}
+		return doctorList;
+	}
 }

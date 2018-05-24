@@ -1,5 +1,6 @@
 package smartdocServer.domain.mediator;
 
+import java.rmi.RemoteException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -181,7 +182,7 @@ public class DBS implements DbsPersistance {
 	}
 
 	@Override
-	public ArrayList<Object[]> getAccount(String cpr) {
+	public ArrayList<Object[]> getAccountData(String cpr) {
 
 		String sql = "SELECT * from account_data where (cpr=?)";
 		ArrayList<Object[]> array = null;
@@ -203,6 +204,34 @@ public class DBS implements DbsPersistance {
 
 		try {
 			array = myDatabase.query(sql, cpr);
+		} catch (SQLException e) {
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
+		return array;
+	}
+
+	@Override
+	public ArrayList<Object[]> getPatientList() throws RemoteException {
+		String sql = "SELECT * from account_data where (type=?)";
+		ArrayList<Object[]> array = null;
+		String type = "P";
+		try {
+			array = myDatabase.query(sql, type);
+		} catch (SQLException e) {
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
+		return array;
+	}
+
+	@Override
+	public ArrayList<Object[]> getDoctorList() throws RemoteException {
+		String sql = "SELECT * from account_data where (type=?)";
+		ArrayList<Object[]> array = null;
+		String type = "D";
+		try {
+			array = myDatabase.query(sql, type);
 		} catch (SQLException e) {
 			System.out.println("Failed to retrieve data from database");
 			e.printStackTrace();
