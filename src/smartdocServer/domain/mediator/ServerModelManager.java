@@ -159,7 +159,8 @@ public class ServerModelManager extends Observable implements ServerModel {
 		String type = (String) array.get(0)[6];
 		String gender = (String) array.get(0)[7];
 		
-		Patient patient = new Patient(cpr, fname, lname, dob, phone, email, type, gender);
+		Patient patient = new Patient(cpr,fname,lname,dob,phone,email,type,gender);
+		System.out.println(patient.toString());
 		return patient;
 	}
 

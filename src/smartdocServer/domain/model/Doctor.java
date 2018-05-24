@@ -5,6 +5,11 @@ import java.time.LocalDate;
 
 public class Doctor implements Serializable{
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 858043133661809053L;
 	private String cpr;
 	private String fname;
 	

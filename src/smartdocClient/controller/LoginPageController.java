@@ -72,7 +72,12 @@ public class LoginPageController implements Initializable {
 						app_stage.setScene(home_page_scene);
 						app_stage.show();
 					} else if (type.equals("P")) {
-						// load Patient gui
+						Parent signin = FXMLLoader.load(getClass().getResource("../view/PatientLoggedIN.fxml"));
+
+						Scene home_page_scene = new Scene(signin);
+						Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+						app_stage.setScene(home_page_scene);
+						app_stage.show();
 					}
 				}
 

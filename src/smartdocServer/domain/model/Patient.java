@@ -1,13 +1,15 @@
 package smartdocServer.domain.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.sql.Date;
+import java.io.Serializable;
 
-public class Patient 
+public class Patient implements Serializable
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2344071584884140587L;
 	private String cpr;
 	private String fname;
 	
@@ -72,10 +74,9 @@ public class Patient
 		this.phone = phone;
 	}
 
-	public Date getDob() throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date dobFormatted = (Date) formatter.parse(formatter.format(dob)); 
-		return dobFormatted;
+	public LocalDate getDob(){
+		 
+		return dob;
 	}
 
 	public void setDob(LocalDate dob) {
