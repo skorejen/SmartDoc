@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,55 +16,27 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class GeneralDoctorManagePatientGUIController implements Initializable {
 
 	@FXML
-	private Label fNameLabel;
+	private TextField inputCPR;
 
-	@FXML
-	private Label lNameLabel;
-
-	@FXML
-	private Label dobLabel;
-
-	@FXML
-	private Label emailLabel;
-
-	@FXML
-	private Label genderLabel;
-
-	@FXML
-	private Label typeLabel;
-
-	@FXML
-	private Label cprLabel;
-
-	@FXML
-	private Label phoneNumberLabel;
-
-	
-	
-	
 	@FXML
 	private Button signOut;
-	
+
 	@FXML
 	private Button back;
-	
+
 	@FXML
 	private Button clear;
-	
+
 	@FXML
 	private Button continueB;
 	
-	
-	
-	
-	
-	
-	
+    private String cprTemporary;
 
 	private ClientController controller;
 
@@ -92,16 +66,35 @@ public class GeneralDoctorManagePatientGUIController implements Initializable {
 	}
 
 	public void continueButtonPressed(ActionEvent event) throws IOException {
-		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
-			Scene home_page_scene = new Scene(register);
-			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			app_stage.setScene(home_page_scene);
-			app_stage.show();
-
+		{   String CPR = inputCPR.getText();
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../view/GeneralDoctorManagePatientGUI(2).fxml"));
+		
+		Parent root = loader.load();
+		
+		Scene home_page_scene = new Scene(root);
+		
+		
+		GeneralDoctorManagePatientGUI2Controller transfer = loader.getController();
+		transfer.setcprFromPreviousScene(CPR);
+		
+		
+		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
+		
+	
+		
+		
+		
+			
 		}
 	}
-	
+
+
+
 	public void clearButtonPressed(ActionEvent event) throws IOException {
 		{
 			Parent register = FXMLLoader.load(getClass().getResource("../view/GeneralDoctorManagePatientGUI.fxml"));
@@ -116,8 +109,7 @@ public class GeneralDoctorManagePatientGUIController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
+
 }

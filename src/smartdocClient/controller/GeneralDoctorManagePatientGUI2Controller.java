@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import smartdocServer.domain.model.Patient;
 
 public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 
@@ -42,24 +43,23 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 	@FXML
 	private Label phoneNumberLabel;
 
-	
-	
-	
+	private String cprFromPreviousScene;
+
 	@FXML
 	private Button signOut;
 	@FXML
 	private Button back;
 	@FXML
 	private Button apply;
-	
-	
-	
-	
 
 	private ClientController controller;
 
 	public GeneralDoctorManagePatientGUI2Controller() {
+
 		controller = ClientController.getInstance();
+
+		;
+
 	}
 
 	public void signOutButtonPressed(ActionEvent event) throws IOException {
@@ -69,6 +69,7 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
 			app_stage.show();
+
 		}
 	}
 
@@ -93,24 +94,40 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 
 		}
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
-			fNameLabel.setText(controller.getPatientData().getFname());
-			lNameLabel.setText(controller.getPatientData().getLname());
-			dobLabel.setText(controller.getPatientData().getDob().toString());
-			emailLabel.setText(controller.getPatientData().getEmail());
-			genderLabel.setText(controller.getPatientData().getGender());
-			System.out.println(controller.getPatientData().getType());
-			typeLabel.setText(controller.getPatientData().getType());
-			cprLabel.setText(controller.getPatientData().getCpr());
-
-			phoneNumberLabel.setText(controller.getPatientData().getPhone() + "");
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		
 
 	}
+
+	public void setcprFromPreviousScene(String cpr) {
+		System.out.println(cprFromPreviousScene + " before instantiate");
+		
+	this.cprFromPreviousScene=cpr;
+	
+	System.out.println(cprFromPreviousScene+" after instantiate");
+	 try {
+		Patient patient = controller.getPatient(cprFromPreviousScene);
+			
+		
+		
+				
+		fNameLabel.setText(patient.getFname()); 
+		lNameLabel.setText(patient.getLname());
+		dobLabel.setText(patient.getDob().toString());
+		emailLabel.setText(patient.getEmail());
+		genderLabel.setText(patient.getGender());
+		typeLabel.setText(patient.getType());
+		cprLabel.setText(patient.getCpr());
+		phoneNumberLabel.setText(patient.getPhone()+""); 
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	}
+
+	
 }

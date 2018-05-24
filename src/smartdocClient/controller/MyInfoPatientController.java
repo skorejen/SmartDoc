@@ -89,7 +89,6 @@ public class MyInfoPatientController implements Initializable{
 			dobLabel.setText(controller.getPatientData().getDob().toString());
 			emailLabel.setText(controller.getPatientData().getEmail());
 			genderLabel.setText(controller.getPatientData().getGender());
-			System.out.println(controller.getPatientData().getType());
 			typeLabel.setText(controller.getPatientData().getType());
 			cprLabel.setText(controller.getPatientData().getCpr());
 			
