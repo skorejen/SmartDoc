@@ -20,7 +20,7 @@ public class GeneralDoctorGUIController {
 
 	public void managepatientButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("../view/GeneralDoctorManagePatientGUI.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
