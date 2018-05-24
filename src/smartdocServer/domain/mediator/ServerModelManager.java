@@ -49,8 +49,15 @@ public class ServerModelManager extends Observable implements ServerModel {
 	public String verifyLogin(String login, String password) {
 		String cpr;
 		cpr = dbsPersistance.verifyLogin(login, password);
-		super.setChanged();
-		super.notifyObservers(cpr);
+		
+		if(cpr.equals("0"))
+		{
+			super.setChanged();
+			super.notifyObservers(false);
+		} else {
+			super.setChanged();
+			super.notifyObservers(true);
+		}
 		return cpr;
 	}
 

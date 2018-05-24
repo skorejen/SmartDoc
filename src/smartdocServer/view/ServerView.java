@@ -15,8 +15,8 @@ public class ServerView implements View{
 
 	@Override
 	public void update(Observable arg0, Object ifLogIn) {
-		String check = (String) ifLogIn;
-		if(!ifLogIn.equals("0")) {
+		Boolean check = (Boolean) ifLogIn;
+		if(check) {
 			System.out.println("A user has accessed to the system.");
 		}
 		else {
