@@ -30,8 +30,8 @@ public class Patient implements Serializable
 		this.lname = lname;
 		this.phone = phone;
 		this.dob = dob;
+		this.type = type;
 		this.email = email;
-		this.cpr = cpr;
 		this.gender = gender;
 	}
 

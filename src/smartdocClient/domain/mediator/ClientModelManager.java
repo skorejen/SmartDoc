@@ -102,6 +102,7 @@ public class ClientModelManager extends Observable implements ClientModel {
 			doctor = (Doctor) obj;
 		} else if (type.equals("P")) {
 			patient = (Patient) obj;
+			System.out.println(patient.toString());
 		}
 
 	}
