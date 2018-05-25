@@ -104,15 +104,19 @@
       <Button fx:id="signOut" layoutX="1158.0" layoutY="11.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Sign-out" />
       <Button fx:id="back" layoutX="1248.0" layoutY="11.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Back" />
       <Button fx:id="apply" layoutX="1063.0" layoutY="11.0" mnemonicParsing="false" onAction="#applyButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Apply" />
-      <AnchorPane layoutX="348.0" layoutY="83.0" prefHeight="500.0" prefWidth="724.0" style="-fx-background-color: ebeef4;" AnchorPane.bottomAnchor="17.0" AnchorPane.topAnchor="83.0">
+      <AnchorPane layoutX="348.0" layoutY="83.0" prefHeight="500.0" prefWidth="868.0" style="-fx-background-color: ebeef4;" AnchorPane.bottomAnchor="17.0" AnchorPane.topAnchor="83.0">
          <children>
-            <TableView layoutX="14.0" layoutY="21.0" prefHeight="460.0" prefWidth="379.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+            <TableView fx:id="assignPatient" layoutX="14.0" layoutY="21.0" prefHeight="460.0" prefWidth="379.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
               <columns>
-                <TableColumn prefWidth="151.0" text="First Name" />
-                <TableColumn prefWidth="140.0" text="Last Name" />
-                  <TableColumn prefWidth="160.0" text="Speciality" />
-                  <TableColumn prefWidth="158.0" text="E-mail" />
-                  <TableColumn prefWidth="94.0" text="Gender" />
+                <TableColumn fx:id="fName" prefWidth="94.0" text="First Name" />
+                <TableColumn fx:id="lName" prefWidth="94.0" text="Last Name" />
+                  <TableColumn fx:id="speciality" prefWidth="94.0" text="Speciality" />
+                  <TableColumn fx:id="eMail" prefWidth="94.0" text="E-mail" />
+                  <TableColumn fx:id="gender" prefWidth="94.0" text="Gender" />
+                  <TableColumn fx:id="dob" prefWidth="94.0" text="Date Of Birth" />
+                   <TableColumn fx:id="type" prefWidth="94.0" text="Type" />
+                    <TableColumn fx:id="phone" prefWidth="94.0" text="Phone" />
+                    <TableColumn fx:id="cpr" prefWidth="94.0" text="CPR" />
               </columns>
             </TableView>
          </children>

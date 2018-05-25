@@ -35,6 +35,20 @@ public class Doctor implements Serializable{
 		this.speciality = speciality;
 	}
 
+	public Doctor(String cpr2, String fname2, String lname2, String string, int phone2, String email2, String type2,
+			String gender2, String speciality2) {
+		super();
+		this.cpr = cpr2;
+		this.fname = fname2;
+		this.lname = lname2;
+		this.dob = null;
+		this.phone = phone2;
+		this.email = email2;
+		this.type = type2;
+		this.gender = gender2;
+		this.speciality = speciality2;
+	}
+
 	public String getCpr() {
 		return cpr;
 	}

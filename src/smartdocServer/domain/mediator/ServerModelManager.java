@@ -204,7 +204,7 @@ public class ServerModelManager extends Observable implements ServerModel {
 	public DoctorList getDoctorList() throws RemoteException {
 
 		DoctorList doctorList = new DoctorList();
-		ArrayList<Object[]> array = dbsPersistance.getPatientList();
+		ArrayList<Object[]> array = dbsPersistance.getDoctorList();
 		
 		for(Object[] object: array) 
 		{
@@ -214,12 +214,13 @@ public class ServerModelManager extends Observable implements ServerModel {
 			int phone = (int) object[3];
 
 			System.out.println("DATE: " + object[4].toString());
-			LocalDate dob = parseDateFromDbs((Date) object[5]);
-			String email = (String) object[6];
-			String type = (String) object[7];
-			String gender = (String) object[8];
-
+			LocalDate dob = parseDateFromDbs((Date) object[4]);
+			String email = (String) object[5];
+			String type = (String) object[6];
+			String gender = (String) object[7];
+				
 			ArrayList<Object[]> arraySpeciality = dbsPersistance.getSpeciality(cpr);
+			System.out.println(cpr);
 			String speciality = (String) arraySpeciality.get(0)[0];
 
 			Doctor doctor = new Doctor(cpr, fname, lname, dob, phone, email, type, gender, speciality);
