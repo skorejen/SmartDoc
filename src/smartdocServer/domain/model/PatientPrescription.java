@@ -22,11 +22,10 @@ public class PatientPrescription implements Serializable {
 		this.doctorCPR = doctorCPR;
 	}
 	
-	public PatientPrescription(String prescription, LocalDate appointments, String problem,String recommendation, String doctorCPR) {
+	public PatientPrescription(String prescription, LocalDate appointments, String problem, String doctorCPR) {
 		this.prescription = prescription;
 		this.appointments = appointments;
 		this.problem = problem;
-		this.recommendation = recommendation;
 		this.doctorCPR = doctorCPR;
 	}
 

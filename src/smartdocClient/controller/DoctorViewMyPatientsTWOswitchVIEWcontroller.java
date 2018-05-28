@@ -19,13 +19,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import smartdocServer.domain.model.Patient;
 import smartdocServer.domain.model.PatientPrescription;
 
-public class DoctorViewMyPatientsTWOcontroller implements Initializable {
+public class DoctorViewMyPatientsTWOswitchVIEWcontroller implements Initializable {
 
 	@FXML
 	private Label fNameLabel;
@@ -60,22 +59,20 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 	@FXML
 	private Button apply;
 
-	
-	//INSIDE RIGHT VIEW
 	@FXML
-	private TextField prescriptionInputField;
+	private TableView<PatientPrescription> assignPrescription;
 	@FXML
-	private TextField appointmentInputField;
+	private TableColumn<PatientPrescription, String> prescription;
 	@FXML
-	private TextField problemInputField;
+	private TableColumn<PatientPrescription, LocalDate> appointment;
 	@FXML
-	private TextField recommendationInputField;
-	
-	
+	private TableColumn<PatientPrescription, String> problem;
+	@FXML
+	private TableColumn<PatientPrescription, String> doctorCPR;
 
 	private ClientController controller;
 
-	public DoctorViewMyPatientsTWOcontroller() {
+	public DoctorViewMyPatientsTWOswitchVIEWcontroller() {
 
 		controller = ClientController.getInstance();
 
@@ -134,13 +131,6 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 			typeLabel.setText(patient.getType());
 			cprLabel.setText(patient.getCpr());
 			phoneNumberLabel.setText(patient.getPhone() + "");
-			
-			
-			prescriptionInputField.setText();
-			appointmentInputField.setText();
-			problemInputField.setText();
-			recommendationInputField.setText();
-			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -150,9 +140,30 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
+		appointment.setCellValueFactory(new PropertyValueFactory<>("appointments"));
+		prescription.setCellValueFactory(new PropertyValueFactory<>("prescription"));
+		problem.setCellValueFactory(new PropertyValueFactory<>("problem"));
+		doctorCPR.setCellValueFactory(new PropertyValueFactory<>("doctorCPR"));
+
+		try {
+			assignPrescription.setItems(getPrescriptions());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
-	
+	public ObservableList<PatientPrescription> getPrescriptions() throws RemoteException {
+
+		ObservableList<PatientPrescription> patientprescriptionTable = FXCollections.observableArrayList();
+
+		LocalDate loc = LocalDate.now();
+		patientprescriptionTable.add(new PatientPrescription("#1", loc, "Cancer", "250998-2137"));
+		patientprescriptionTable.add(new PatientPrescription("#2", loc, "Drunk", "431211-2322"));
+		patientprescriptionTable.add(new PatientPrescription("#3", loc, "Stupid", "265387-2654"));
+
+		return patientprescriptionTable;
+	}
 }
