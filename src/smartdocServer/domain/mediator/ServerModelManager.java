@@ -228,4 +228,12 @@ public class ServerModelManager extends Observable implements ServerModel {
 		}
 		return doctorList;
 	}
+
+	@Override
+	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr) throws RemoteException {
+		
+			
+		
+		return dbsPersistance.assignPatientToDoctor(patientCpr, doctorCpr);
+	}
 }

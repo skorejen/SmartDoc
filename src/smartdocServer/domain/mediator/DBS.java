@@ -212,7 +212,7 @@ public class DBS implements DbsPersistance {
 	}
 
 	@Override
-	public ArrayList<Object[]> getPatientList() throws RemoteException {
+	public ArrayList<Object[]> getPatientList(){
 		String sql = "SELECT * from account_data where (type=?)";
 		ArrayList<Object[]> array = null;
 		String type = "P";
@@ -226,7 +226,7 @@ public class DBS implements DbsPersistance {
 	}
 
 	@Override
-	public ArrayList<Object[]> getDoctorList() throws RemoteException {
+	public ArrayList<Object[]> getDoctorList(){
 		String sql = "SELECT * from account_data where (type=?)";
 		ArrayList<Object[]> array = null;
 		String type = "D";
@@ -237,6 +237,23 @@ public class DBS implements DbsPersistance {
 			e.printStackTrace();
 		}
 		return array;
+	}
+
+	@Override
+	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr) {
+		String sql = "INSERT INTO patientDoctor values(?,?)";
+		
+		
+		try {
+			myDatabase.update(sql, patientCpr, doctorCpr);
+		} catch (SQLException e) {
+			System.out.println("Failed to retrieve data from database");
+
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
 	}
 
 }

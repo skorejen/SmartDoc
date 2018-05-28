@@ -73,4 +73,8 @@ public class ClientController {
 	public DoctorList getDoctorList() throws RemoteException {
 		return clientModel.getDoctorList(); // return all patients from database
 	}
+	
+	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr) throws RemoteException {
+		return clientModel.assignPatientToDoctor(patientCpr, doctorCpr);
+	}
 }

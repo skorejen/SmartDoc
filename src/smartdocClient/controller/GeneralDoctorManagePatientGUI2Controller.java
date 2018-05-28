@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXTextField;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -52,6 +54,9 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 	private Label phoneNumberLabel;
 
 	private String cprFromPreviousScene;
+	
+	@FXML
+	private JFXTextField cprDoctorInput;
 
 	@FXML
 	private Button signOut;
@@ -115,6 +120,7 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 
 	public void applyButtonPressed(ActionEvent event) throws IOException {
 		{
+			controller.assignPatientToDoctor(cprLabel.getText(), cprDoctorInput.getText());
 			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -179,8 +185,6 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 	public ObservableList<Doctor> getDoctors() throws RemoteException {
 		ObservableList<Doctor> doctor = FXCollections.observableArrayList();
 		 
-		//  doctor.add(new Doctor("250998-2417", "Eduard", "Costea","1998-9-25",
-		 // 50266912, "costeaeduardnic@gmail.com","Specific","M", "Urologist"));
 		
 		
 		

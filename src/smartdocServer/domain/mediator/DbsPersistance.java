@@ -84,6 +84,7 @@ public interface DbsPersistance {
 	 * @return
 	 */
 	public ArrayList<Object[]> getSpeciality(String cpr);
-	public ArrayList<Object[]> getPatientList() throws RemoteException;
-	public ArrayList<Object[]> getDoctorList() throws RemoteException;
+	public ArrayList<Object[]> getPatientList();
+	public ArrayList<Object[]> getDoctorList();
+	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr);
 }
