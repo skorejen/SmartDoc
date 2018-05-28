@@ -98,5 +98,6 @@ public interface ServerModel extends Remote, RemoteSubject<String> {
 	public PatientList getPatientList() throws RemoteException;
 	public DoctorList getDoctorList() throws RemoteException;
 	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr) throws RemoteException;
+	public PatientList getAssignedPatientList(String cpr) throws RemoteException;
 
 }

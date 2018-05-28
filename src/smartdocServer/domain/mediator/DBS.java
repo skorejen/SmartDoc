@@ -256,4 +256,22 @@ public class DBS implements DbsPersistance {
 		return true;
 	}
 
+	@Override
+	public ArrayList<Object[]> getAssignedPatientList(String cpr) {
+		
+			String sql ="select pd.* from (select patientCpr as p from patientDoctor where"
+					+ " (doctorCpr=?)) pcpr, account_data pd where pcpr.p =" + 
+					"pd.cpr;";
+					
+			ArrayList<Object[]> array = null;
+		
+			try {
+				array = myDatabase.query(sql, cpr);
+			} catch (SQLException e) {
+				System.out.println("Failed to retrieve data from database");
+				e.printStackTrace();
+			}
+			return array;
+	}
+
 }

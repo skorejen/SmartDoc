@@ -146,4 +146,10 @@ public class ClientModelManager extends Observable implements ClientModel {
 
 	}
 
+	@Override
+	public PatientList getAssignedPatientList(String cpr) throws RemoteException {
+		
+		return server.getAssignedPatientList(cpr);
+	}
+
 }

@@ -135,11 +135,11 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 			cprLabel.setText(patient.getCpr());
 			phoneNumberLabel.setText(patient.getPhone() + "");
 			
-			
-			prescriptionInputField.setText();
-			appointmentInputField.setText();
-			problemInputField.setText();
-			recommendationInputField.setText();
+//			
+//			prescriptionInputField.setText();
+//			appointmentInputField.setText();
+//			problemInputField.setText();
+//			recommendationInputField.setText();
 			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

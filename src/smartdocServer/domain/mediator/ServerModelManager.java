@@ -236,4 +236,30 @@ public class ServerModelManager extends Observable implements ServerModel {
 		
 		return dbsPersistance.assignPatientToDoctor(patientCpr, doctorCpr);
 	}
+
+	@Override
+	public PatientList getAssignedPatientList(String cpr) throws RemoteException {
+		
+		PatientList patientList = new PatientList();
+		ArrayList<Object[]> array = dbsPersistance.getAssignedPatientList(cpr);
+		
+		for(Object[] object: array) 
+		{
+			String patientCpr = (String) object[0];
+			String fname = (String) object[1];
+			String lname = (String) object[2];
+			int phone = (int) object[3];
+
+			System.out.println("DATE: " + object[4].toString());
+			LocalDate dob = parseDateFromDbs((Date) object[5]);
+			String email = (String) object[6];
+			String type = (String) object[7];
+			String gender = (String) object[8];
+
+
+			Patient patient = new Patient(patientCpr, fname, lname, dob, phone, email, type, gender);
+			patientList.addPatient(patient);;
+		}
+		return patientList;
+	}
 }
