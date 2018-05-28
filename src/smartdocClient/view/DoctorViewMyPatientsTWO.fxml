@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.DoctorViewMyPatientsTWOcontroller">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="343.0" style="-fx-background-color: ebeef4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1021.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="25.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="109.13671875" AnchorPane.topAnchor="379.080078125">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday:" wrappingWidth="109.13671875" AnchorPane.topAnchor="344.080078125">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" wrappingWidth="109.13671875" AnchorPane.topAnchor="271.080078125">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" wrappingWidth="109.13671875" AnchorPane.topAnchor="235.080078125">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="fNameLabel" layoutX="125.0" layoutY="234.0" prefHeight="25.0" prefWidth="194.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lNameLabel" layoutX="125.0" layoutY="270.0" prefHeight="25.0" prefWidth="194.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="dobLabel" layoutX="109.0" layoutY="343.0" prefHeight="25.0" prefWidth="194.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderLabel" layoutX="95.0" layoutY="378.0" prefHeight="25.0" prefWidth="174.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Text layoutX="27.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" wrappingWidth="109.13671875">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" wrappingWidth="138.13671875">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" wrappingWidth="138.1367139518261">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPR:" wrappingWidth="109.13671875">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="typeLabel" layoutX="74.0" layoutY="421.0" prefHeight="25.0" prefWidth="148.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailLabel" layoutX="96.0" layoutY="310.0" prefHeight="25.0" prefWidth="174.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneNumberLabel" layoutX="165.0" layoutY="455.0" prefHeight="25.0" prefWidth="148.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="cprLabel" layoutX="76.0" layoutY="491.0" prefHeight="25.0" prefWidth="174.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="159.0" fitWidth="159.0" layoutX="76.0" layoutY="27.0">
+               <image>
+                  <Image url="@GuiResources/3958%252F9E1FC0CA-67EE-ACD9-4267-1B7B43615CCC.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button fx:id="signOut" layoutX="1158.0" layoutY="11.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Sign-out" />
+      <Button fx:id="back" layoutX="1248.0" layoutY="11.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Back" />
+      <Button fx:id="apply" layoutX="714.0" layoutY="521.0" mnemonicParsing="false" onAction="#applyButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Apply" />
+      <AnchorPane layoutX="348.0" layoutY="83.0" prefHeight="418.0" prefWidth="868.0" style="-fx-background-color: ebeef4;" AnchorPane.bottomAnchor="106.0" AnchorPane.topAnchor="83.0">
+         <children>
+            <TableView fx:id="assignPrescription" layoutX="14.0" layoutY="21.0" prefHeight="159.0" prefWidth="848.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+              <columns>
+                <TableColumn fx:id="prescription" prefWidth="170.0" text="Prescription" />
+                  <TableColumn fx:id="appointment" minWidth="0.0" prefWidth="173.0" text="Appointment" />
+                  <TableColumn fx:id="recommendation" minWidth="6.0" prefWidth="151.0" text="Recommmendation" />
+                  <TableColumn fx:id="problem" prefWidth="222.0" text="Problem" />
+                  <TableColumn fx:id="doctorCPR" prefWidth="131.0" text="Doctor's CPR" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Text layoutX="714.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctors">
+         <font>
+            <Font name="Calibri Light Italic" size="22.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#35a1ee" height="607.0" layoutX="315.0" stroke="BLACK" strokeType="INSIDE" width="8.0" AnchorPane.bottomAnchor="0.0" />
+     
+   </children>
+</AnchorPane>
