@@ -120,6 +120,7 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 			try {
 				DoctorsCPR = controller.getDoctorData().getCpr();
 			} catch (RemoteException e) {
+				System.out.println("BLA");
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -129,6 +130,7 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 			try {
 				patients = controller.getAssignedPatientList(DoctorsCPR);
 			} catch (RemoteException e) {
+				System.out.println("BLAH");
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

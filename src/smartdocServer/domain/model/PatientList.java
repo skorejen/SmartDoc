@@ -1,9 +1,14 @@
 package smartdocServer.domain.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PatientList 
+public class PatientList implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3658214710145181829L;
 	private ArrayList<Patient> patients;
 
 	public PatientList() 
