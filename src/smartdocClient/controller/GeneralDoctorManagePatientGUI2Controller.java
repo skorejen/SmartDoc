@@ -124,6 +124,8 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 
 	public void applyButtonPressed(ActionEvent event) throws IOException {
 		{
+			controller.assignPatientToDoctor(cprLabel.getText(), cprDoctorInput.getText());
+			
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("SUCCESS");
 			alert.setContentText(
