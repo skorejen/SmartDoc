@@ -163,30 +163,33 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 			e.printStackTrace();
 		}
 		
-		try {
-
+		// if the data in the prescription bundle is equal to 0 that means that this is a new account
+		// and its the first visit of the patient to doctor
+		
+		if(!prescriptionBundle.getPrescription().equals("0")) {
 			prescriptionArea.setText(prescriptionBundle.getPrescription());
-		} catch(NullPointerException e) {
+		} else {
 			prescriptionArea.setText("");
 		}
-		try {
-
+		
+		if(!prescriptionBundle.getProblem().equals("0")) {
 			problemArea.setText(prescriptionBundle.getProblem());
-		} catch(NullPointerException e) {
+		} else {
 			problemArea.setText("");
 		}
-		try {
-
-			prescriptionArea.setText(prescriptionBundle.getRecommendation());
-		} catch(NullPointerException e) {
-			prescriptionArea.setText("");
-		}
-		try {
-
+			// date is initialized to now() when registered a new account
 			appointmentField.setText(prescriptionBundle.getAppointments().toString());
-		} catch(NullPointerException e) {
-			appointmentField.setText("");
+	
+			
+		if(!prescriptionBundle.getRecommendation().equals("0")) {
+			recommendationArea.setText(prescriptionBundle.getRecommendation());
+		} else {
+			recommendationArea.setText("");
 		}
+			
+			
+			
+		
 		
 		
 
