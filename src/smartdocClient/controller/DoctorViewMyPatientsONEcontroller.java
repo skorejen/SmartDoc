@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
+import com.jfoenix.controls.JFXComboBox;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,14 +16,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+
 import javafx.stage.Stage;
+import smartdocServer.domain.model.PatientList;
 
 public class DoctorViewMyPatientsONEcontroller implements Initializable {
 
 	@FXML
-	private TextField inputCPR;
+	private JFXComboBox<String> inputCPR;
 
 	@FXML
 	private Button signOut;
@@ -36,7 +37,9 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 	@FXML
 	private Button continueB;
 	
-    private String cprTemporary;
+
+	
+   
 
 	private ClientController controller;
 
@@ -66,17 +69,19 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 	}
 
 	public void continueButtonPressed(ActionEvent event) throws IOException {
-		{   String CPR = inputCPR.getText();
+		{   
+			//
+			String CPR = inputCPR.getValue().toString();
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/DoctorViewMyPatientsTWO.fxml"));
+		loader.setLocation(getClass().getResource("../view/GeneralDoctorManagePatientGUI(2).fxml"));
 		
 		Parent root = loader.load();
 		
 		Scene home_page_scene = new Scene(root);
 		
 		
-		DoctorViewMyPatientsTWOcontroller transfer = loader.getController();
+		GeneralDoctorManagePatientGUI2Controller transfer = loader.getController();
 		transfer.setcprFromPreviousScene(CPR);
 		
 		
@@ -97,7 +102,7 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 
 	public void clearButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/DoctorViewMyPatientsONE.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("../view/GeneralDoctorManagePatientGUI.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -108,8 +113,34 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-
+         
+		
+		
+			String DoctorsCPR = null;
+			try {
+				DoctorsCPR = controller.getDoctorData().getCpr();
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		
+			PatientList patients = null;
+			try {
+				patients = controller.getAssignedPatientList(DoctorsCPR);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
+		
+		for (int i=0;i<patients.getNumberOfPatients();i++)
+		    inputCPR.getItems().add((patients.getPatient(i).getCpr()));
+		}
+		
+		
+		
+	
 	}
 
-}
+

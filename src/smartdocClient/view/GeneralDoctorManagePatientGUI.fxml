@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.GeneralDoctorManagePatientGUIController">
    <children>
-      <Text layoutX="562.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Patient" wrappingWidth="162.13671875">
+      <Text layoutX="562.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Patient's CPR" wrappingWidth="162.13671875">
          <font>
             <Font size="25.0" />
          </font>
@@ -17,6 +17,6 @@
       <Button fx:id="signOut" layoutX="1190.0" layoutY="29.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="38.0" prefWidth="79.0" text="Sign-out" />
       <Button fx:id="continueB" layoutX="538.0" layoutY="281.0" mnemonicParsing="false" onAction="#continueButtonPressed" prefHeight="38.0" prefWidth="79.0" text="Continue" />
       <Button fx:id="clear" layoutX="625.0" layoutY="281.0" mnemonicParsing="false" onAction="#clearButtonPressed" prefHeight="38.0" prefWidth="79.0" text="Clear" />
-      <JFXComboBox layoutX="475.0" layoutY="227.0" prefHeight="25.0" prefWidth="337.0" />
+      <JFXComboBox fx:id="inputCPR" layoutX="522.0" layoutY="224.0" prefHeight="25.0" prefWidth="220.0" />
    </children>
 </AnchorPane>
