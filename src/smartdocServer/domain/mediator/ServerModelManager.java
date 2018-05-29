@@ -272,7 +272,9 @@ public class ServerModelManager extends Observable implements ServerModel {
 		
 		String patientCpr = (String) array.get(0)[0];
 		String prescription = (String) array.get(0)[1];
+		System.out.println((Date)array.get(0)[2]+"PRINT OUT");
 		LocalDate appointments = parseDateFromDbs((Date)array.get(0)[2]);
+		
 		String problem = (String)array.get(0)[3];
 		String recommendation = (String) array.get(0)[4];
 		

@@ -153,12 +153,8 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println(cprFromPreviousScene);
+		
+		System.out.println(cprFromPreviousScene +"SOMETHING");
 		PatientPrescription prescriptionBundle = null; 
 		try {
 			 prescriptionBundle = controller.getPatientPrescription(cprFromPreviousScene);
@@ -192,6 +188,12 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 			appointmentField.setText("");
 		}
 		
+		
+
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		
 		
