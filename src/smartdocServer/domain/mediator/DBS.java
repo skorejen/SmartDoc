@@ -273,5 +273,23 @@ public class DBS implements DbsPersistance {
 			}
 			return array;
 	}
+	
+	
+	public ArrayList<Object[]> getPatientPrescription(String cpr)
+	{
+		String sql = "select * from patient_prescription where cpr =? ";
+		ArrayList<Object[]> array = null;
+		
+		try
+		{
+			array = myDatabase.query(sql, cpr);
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
+		return array;
+	}
 
 }

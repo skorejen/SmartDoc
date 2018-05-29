@@ -16,6 +16,7 @@ import smartdocServer.domain.model.Doctor;
 import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
 import smartdocServer.domain.model.PatientList;
+import smartdocServer.domain.model.PatientPrescription;
 import utility.observer.AbstractRemoteSubject;
 import utility.observer.RemoteObserver;
 import utility.observer.RemoteSubjectDelegate;
@@ -262,5 +263,21 @@ public class ServerModelManager extends Observable implements ServerModel {
 		}
 		System.out.println(patientList.toString());
 		return patientList;
+	}
+	
+	public PatientPrescription getPatientPrescription(String cpr) throws RemoteException
+	{
+		ArrayList<Object[]> array = dbsPersistance.getPatientPrescription(cpr);
+		
+		
+		String patientCpr = (String) array.get(0)[0];
+		String prescription = (String) array.get(0)[1];
+		LocalDate appointments = parseDateFromDbs((Date)array.get(0)[2]);
+		String problem = (String)array.get(0)[3];
+		String recommendation = (String) array.get(0)[4];
+		
+		PatientPrescription patientPrescription = new PatientPrescription(patientCpr,prescription,appointments,problem,recommendation);
+		
+		return patientPrescription;
 	}
 }
