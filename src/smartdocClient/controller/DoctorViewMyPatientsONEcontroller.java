@@ -74,14 +74,14 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 			String CPR = inputCPR.getValue().toString();
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/GeneralDoctorManagePatientGUI(2).fxml"));
+		loader.setLocation(getClass().getResource("../view/DoctorViewMyPatientsTWO.fxml"));
 		
 		Parent root = loader.load();
 		
 		Scene home_page_scene = new Scene(root);
 		
 		
-		GeneralDoctorManagePatientGUI2Controller transfer = loader.getController();
+		DoctorViewMyPatientsTWOcontroller transfer = loader.getController();
 		transfer.setcprFromPreviousScene(CPR);
 		
 		
