@@ -10,6 +10,7 @@ import smartdocServer.domain.model.Doctor;
 import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
 import smartdocServer.domain.model.PatientList;
+import smartdocServer.domain.model.PatientPrescription;
 
 public class ClientController {
 
@@ -80,5 +81,9 @@ public class ClientController {
 	
 	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr) throws RemoteException {
 		return clientModel.assignPatientToDoctor(patientCpr, doctorCpr);
+	}
+	
+	public PatientPrescription getPatientPrescription(String cpr) throws RemoteException {
+		return clientModel.getPatientPrescription(cpr);
 	}
 }

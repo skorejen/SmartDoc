@@ -124,6 +124,8 @@ public class DBS implements DbsPersistance {
 		String passwordHex = passwordToHex(password);
 		String sql = "insert into account values (?,?,?)";
 		String sql1 = "insert into account_data values(?,?,?,?,?,?,?,?)";
+		String sql2 = "insert into patient_data values(?,?,?,?,?,?,?,?,?,?)";
+		String sql3 = "insert into patient_prescription values(?,?,?,?,?)";
 
 		Date dateSQL = parseDateToDbs(dob);
 		String type = "P";
@@ -131,6 +133,8 @@ public class DBS implements DbsPersistance {
 		try {
 			myDatabase.update(sql, cpr, login, passwordHex);
 			myDatabase.update(sql1, cpr, fname, lname, phone, dateSQL, email, type, gender);
+			myDatabase.update(sql2, cpr, null,null,null,null,null,null,null,null,null);
+			myDatabase.update(sql3, cpr, null,null,null,null);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

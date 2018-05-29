@@ -119,7 +119,7 @@
             <Label layoutX="568.0" layoutY="29.0" text="Recommendations" />
             <TextArea fx:id="problemArea" layoutX="110.0" layoutY="245.0" prefHeight="150.0" prefWidth="280.0" promptText="Write the problem of the patient here (max 200 characters) ..." />
             <Label layoutX="218.0" layoutY="219.0" text="Problem" />
-            <TextField layoutX="541.0" layoutY="245.0" promptText="yyyy-mm-dd" />
+            <TextField fx:id="appointmentField" layoutX="541.0" layoutY="245.0" promptText="yyyy-mm-dd" />
             <Label layoutX="552.0" layoutY="219.0" text="Upcoming appointment" />
          </children>
       </AnchorPane>

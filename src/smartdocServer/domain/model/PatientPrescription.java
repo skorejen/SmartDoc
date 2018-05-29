@@ -58,7 +58,7 @@ public class PatientPrescription implements Serializable {
 		this.problem = problem;
 	}
 
-	public String getRecommendatiob() {
+	public String getRecommendation() {
 		return recommendation;
 	}
 
@@ -69,5 +69,6 @@ public class PatientPrescription implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 
 }

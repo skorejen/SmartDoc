@@ -9,6 +9,7 @@ import smartdocServer.domain.model.Doctor;
 import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
 import smartdocServer.domain.model.PatientList;
+import smartdocServer.domain.model.PatientPrescription;
 import utility.observer.RemoteObserver;
 
 public interface ClientModel extends Remote, RemoteObserver<String> {
@@ -30,4 +31,5 @@ public interface ClientModel extends Remote, RemoteObserver<String> {
 	public DoctorList getDoctorList() throws RemoteException;
 	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr) throws RemoteException;
 	public PatientList getAssignedPatientList(String cpr) throws RemoteException;
+	public PatientPrescription getPatientPrescription(String cpr) throws RemoteException;
 }

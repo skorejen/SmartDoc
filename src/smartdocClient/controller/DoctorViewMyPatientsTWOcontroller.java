@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -67,13 +68,13 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 	
 	//INSIDE RIGHT VIEW
 	@FXML
-	private TextField prescriptionInputField;
+	private TextArea prescriptionArea;
 	@FXML
-	private TextField appointmentInputField;
+	private TextArea recommendationArea;
 	@FXML
-	private TextField problemInputField;
+	private TextArea problemArea;
 	@FXML
-	private TextField recommendationInputField;
+	private TextField appointmentField;
 	
 	
 
@@ -139,6 +140,9 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 			cprLabel.setText(patient.getCpr());
 			phoneNumberLabel.setText(patient.getPhone() + "");
 			
+			
+			
+			
 //			
 //			prescriptionInputField.setText();
 //			appointmentInputField.setText();
@@ -154,6 +158,46 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println(cprFromPreviousScene);
+		PatientPrescription prescriptionBundle = null; 
+		try {
+			 prescriptionBundle = controller.getPatientPrescription(cprFromPreviousScene);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+
+			prescriptionArea.setText(prescriptionBundle.getPrescription());
+		} catch(NullPointerException e) {
+			prescriptionArea.setText("");
+		}
+		try {
+
+			problemArea.setText(prescriptionBundle.getProblem());
+		} catch(NullPointerException e) {
+			problemArea.setText("");
+		}
+		try {
+
+			prescriptionArea.setText(prescriptionBundle.getRecommendation());
+		} catch(NullPointerException e) {
+			prescriptionArea.setText("");
+		}
+		try {
+
+			appointmentField.setText(prescriptionBundle.getAppointments().toString());
+		} catch(NullPointerException e) {
+			appointmentField.setText("");
+		}
+		
+		
+		
+		
+		
+		
+		
 		
 
 	}

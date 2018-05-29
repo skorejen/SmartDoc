@@ -17,6 +17,7 @@ import smartdocServer.domain.model.Doctor;
 import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
 import smartdocServer.domain.model.PatientList;
+import smartdocServer.domain.model.PatientPrescription;
 import utility.observer.RemoteSubject;
 
 public class ClientModelManager extends Observable implements ClientModel {
@@ -150,6 +151,12 @@ public class ClientModelManager extends Observable implements ClientModel {
 	public PatientList getAssignedPatientList(String cpr) throws RemoteException {
 		
 		return server.getAssignedPatientList(cpr);
+	}
+
+	@Override
+	public PatientPrescription getPatientPrescription(String cpr) throws RemoteException {
+		return server.getPatientPrescription(cpr);
+		
 	}
 
 }
