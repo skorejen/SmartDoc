@@ -133,8 +133,8 @@ public class DBS implements DbsPersistance {
 		try {
 			myDatabase.update(sql, cpr, login, passwordHex);
 			myDatabase.update(sql1, cpr, fname, lname, phone, dateSQL, email, type, gender);
-			myDatabase.update(sql2, cpr, null,null,null,null,null,null,null,null,null);
-			myDatabase.update(sql3, cpr, null,null,null,null);
+			myDatabase.update(sql2, cpr, '0','0',0,0,false,'0','0',false,false);
+			myDatabase.update(sql3, cpr, '0',parseDateToDbs(LocalDate.now()),'0','0');
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
