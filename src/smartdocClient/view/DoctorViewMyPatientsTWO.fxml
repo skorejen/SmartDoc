@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -103,41 +103,21 @@
       </AnchorPane>
       <Button fx:id="signOut" layoutX="1158.0" layoutY="11.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Sign-out" />
       <Button fx:id="back" layoutX="1248.0" layoutY="11.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Back" />
-      <Button fx:id="apply" layoutX="714.0" layoutY="521.0" mnemonicParsing="false" onAction="#applyButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Apply" />
-      <AnchorPane layoutX="350.0" layoutY="85.0" prefHeight="418.0" prefWidth="868.0" style="-fx-background-color: ebeef4;" AnchorPane.bottomAnchor="104.0" AnchorPane.topAnchor="85.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#35a1ee" height="419.0" layoutX="399.0" stroke="BLACK" strokeType="INSIDE" width="1.0" />
-            <Text layoutX="410.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prescription:" wrappingWidth="148.00000429153442">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment:" wrappingWidth="148.00000429153442">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text layoutX="14.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Problem:" wrappingWidth="148.00000429153442">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text layoutX="410.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recommendation:" wrappingWidth="193.999981880188">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <TextField fx:id="prescriptionInputField" layoutX="549.0" layoutY="33.0" prefHeight="152.0" prefWidth="266.0" />
-            <TextField fx:id="problemInputField" layoutX="114.0" layoutY="44.0" prefHeight="97.0" prefWidth="266.0" />
-            <TextField fx:id="recommendationInputField" layoutX="410.0" layoutY="258.0" prefHeight="152.0" prefWidth="449.0" />
-         </children>
-      </AnchorPane>
+      <Button fx:id="apply" layoutX="732.0" layoutY="523.0" mnemonicParsing="false" onAction="#applyButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Apply" />
       <Text layoutX="714.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current State">
          <font>
             <Font name="Calibri Light Italic" size="22.0" />
          </font>
       </Text>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#35a1ee" height="607.0" layoutX="315.0" stroke="BLACK" strokeType="INSIDE" width="8.0" AnchorPane.bottomAnchor="0.0" />
+      <AnchorPane layoutX="339.0" layoutY="77.0" prefHeight="438.0" prefWidth="865.0">
+         <children>
+            <TextArea layoutX="110.0" layoutY="60.0" prefHeight="150.0" prefWidth="280.0" AnchorPane.leftAnchor="110.0" />
+            <Label layoutX="218.0" layoutY="29.0" text="Prescription" />
+            <TextArea layoutX="531.0" layoutY="60.0" prefHeight="150.0" prefWidth="280.0" AnchorPane.rightAnchor="110.0" />
+            <Label layoutX="568.0" layoutY="29.0" text="Recommendation" />
+         </children>
+      </AnchorPane>
      
    </children>
 </AnchorPane>
