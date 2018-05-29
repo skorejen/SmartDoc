@@ -260,6 +260,7 @@ public class ServerModelManager extends Observable implements ServerModel {
 			Patient patient = new Patient(patientCpr, fname, lname, dob, phone, email, type, gender);
 			patientList.addPatient(patient);
 		}
+		System.out.println(patientList.toString());
 		return patientList;
 	}
 }
