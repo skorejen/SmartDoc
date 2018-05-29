@@ -17,10 +17,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import smartdocServer.domain.model.Doctor;
@@ -64,6 +66,8 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 	private Button back;
 	@FXML
 	private Button apply;
+	@FXML
+	private Button patientData;
 
 	@FXML
 	private TableView<Doctor> assignPatient;
@@ -120,12 +124,40 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 
 	public void applyButtonPressed(ActionEvent event) throws IOException {
 		{
-			controller.assignPatientToDoctor(cprLabel.getText(), cprDoctorInput.getText());
-			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
-			Scene home_page_scene = new Scene(register);
-			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			app_stage.setScene(home_page_scene);
-			app_stage.show();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("SUCCESS");
+			alert.setContentText(
+					"The operation was completed without any errors!");
+			alert.showAndWait();
+		}
+	}
+	
+	public void patientDataButtonPressed(ActionEvent event) throws IOException {
+		{
+			//
+			String CPR = cprFromPreviousScene;
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../view/GeneralDoctorManagePatientGUI(2)Switch.fxml"));
+		
+		Parent root = loader.load();
+		
+		Scene home_page_scene = new Scene(root);
+		
+		
+		GeneralDoctorManagePatientGUI2Controller2switchController transfer = loader.getController();
+		transfer.setcprFromPreviousScene(CPR);
+		
+		
+		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
+		
+	
+		
+		
+		
 
 		}
 	}

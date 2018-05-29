@@ -118,6 +118,7 @@
             <Label layoutX="568.0" layoutY="29.0" text="Recommendation" />
          </children>
       </AnchorPane>
+      <Button fx:id="moreDetails" layoutX="1064.0" layoutY="11.0" mnemonicParsing="false" onAction="#moreDetailsButtonPressed" prefHeight="37.0" prefWidth="86.0" text="More Details" />
      
    </children>
 </AnchorPane>

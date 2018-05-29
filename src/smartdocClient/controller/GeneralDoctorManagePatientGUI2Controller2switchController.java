@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXTextField;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,14 +22,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import smartdocServer.domain.model.Doctor;
+import smartdocServer.domain.model.DoctorList;
 import smartdocServer.domain.model.Patient;
-import smartdocServer.domain.model.PatientPrescription;
 
-public class DoctorViewMyPatientsTWOcontroller implements Initializable {
+public class GeneralDoctorManagePatientGUI2Controller2switchController implements Initializable {
 
 	@FXML
 	private Label fNameLabel;
@@ -54,6 +56,9 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 	private Label phoneNumberLabel;
 
 	private String cprFromPreviousScene;
+	
+	@FXML
+	private JFXTextField cprDoctorInput;
 
 	@FXML
 	private Button signOut;
@@ -61,25 +66,12 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 	private Button back;
 	@FXML
 	private Button apply;
-	@FXML
-	private Button moreDetails;
 
-	
-	//INSIDE RIGHT VIEW
-	@FXML
-	private TextField prescriptionInputField;
-	@FXML
-	private TextField appointmentInputField;
-	@FXML
-	private TextField problemInputField;
-	@FXML
-	private TextField recommendationInputField;
-	
-	
+
 
 	private ClientController controller;
 
-	public DoctorViewMyPatientsTWOcontroller() {
+	public GeneralDoctorManagePatientGUI2Controller2switchController() {
 
 		controller = ClientController.getInstance();
 
@@ -100,12 +92,26 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/DoctorViewMyPatientsONE.fxml"));
-			Scene home_page_scene = new Scene(register);
+			String CPR = cprFromPreviousScene;
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("../view/GeneralDoctorManagePatientGUI(2).fxml"));
+			
+			Parent root = loader.load();
+			
+			Scene home_page_scene = new Scene(root);
+			
+			
+			GeneralDoctorManagePatientGUI2Controller transfer = loader.getController();
+			transfer.setcprFromPreviousScene(CPR);
+			
+			
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			
 			app_stage.setScene(home_page_scene);
 			app_stage.show();
-
+			
+		
 		}
 	}
 
@@ -128,7 +134,6 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 		System.out.println(cprFromPreviousScene + " after instantiate");
 		try {
 			Patient patient = controller.getPatient(cprFromPreviousScene);
-			// make and PResciption list
 
 			fNameLabel.setText(patient.getFname());
 			lNameLabel.setText(patient.getLname());
@@ -138,13 +143,6 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 			typeLabel.setText(patient.getType());
 			cprLabel.setText(patient.getCpr());
 			phoneNumberLabel.setText(patient.getPhone() + "");
-			
-//			
-//			prescriptionInputField.setText();
-//			appointmentInputField.setText();
-//			problemInputField.setText();
-//			recommendationInputField.setText();
-			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -154,32 +152,7 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
 
-	}
-	
-	public void moreDetailsButtonPressed(ActionEvent event) throws IOException {
-		{
-			//
-			String CPR = cprFromPreviousScene;
-		
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/DoctorViewMyPatientsTWOswitchVIEW.fxml"));
-		
-		Parent root = loader.load();
-		
-		Scene home_page_scene = new Scene(root);
-		
-		
-		DoctorViewMyPatientsTWOswitchVIEWcontroller transfer = loader.getController();
-		transfer.setcprFromPreviousScene(CPR);
-		
-		
-		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		app_stage.setScene(home_page_scene);
-		app_stage.show();
-				}
 	}
 
 	

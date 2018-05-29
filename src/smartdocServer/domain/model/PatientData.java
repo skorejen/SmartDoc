@@ -10,20 +10,20 @@ public class PatientData implements Serializable {
 	private String alergies;
 	private int height;
 	private int weight;
-	private boolean isSmoker;
+	private boolean Smoker;
 	private String vaccines;
 	private String familyIllnesses;
 	private boolean insurance;
 	private boolean pregnancy;
 
-	public PatientData(String cpr, String illnesses, String alergies, int height, int weight, boolean isSmoker,
+	public PatientData(String cpr, String illnesses, String alergies, int height, int weight, boolean Smoker,
 			String vaccines, String familyIllnesses, boolean insurance, boolean pregnancy) {
 		this.cpr = cpr;
 		this.illnesses = illnesses;
 		this.alergies = alergies;
 		this.height = height;
 		this.weight = weight;
-		this.isSmoker = isSmoker;
+		this.Smoker = Smoker;
 		this.vaccines = vaccines;
 		this.familyIllnesses = familyIllnesses;
 		this.insurance = insurance;
@@ -71,11 +71,11 @@ public class PatientData implements Serializable {
 	}
 
 	public boolean getisSmoker() {
-		return isSmoker;
+		return Smoker;
 	}
 
-	public void setSmoker(boolean isSmoker) {
-		this.isSmoker = isSmoker;
+	public void setSmoker(boolean Smoker) {
+		this.Smoker = Smoker;
 	}
 
 	public String getVaccines() {

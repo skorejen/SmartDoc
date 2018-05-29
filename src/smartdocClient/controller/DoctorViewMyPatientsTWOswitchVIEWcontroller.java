@@ -15,10 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import smartdocServer.domain.model.Patient;
@@ -56,19 +58,8 @@ public class DoctorViewMyPatientsTWOswitchVIEWcontroller implements Initializabl
 	private Button signOut;
 	@FXML
 	private Button back;
-	@FXML
-	private Button apply;
+	
 
-	@FXML
-	private TableView<PatientPrescription> assignPrescription;
-	@FXML
-	private TableColumn<PatientPrescription, String> prescription;
-	@FXML
-	private TableColumn<PatientPrescription, LocalDate> appointment;
-	@FXML
-	private TableColumn<PatientPrescription, String> problem;
-	@FXML
-	private TableColumn<PatientPrescription, String> doctorCPR;
 
 	private ClientController controller;
 
@@ -93,22 +84,36 @@ public class DoctorViewMyPatientsTWOswitchVIEWcontroller implements Initializabl
 
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/DoctorViewMyPatientsONE.fxml"));
-			Scene home_page_scene = new Scene(register);
-			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			app_stage.setScene(home_page_scene);
-			app_stage.show();
+			//
+			String CPR = cprFromPreviousScene;
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../view/DoctorViewMyPatientsTWO.fxml"));
+		
+		Parent root = loader.load();
+		
+		Scene home_page_scene = new Scene(root);
+		
+		
+		DoctorViewMyPatientsTWOcontroller transfer = loader.getController();
+		transfer.setcprFromPreviousScene(CPR);
+		
+		
+		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
 
 		}
 	}
 
 	public void applyButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/SUCCESS.fxml"));
-			Scene home_page_scene = new Scene(register);
-			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			app_stage.setScene(home_page_scene);
-			app_stage.show();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("SUCCESS");
+			alert.setContentText(
+					"The operation was completed without any errors!");
+			alert.showAndWait();
 
 		}
 	}
@@ -141,29 +146,9 @@ public class DoctorViewMyPatientsTWOswitchVIEWcontroller implements Initializabl
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		appointment.setCellValueFactory(new PropertyValueFactory<>("appointments"));
-		prescription.setCellValueFactory(new PropertyValueFactory<>("prescription"));
-		problem.setCellValueFactory(new PropertyValueFactory<>("problem"));
-		doctorCPR.setCellValueFactory(new PropertyValueFactory<>("doctorCPR"));
-
-		try {
-			assignPrescription.setItems(getPrescriptions());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 
 	}
 
-	public ObservableList<PatientPrescription> getPrescriptions() throws RemoteException {
-
-		ObservableList<PatientPrescription> patientprescriptionTable = FXCollections.observableArrayList();
-
-		LocalDate loc = LocalDate.now();
-		patientprescriptionTable.add(new PatientPrescription("#1", loc, "Cancer", "250998-2137"));
-		patientprescriptionTable.add(new PatientPrescription("#2", loc, "Drunk", "431211-2322"));
-		patientprescriptionTable.add(new PatientPrescription("#3", loc, "Stupid", "265387-2654"));
-
-		return patientprescriptionTable;
-	}
+	
 }
