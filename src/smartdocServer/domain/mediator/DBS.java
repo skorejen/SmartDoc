@@ -295,5 +295,39 @@ public class DBS implements DbsPersistance {
 		}
 		return array;
 	}
+	
+	public void deletePatient(String cpr) {
+		String sql = "delete from account_data, patient_prescription, patient_data, patientDoctor where (cpr=?)";
+		String sql2 = "delete from account where (cpr=?)";
+		
+		try
+		{
+			myDatabase.update(sql, cpr);
+			myDatabase.update(sql2, cpr);
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void deleteDoctor(String cpr) {
+String sql = "delete from account_data, doctor_speciality, patientDoctor where (cpr=?)";
+String sql2 = "delete from account where (cpr=?)";
+		
+		
+		try
+		{
+			myDatabase.update(sql, cpr);
+			myDatabase.update(sql2, cpr);
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
+	}
 
 }
