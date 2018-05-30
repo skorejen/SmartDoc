@@ -15,7 +15,7 @@
       <JFXTextField fx:id="lastname" layoutX="658.0" layoutY="200.0" promptText="Lastname" unFocusColor="WHITE" />
       <JFXTextField fx:id="cpr" layoutX="468.0" layoutY="249.0" promptText="CPR" unFocusColor="WHITE" />
       <JFXTextField fx:id="phoneno" layoutX="658.0" layoutY="249.0" promptText="PhoneNumber" unFocusColor="WHITE" />
-      <JFXTextField fx:id="dob" layoutX="468.0" layoutY="300.0" promptText="Date Of Birth" unFocusColor="WHITE" />
+      <JFXTextField fx:id="dob" layoutX="468.0" layoutY="300.0" promptText="Dob (yyyy-mm-dd)" unFocusColor="WHITE" />
       <JFXTextField fx:id="email" layoutX="658.0" layoutY="300.0" promptText="E-mail" unFocusColor="WHITE" />
       <Text layoutX="524.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register as our patient " underline="true" wrappingWidth="223.63671875">
          <font>
