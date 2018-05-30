@@ -166,4 +166,16 @@ public class ClientModelManager extends Observable implements ClientModel {
 		return server.updatePrescription(cpr, prescription, appointment, problem, recommendations);
 	}
 
+	@Override
+	public void deleteDoctor(String cpr) throws RemoteException {
+		server.deleteDoctor(cpr);
+		
+	}
+
+	@Override
+	public void deletePatient(String cpr) throws RemoteException {
+		server.deletePatient(cpr);
+		
+	}
+
 }
