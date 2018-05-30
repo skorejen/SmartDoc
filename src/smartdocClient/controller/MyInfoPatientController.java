@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import smartdocServer.domain.model.PatientPrescription;
 
 public class MyInfoPatientController implements Initializable{
 
@@ -44,7 +45,17 @@ public class MyInfoPatientController implements Initializable{
 	@FXML
 	private Label phoneNumberLabel;
 	
+	@FXML
+	private Label prescriptionLabel;
 	
+	@FXML
+	private Label appointmentLabel;
+	
+	@FXML
+	private Label recommendationLabel;
+	
+	@FXML
+	private Label problemLabel;
 	
 	
 	
@@ -93,10 +104,21 @@ public class MyInfoPatientController implements Initializable{
 			cprLabel.setText(controller.getPatientData().getCpr());
 			
 			phoneNumberLabel.setText(controller.getPatientData().getPhone()+ "");
+			
+			PatientPrescription prescription = controller.getPatientPrescription(controller.getPatientData().getCpr());
+			
+			problemLabel.setText(prescription.getProblem());
+			prescriptionLabel.setText(prescription.getPrescription());
+			appointmentLabel.setText(prescription.getAppointments().toString());
+			recommendationLabel.setText(prescription.getRecommendation());
+			
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 		
 	}
 }

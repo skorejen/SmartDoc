@@ -330,4 +330,26 @@ String sql2 = "delete from account where (cpr=?)";
 		}
 	}
 
+	@Override
+	public boolean updatePrescription(String cpr, String prescription, LocalDate appointment, String problem,
+			String recommendations) {
+		
+		String sql = "update patient_prescription set cpr=?, prescription=?, appointments=?, problem=?,recommendations=?"
+				+ "where cpr=?";
+				
+				
+				try
+				{
+					myDatabase.update(sql, cpr, prescription, parseDateToDbs(appointment),problem,recommendations,cpr);
+				}
+				catch(SQLException e)
+				{
+					
+					System.out.println("Failed to retrieve data from database");
+					e.printStackTrace();
+					return false;
+				}
+				return true;
+	}
+
 }

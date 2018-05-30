@@ -112,6 +112,24 @@ public class DoctorViewMyPatientsTWOcontroller implements Initializable {
 
 	public void applyButtonPressed(ActionEvent event) throws IOException {
 		{
+			System.out.println(cprFromPreviousScene);
+			
+			
+			String date = appointmentField.getText();
+			String[] dateVariables = new String[2];
+			dateVariables = date.split("-");
+			String trimYear = dateVariables[0];
+			String trimMonth = dateVariables[1];
+			String trimDay = dateVariables[2];
+
+			System.out.println(trimYear + " " + trimMonth + " " + trimDay);
+
+			LocalDate appointment = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth),
+					Integer.parseInt(trimDay));
+			
+			controller.updatePrescription(cprFromPreviousScene, prescriptionArea.getText(),
+					appointment, problemArea.getText(), recommendationArea.getText());
+			
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("SUCCESS");
 			alert.setContentText(

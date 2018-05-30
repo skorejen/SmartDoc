@@ -32,4 +32,6 @@ public interface ClientModel extends Remote, RemoteObserver<String> {
 	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr) throws RemoteException;
 	public PatientList getAssignedPatientList(String cpr) throws RemoteException;
 	public PatientPrescription getPatientPrescription(String cpr) throws RemoteException;
+	public boolean updatePrescription(String cpr,String prescription, LocalDate appointment, String problem,
+			String recommendations) throws RemoteException;
 }

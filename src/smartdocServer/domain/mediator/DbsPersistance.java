@@ -91,4 +91,6 @@ public interface DbsPersistance {
 	public ArrayList<Object[]> getPatientPrescription(String cpr);
 	public void deleteDoctor(String cpr);
 	public void deletePatient(String cpr);
+	public boolean updatePrescription(String cpr,String prescription, LocalDate appointment, String problem,
+			String recommendations);
 }

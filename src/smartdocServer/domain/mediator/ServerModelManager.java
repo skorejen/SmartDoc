@@ -294,4 +294,11 @@ public class ServerModelManager extends Observable implements ServerModel {
 		dbsPersistance.deletePatient(cpr);
 		
 	}
+
+	@Override
+	public boolean updatePrescription(String cpr, String prescription, LocalDate appointment, String problem,
+			String recommendations) throws RemoteException {
+		
+		return dbsPersistance.updatePrescription(cpr, prescription, appointment, problem, recommendations);
+	}
 }

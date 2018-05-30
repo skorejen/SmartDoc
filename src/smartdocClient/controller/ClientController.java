@@ -86,4 +86,9 @@ public class ClientController {
 	public PatientPrescription getPatientPrescription(String cpr) throws RemoteException {
 		return clientModel.getPatientPrescription(cpr);
 	}
+	
+	public boolean updatePrescription(String cpr,String prescription, LocalDate appointment, String problem,
+			String recommendations) throws RemoteException{
+		return clientModel.updatePrescription(cpr, prescription, appointment, problem, recommendations);
+	}
 }

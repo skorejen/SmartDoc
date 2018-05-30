@@ -159,4 +159,11 @@ public class ClientModelManager extends Observable implements ClientModel {
 		
 	}
 
+	@Override
+	public boolean updatePrescription(String cpr, String prescription, LocalDate appointment, String problem,
+			String recommendations) throws RemoteException {
+		
+		return server.updatePrescription(cpr, prescription, appointment, problem, recommendations);
+	}
+
 }
