@@ -89,4 +89,6 @@ public interface DbsPersistance {
 	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr);
 	public ArrayList<Object[]> getAssignedPatientList(String cpr);
 	public ArrayList<Object[]> getPatientPrescription(String cpr);
+	public void deleteDoctor(String cpr);
+	public void deletePatient(String cpr);
 }
