@@ -300,7 +300,7 @@ public class DBS implements DbsPersistance {
 		String sql = "delete from account_data where (cpr=?)";
 		String sql1 = "delete from patient_prescription where (cpr=?)";
 		String sql2 = "delete from patient_data where (cpr=?)";
-		String sql3 = "delete from patientDoctor where (cpr=?)";
+		String sql3 = "delete from patientDoctor where (patientCpr=?)";
 		String sql4 = "delete from account where (cpr=?)";
 		
 		try
@@ -322,7 +322,7 @@ public class DBS implements DbsPersistance {
 	public void deleteDoctor(String cpr) {
 String sql = "delete from account_data where (cpr=?)";
 String sql1 = "delete from doctor_speciality where (cpr=?)";
-String sql2 = "delete from patientDoctor where (cpr=?)";
+String sql2 = "delete from patientDoctor where (doctorCpr=?)";
 String sql3 = "delete from account where (cpr=?)";
 		
 		
