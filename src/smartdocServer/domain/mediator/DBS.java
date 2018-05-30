@@ -321,7 +321,7 @@ public class DBS implements DbsPersistance {
 	
 	public void deleteDoctor(String cpr) {
 String sql = "delete from account_data where (cpr=?)";
-String sql1 = "delete from octor_speciality where (cpr=?)";
+String sql1 = "delete from doctor_speciality where (cpr=?)";
 String sql2 = "delete from patientDoctor where (cpr=?)";
 String sql3 = "delete from account where (cpr=?)";
 		
