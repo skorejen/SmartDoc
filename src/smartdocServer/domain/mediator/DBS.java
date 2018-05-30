@@ -298,12 +298,18 @@ public class DBS implements DbsPersistance {
 	
 	public void deletePatient(String cpr) {
 		String sql = "delete from account_data, patient_prescription, patient_data, patientDoctor where (cpr=?)";
-		String sql2 = "delete from account where (cpr=?)";
+		String sql1 = "delete from patient_prescription where (cpr=?)";
+		String sql2 = "delete from patient_data where (cpr=?)";
+		String sql3 = "delete from patientDoctor where (cpr=?)";
+		String sql4 = "delete from account where (cpr=?)";
 		
 		try
 		{
 			myDatabase.update(sql, cpr);
+			myDatabase.update(sql1, cpr);
 			myDatabase.update(sql2, cpr);
+			myDatabase.update(sql3, cpr);
+			myDatabase.update(sql4, cpr);
 		}
 		catch(SQLException e)
 		{
@@ -314,14 +320,18 @@ public class DBS implements DbsPersistance {
 	}
 	
 	public void deleteDoctor(String cpr) {
-String sql = "delete from account_data, doctor_speciality, patientDoctor where (cpr=?)";
-String sql2 = "delete from account where (cpr=?)";
+String sql = "delete from account_data where (cpr=?)";
+String sql1 = "delete from octor_speciality where (cpr=?)";
+String sql2 = "delete from patientDoctor where (cpr=?)";
+String sql3 = "delete from account where (cpr=?)";
 		
 		
 		try
 		{
 			myDatabase.update(sql, cpr);
+			myDatabase.update(sql1, cpr);
 			myDatabase.update(sql2, cpr);
+			myDatabase.update(sql3, cpr);
 		}
 		catch(SQLException e)
 		{
