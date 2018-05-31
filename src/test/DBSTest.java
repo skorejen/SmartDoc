@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import smartdocServer.domain.mediator.DBS;
 import smartdocServer.domain.model.Doctor;
+import smartdocServer.domain.model.Patient;
 import utility.persistence.MyDatabase;
 
 
@@ -24,15 +25,13 @@ class DBSTest {
 	
 	static DBS dbs;
 	static MyDatabase myDatabase;
+	static Patient patient;
+	static Doctor doctor;
+	static String loginDoctor;
+	static String passDoctor;
+	static String loginPatient;
+	static String passPatient;
 
-//	@Test
-//	void verifyLoginTest() {
-//
-//		System.out.println(""+dbs.verifyLogin("jakub123", "12345"));
-//		
-//		assertEquals(true, dbs.verifyLogin("jakub123", "12345"));
-//	}
-	
 	@BeforeAll
 	public static void beforeAllOpenDatabase() {
 		dbs = new DBS();
@@ -43,6 +42,14 @@ class DBSTest {
 			
 			e.printStackTrace();
 		}
+
+		LocalDate date = LocalDate.now();
+		patient = new Patient("555555-5555","firstName","lastName",date,5214424,"blahblah@op.l","P","M");
+		doctor = new Doctor("444444-4444","firstName","lastName",date,2242422,"blafsd@osd","D","M","Urologyst");
+		loginDoctor = "blah";
+		passDoctor = "321";
+		loginPatient = "halb";
+		passPatient = "321";
 	}
 	
 	
@@ -78,38 +85,35 @@ class DBSTest {
 	
 	@Test
 	void createDoctorTest() {
-		String cpr="121244-4444";
-		dbs.deleteDoctor(cpr);
+		dbs.deleteDoctor(doctor.getCpr());
 		LocalDate date = LocalDate.now();
 		
-		boolean successCreate = dbs.createDoctor("asd", "123", "Marek", "Cieb", cpr, 12442412, "sdasd@op.l",
-				date, "Dragologyst", "D", "M");
-		ArrayList<Object[]> doctor = dbs.getDoctor(cpr);
+		boolean successCreate = dbs.createDoctor(loginDoctor, passDoctor, doctor.getFname(), doctor.getLname(), doctor.getCpr(), doctor.getPhone(), doctor.getEmail(),
+				doctor.getDob(), doctor.getSpeciality(), doctor.getType(), doctor.getGender());
+		ArrayList<Object[]> doctor = dbs.getDoctor(this.doctor.getCpr());
 		assertTrue(successCreate);
-		assertEquals(doctor.get(0)[0],cpr);
+		assertEquals(doctor.get(0)[0],this.doctor.getCpr());
 		
 		
-		
-		dbs.deleteDoctor(cpr);
+		dbs.deleteDoctorByLogin(loginDoctor);
 	}
 	
 	@Test
 	void deleteDoctorTest() {
-		String cpr="121244-4444";
-		dbs.deleteDoctor(cpr);
+		dbs.deleteDoctor(doctor.getCpr());
 		LocalDate date = LocalDate.now();
 		
-		boolean successCreate = dbs.createDoctor("asd", "123", "Marek", "Cieb", cpr, 12442412, "sdasd@op.l",
-				date, "Dragologyst", "D", "M");
-		ArrayList<Object[]> doctor = dbs.getDoctor(cpr);
-		
+		boolean successCreate = dbs.createDoctor(loginDoctor, passDoctor, doctor.getFname(), doctor.getLname(), doctor.getCpr(), doctor.getPhone(), doctor.getEmail(),
+				doctor.getDob(), doctor.getSpeciality(), doctor.getType(), doctor.getGender());
+		ArrayList<Object[]> doctor = dbs.getDoctor(this.doctor.getCpr());
 		assertTrue(successCreate);
+		assertEquals(doctor.get(0)[0],this.doctor.getCpr());
 		
 		boolean deleteSuccess=false;
 		
-		dbs.deleteDoctor(cpr);
+		dbs.deleteDoctor(this.doctor.getCpr());
 		
-		doctor = dbs.getDoctor(cpr);
+		doctor = dbs.getDoctor(this.doctor.getCpr());
 		if(doctor.isEmpty()) {
 			deleteSuccess = true;
 		}
@@ -126,20 +130,92 @@ class DBSTest {
 	
 	@Test
 	void createPatientTest() {
-		String cpr="121244-4444";
-		dbs.deletePatient(cpr);
+		
+		dbs.deletePatient(this.patient.getCpr());
 		LocalDate date = LocalDate.now();
 		
-		boolean successCreate = dbs.createPatient("patient", "321", "Patient", "Secret", cpr,
-				50607080, "chikybriky@gmail.com", date, "M");
-		ArrayList<Object[]> patient = dbs.getAccountData(cpr);
+		boolean successCreate = dbs.createPatient(loginPatient, passPatient, patient.getFname(), patient.getLname(), this.patient.getCpr(),
+				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
+		ArrayList<Object[]> patient = dbs.getAccountData(this.patient.getCpr());
 		assertTrue(successCreate);
-		assertEquals(patient.get(0)[0],cpr);
+		assertEquals(patient.get(0)[0],this.patient.getCpr());
 		
 		
 		
-		dbs.deletePatient(cpr);
+		dbs.deletePatient(this.patient.getCpr());
 	}
+	
+	@Test
+	void deletePatientTest() {
+		dbs.deletePatient(this.patient.getCpr());
+		LocalDate date = LocalDate.now();
+		
+		boolean successCreate = dbs.createPatient(loginPatient, loginDoctor, patient.getFname(), patient.getLname(), this.patient.getCpr(),
+				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
+		ArrayList<Object[]> patient = dbs.getAccountData(this.patient.getCpr());
+		assertTrue(successCreate);
+		assertEquals(patient.get(0)[0],this.patient.getCpr());
+		
+		
+		boolean deleteSuccess=false;
+		
+		dbs.deletePatient(this.patient.getCpr());
+		
+		patient = dbs.getAccountData(this.patient.getCpr());
+		if(patient.isEmpty()) {
+			deleteSuccess = true;
+		}
+		assertTrue(deleteSuccess);
+		
+	}
+	
+	@Test
+	void deletePatientByLogin() {
+		dbs.deletePatient(this.patient.getCpr());
+		LocalDate date = LocalDate.now();
+		
+		boolean successCreate = dbs.createPatient(loginPatient, passPatient, patient.getFname(), patient.getLname(), this.patient.getCpr(),
+				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
+		ArrayList<Object[]> patient = dbs.getAccountData(this.patient.getCpr());
+		assertTrue(successCreate);
+		assertEquals(patient.get(0)[0],this.patient.getCpr());
+		
+		
+		
+		boolean deleteSuccess=false;
+		
+		dbs.deletePatientByLogin(loginPatient);
+		
+		patient = dbs.getAccountData(this.patient.getCpr());
+		if(patient.isEmpty()) {
+			deleteSuccess = true;
+		}
+		assertTrue(deleteSuccess);
+	}
+	
+	@Test
+	void deleteDoctorByLogin() {
+		dbs.deleteDoctor(doctor.getCpr());
+		LocalDate date = LocalDate.now();
+		
+		boolean successCreate = dbs.createDoctor(loginDoctor, passDoctor, doctor.getFname(), doctor.getLname(), doctor.getCpr(), doctor.getPhone(), doctor.getEmail(),
+				doctor.getDob(), doctor.getSpeciality(), doctor.getType(), doctor.getGender());
+		ArrayList<Object[]> doctor = dbs.getDoctor(this.doctor.getCpr());
+		assertTrue(successCreate);
+		assertEquals(doctor.get(0)[0],this.doctor.getCpr());
+		
+		boolean deleteSuccess=false;
+		
+		dbs.deleteDoctorByLogin(loginDoctor);
+		
+		doctor = dbs.getDoctor(this.doctor.getCpr());
+		if(doctor.isEmpty()) {
+			deleteSuccess = true;
+		}
+		assertTrue(deleteSuccess);
+	}
+	
+	
 	
 	
 

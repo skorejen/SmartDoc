@@ -42,13 +42,6 @@ class DoctorListTest {
 		doctorList.addDoctor(doctor2);
 		assertEquals(doctorList.getNumberOfDoctors(),3);
 		}
-	
-
-
-
-		
-		
-		
 
 	@Test //Works
 		void testGetDoctor() {
@@ -89,7 +82,6 @@ class DoctorListTest {
 
 	@Test //Works
 	void TestGetDoctorByCpr(){
-
 		assertEquals(doctorList.getDoctorByCpr("070999-1111"), doctor2);		
 	}
 	@Test //Works
