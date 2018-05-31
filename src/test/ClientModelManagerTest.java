@@ -51,6 +51,7 @@ public class ClientModelManagerTest {
 		boolean clientCreateDoctorTest;
 		clientCreateDoctorTest = server.createDoctor("doctorTest", "321", "Doctor", "House", "321322-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
+		server.deleteDoctor("321322-5432");
 		assertEquals(clientCreateDoctorTest, true);
 	}
 
@@ -151,6 +152,17 @@ public class ClientModelManagerTest {
 		String prc1 = prescription1.getCpr();
 		String prc2 = prescription2.getCpr();
 		assertEquals(prc1, prc2);
+		
+		//deleting everything
+				server.deletePatient("325000-5432");
+				server.deleteDoctor("321321-5432");
+				server.deletePatient("325002-5432");
+				server.deleteDoctor("320011-5432");
+				server.deleteDoctor("321323-5432");
+				server.deletePatient("320000-5432");
+				server.deleteDoctor("320011");
+				server.deletePatient("321462-5432");
+				server.deleteDoctor("321322-5432");
 	}
 
 	

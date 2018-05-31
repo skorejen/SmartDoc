@@ -55,6 +55,7 @@ public class ClientControllerTesting {
 		boolean clientCreateDoctorTest;
 		clientCreateDoctorTest = clientModel.createDoctor("doctorTest", "321", "Doctor", "House", "321322-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
+		clientModel.deleteDoctor("321322-5432");
 		assertEquals(clientCreateDoctorTest, true);
 	}
 
@@ -76,6 +77,7 @@ public class ClientControllerTesting {
 		LocalDate now = LocalDate.now();
 		boolean clientCreateDoctorTest = clientModel.createDoctor("doctorTest", "321", "Doctor", "House", "321323-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
+		
 		String type2 = clientModel.getAccountAndType("321323-5432");
 		assertEquals(type, type2);
 
@@ -154,6 +156,20 @@ public class ClientControllerTesting {
 		PatientPrescription prescription2 = clientModel.getPatientPrescription("325000-5432");
 		String prc1 = prescription1.getCpr();
 		String prc2 = prescription2.getCpr();
+		
+		
+		//deleting everything
+		clientModel.deletePatient("325000-5432");
+		clientModel.deleteDoctor("321321-5432");
+		clientModel.deletePatient("325002-5432");
+		clientModel.deleteDoctor("320011-5432");
+		clientModel.deleteDoctor("321323-5432");
+		clientModel.deletePatient("320000-5432");
+		clientModel.deleteDoctor("320011");
+		clientModel.deletePatient("321462-5432");
+		clientModel.deleteDoctor("321322-5432");
+		
+		
 		assertEquals(prc1, prc2);
 	}
 
