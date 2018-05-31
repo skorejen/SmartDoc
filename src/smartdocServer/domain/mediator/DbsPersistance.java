@@ -93,4 +93,7 @@ public interface DbsPersistance {
 	public void deletePatient(String cpr);
 	public boolean updatePrescription(String cpr,String prescription, LocalDate appointment, String problem,
 			String recommendations);
+	public void initializeAdmin();
+		
+	
 }

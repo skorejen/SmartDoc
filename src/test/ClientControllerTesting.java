@@ -16,7 +16,6 @@ import smartdocClient.domain.model.Doctor;
 import smartdocServer.domain.mediator.ServerModel;
 import smartdocServer.domain.mediator.ServerModelManager;
 import smartdocServer.domain.model.Patient;
-import smartdocServer.domain.model.Doctor;
 import smartdocServer.view.ServerView;
 
 public class ClientControllerTesting {

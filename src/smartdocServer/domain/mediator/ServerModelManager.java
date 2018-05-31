@@ -35,6 +35,7 @@ public class ServerModelManager extends Observable implements ServerModel {
 			UnicastRemoteObject.exportObject(this, 0);
 			Naming.rebind("vipassanaServer", this);
 			System.out.println("Server is running");
+			dbsPersistance.initializeAdmin();
 
 		} catch (Exception e) {
 			e.printStackTrace();
