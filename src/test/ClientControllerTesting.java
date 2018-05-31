@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 
+import org.junit.After;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.postgresql.util.PSQLException;
@@ -50,61 +51,63 @@ public class ClientControllerTesting {
 
 	@Test
 	void testCreateDoctor() throws RemoteException, PSQLException {
-		clientModel.deleteDoctor("321322-5432");
+
 		LocalDate now = LocalDate.now();
 		boolean clientCreateDoctorTest;
-		clientCreateDoctorTest = clientModel.createDoctor("doctorTest", "321", "Doctor", "House", "321322-5432",
+		clientCreateDoctorTest = clientModel.createDoctor("doctorTest22", "321", "Doctor", "House", "321322-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
-		clientModel.deleteDoctor("321322-5432");
+
 		assertEquals(clientCreateDoctorTest, true);
+		clientModel.deleteDoctorByLogin("doctorTest22");
 	}
 
 	@Test
 	void testCreatePatient() throws RemoteException, PSQLException {
-		clientModel.deletePatient("320000-5432");
+
 		LocalDate now = LocalDate.now();
 		boolean clientCreatePatientTest;
-		clientCreatePatientTest = clientModel.createPatient("patient", "321", "Patient", "Secret", "320000-5432",
+		clientCreatePatientTest = clientModel.createPatient("patient9", "321", "Patient", "Secret", "320000-5432",
 				50607080, "chikybriky@gmail.com", now, "M");
 
 		assertEquals(clientCreatePatientTest, true);
+		clientModel.deletePatientByLogin("patient9");
 	}
 
 	@Test
 	void testGetPatientType() throws RemoteException {
 		String type = "D";
-		clientModel.deleteDoctor("321323-5432");
 		LocalDate now = LocalDate.now();
 		boolean clientCreateDoctorTest = clientModel.createDoctor("doctorTest", "321", "Doctor", "House", "321323-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
-		
-		String type2 = clientModel.getAccountAndType("321323-5432");
-		assertEquals(type, type2);
 
+		String type2 = clientModel.getAccountAndType("321323-5432");
+
+		assertEquals(type, type2);
+		clientModel.deleteDoctorByLogin("doctorTest");
 	}
 
 	@Test
 	void testGetDoctorByCpr() throws RemoteException {
 
-		clientModel.deleteDoctor("320011-5432");
 		LocalDate now = LocalDate.now();
 
 		boolean clientCreateDoctorTest = clientModel.createDoctor("doctorTest", "321", "Doctor", "House", "320011-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
 
-		smartdocServer.domain.model.Doctor doc1 = clientModel.getDoctor("321321-5432");
+		smartdocServer.domain.model.Doctor doc1 = clientModel.getDoctor("320011-5432");
 		String doc1CPR = doc1.getCpr();
 
-		assertEquals(doc1CPR, "321321-5432");
+		assertEquals(doc1CPR, "320011-5432");
+		clientModel.deleteDoctorByLogin("doctorTest");
+
 	}
 
 	@Test
 	void testGetPatientByCpr() throws RemoteException {
 
-		clientModel.deletePatient("320000-5432");
 		LocalDate now = LocalDate.now();
 
-		boolean clientCreatePatient = clientModel.createPatient("patient", "321", "Patient", "Patient", "320000-5432",
+		boolean clientCreatePatient = clientModel.createPatient("patient4", "321", "Patient", "Patient", "320000-5432",
 				50607080, "chikybriky@gmail.com", now, "M");
 
 		Patient pat1 = clientModel.getPatient("320000-5432");
@@ -112,65 +115,63 @@ public class ClientControllerTesting {
 		String pat1CPR = pat1.getCpr();
 
 		assertEquals(pat1CPR, "320000-5432");
+		clientModel.deletePatientByLogin("patient4");
+
 	}
 
 	@Test
 	void testAssignPatientToDoctor() throws RemoteException {
+
+		
 		// delete and create patient #1
-		clientModel.deletePatient("325000-5432");
+
 		LocalDate now = LocalDate.now();
 
-		boolean clientCreatePatient1 = clientModel.createPatient("patient", "321", "Patient", "Patient", "325000-5432",
+		boolean clientCreatePatient1 = clientModel.createPatient("patient0", "321", "Patient", "Patient", "325008-5432",
 				50607080, "chikybriky@gmail.com", now, "M");
 
 		// delete and create patient #2
-		clientModel.deletePatient("325002-5432");
 
-		boolean clientCreatePatient2 = clientModel.createPatient("patient", "321", "Patient", "Patient", "325002-5432",
+		boolean clientCreatePatient2 = clientModel.createPatient("patient2", "321", "Patient", "Patient", "325011-5432",
 				50607080, "chikybriky@gmail.com", now, "M");
 
 		// delete and create doctor
-		clientModel.deleteDoctor("321321-5432");
 
-		boolean clientCreateDoctorTest = clientModel.createDoctor("doctorTest", "321", "Doctor", "House", "321321-5432",
+		boolean clientCreateDoctorTest = clientModel.createDoctor("doctorTest", "321", "Doctor", "House", "321325-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
 
-		clientModel.assignPatientToDoctor("325000-5432", "321321-5432");
-		clientModel.assignPatientToDoctor("325002-5432", "321321-5432");
+		clientModel.assignPatientToDoctor("325008-5432", "321325-5432");
+		clientModel.assignPatientToDoctor("325011-5432", "321325-5432");
 
-		int number = clientModel.getAssignedPatientList("321321-5432").getNumberOfPatients();
+		int number = clientModel.getAssignedPatientList("321325-5432").getNumberOfPatients();
 		assertEquals(number, 2);
+		clientModel.deletePatientByLogin("patient0");
+		clientModel.deletePatientByLogin("patient2");
+		clientModel.deleteDoctorByLogin("doctorTest");
+
 	}
 
 	@Test
 	void testUpdatePrescription() throws RemoteException {
 		// delete and create patient
-		clientModel.deletePatient("325000-5432");
+		
 		LocalDate now = LocalDate.now();
 
-		boolean clientCreatePatient1 = clientModel.createPatient("patient", "321", "Patient", "Patient", "325000-5432",
+		boolean clientCreatePatient1 = clientModel.createPatient("patient5", "321", "Patient", "Patient", "325012-5432",
 				50607080, "chikybriky@gmail.com", now, "M");
-		PatientPrescription prescription1 = new PatientPrescription("325000-5432", "Pills", now, "poor",
+		PatientPrescription prescription1 = new PatientPrescription("325012-5432", "Pills", now, "poor",
 				"Get a Bachelor");
-		clientModel.updatePrescription("325000-5432", "Pills", now, "poor", "Get a Bachelor");
-		PatientPrescription prescription2 = clientModel.getPatientPrescription("325000-5432");
+		clientModel.updatePrescription("325012-5432", "Pills", now, "poor", "Get a Bachelor");
+		PatientPrescription prescription2 = clientModel.getPatientPrescription("325012-5432");
 		String prc1 = prescription1.getCpr();
 		String prc2 = prescription2.getCpr();
-		
-		
-		//deleting everything
-		clientModel.deletePatient("325000-5432");
-		clientModel.deleteDoctor("321321-5432");
-		clientModel.deletePatient("325002-5432");
-		clientModel.deleteDoctor("320011-5432");
-		clientModel.deleteDoctor("321323-5432");
-		clientModel.deletePatient("320000-5432");
-		clientModel.deleteDoctor("320011");
-		clientModel.deletePatient("321462-5432");
-		clientModel.deleteDoctor("321322-5432");
-		
-		
+
 		assertEquals(prc1, prc2);
+		clientModel.deletePatientByLogin("patient5");
+		
+		
+
 	}
+
 
 }
