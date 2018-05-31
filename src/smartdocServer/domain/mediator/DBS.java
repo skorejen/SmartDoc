@@ -339,6 +339,40 @@ String sql3 = "delete from account where (cpr=?)";
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteDoctorByLogin(String login) {
+	String sql = "SELECT cpr from account where (login=?)";
+	
+	ArrayList<Object[]> array = null;
+		
+		try
+		{
+			array = myDatabase.query(sql, login);
+			deleteDoctor((String)array.get(0)[0]);
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Failed to retrieve data from database");
+			e.printStackTrace();
+		}
+	}
+	
+	public void deletePatientByLogin(String login) {
+		String sql = "SELECT cpr from account where (login=?)";
+		
+		ArrayList<Object[]> array = null;
+			
+			try
+			{
+				array = myDatabase.query(sql, login);
+				deletePatient((String)array.get(0)[0]);
+			}
+			catch(SQLException e)
+			{
+				System.out.println("Failed to retrieve data from database");
+				e.printStackTrace();
+			}
+		}
 
 	@Override
 	public boolean updatePrescription(String cpr, String prescription, LocalDate appointment, String problem,
@@ -366,15 +400,11 @@ String sql3 = "delete from account where (cpr=?)";
 	public void initializeAdmin() {
 		System.out.println("Initializing admin with login: admin, password: 321");
 		String sql = "insert into account values ('111111-2222','admin','8D23CF6C86E834A7AA6EDED54C26CE2BB2E7493538C61BDD5D2197997AB2F72')";
-		
 		try {
 			myDatabase.update(sql);
 		} catch (SQLException e) {
 			System.out.println("Admin created/already exists");
 		}
-		
-		
-		
 	}
 
 }
