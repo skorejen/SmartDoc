@@ -178,4 +178,16 @@ public class ClientModelManager extends Observable implements ClientModel {
 		
 	}
 
+	@Override
+	public void deletePatientByLogin(String login) throws RemoteException {
+		server.deletePatientByLogin(login);
+		
+	}
+
+	@Override
+	public void deleteDoctorByLogin(String login) throws RemoteException {
+		server.deleteDoctorByLogin(login);
+		
+	}
+
 }

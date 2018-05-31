@@ -36,5 +36,7 @@ public interface ClientModel extends Remote, RemoteObserver<String> {
 			String recommendations) throws RemoteException;
 	public void deleteDoctor(String cpr) throws RemoteException;
 	public void deletePatient(String cpr) throws RemoteException;
+	public void deletePatientByLogin(String login) throws RemoteException;
+	public void deleteDoctorByLogin(String login) throws RemoteException;
 	
 }
