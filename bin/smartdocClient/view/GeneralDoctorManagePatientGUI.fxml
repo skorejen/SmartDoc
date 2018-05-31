@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.GeneralDoctorManagePatientGUIController">
+   <children>
+      <Text layoutX="509.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Patient's CPR" wrappingWidth="252.53668212890625">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Button fx:id="back" layoutX="1095.0" layoutY="29.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="38.0" prefWidth="79.0" text="Back" />
+      <Button fx:id="signOut" layoutX="1190.0" layoutY="29.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="38.0" prefWidth="79.0" text="Sign-out" />
+      <Button fx:id="continueB" layoutX="538.0" layoutY="281.0" mnemonicParsing="false" onAction="#continueButtonPressed" prefHeight="38.0" prefWidth="79.0" text="Continue" />
+      <Button fx:id="clear" layoutX="625.0" layoutY="281.0" mnemonicParsing="false" onAction="#clearButtonPressed" prefHeight="38.0" prefWidth="79.0" text="Clear" />
+      <JFXTextField fx:id="inputCPR" layoutX="486.0" layoutY="233.0" prefHeight="26.0" prefWidth="298.0" />
+   </children>
+</AnchorPane>
