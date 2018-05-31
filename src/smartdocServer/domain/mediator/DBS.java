@@ -364,13 +364,13 @@ String sql3 = "delete from account where (cpr=?)";
 
 	@Override
 	public void initializeAdmin() {
-	
+		System.out.println("Initializing admin with login: admin, password: 321");
 		String sql = "insert into account values ('111111-2222','admin','8D23CF6C86E834A7AA6EDED54C26CE2BB2E7493538C61BDD5D2197997AB2F72')";
-		System.out.println("Admin initialized with login: admin, password: 321");
+		
 		try {
 			myDatabase.update(sql);
 		} catch (SQLException e) {
-			System.out.println("Admin already exists");
+			System.out.println("Admin created/already exists");
 		}
 		
 		
