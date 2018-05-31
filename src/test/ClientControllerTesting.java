@@ -53,8 +53,8 @@ public class ClientControllerTesting {
 	void testCreateDoctor() throws RemoteException, PSQLException {
 
 		LocalDate now = LocalDate.now();
-		boolean clientCreateDoctorTest;
-		clientCreateDoctorTest = clientModel.createDoctor("doctorTest22", "321", "Doctor", "House", "321322-5432",
+		 
+		boolean clientCreateDoctorTest = clientModel.createDoctor("doctorTest22", "321", "Doctor", "House", "321350-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
 
 		assertEquals(clientCreateDoctorTest, true);

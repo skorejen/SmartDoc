@@ -36,7 +36,6 @@ public class ClientModelManagerTest {
 		ServerModelManager c2 = ServerModelManager.getInstance();
 		assertEquals(c1, c2);
 	}
-	
 	@Test
 	void testVerifyLogin() throws RemoteException {
 
@@ -48,8 +47,8 @@ public class ClientModelManagerTest {
 	void testCreateDoctor() throws RemoteException, PSQLException {
 
 		LocalDate now = LocalDate.now();
-		boolean clientCreateDoctorTest;
-		clientCreateDoctorTest = server.createDoctor("doctorTest22", "321", "Doctor", "House", "321322-5432",
+		 
+		boolean clientCreateDoctorTest = server.createDoctor("doctorTest22", "321", "Doctor", "House", "321350-5432",
 				50602040, "DoctorStrange@gmail.com", now, "Tester", "D", "M");
 
 		assertEquals(clientCreateDoctorTest, true);
