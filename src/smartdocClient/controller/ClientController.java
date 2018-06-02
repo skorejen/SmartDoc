@@ -54,51 +54,61 @@ public class ClientController {
 	public Doctor getDoctorData() throws RemoteException {
 		return clientModel.getDoctorModel();
 	}
-	
+
 	public Patient getPatientData() throws RemoteException {
 		return clientModel.getPatientModel();
 	}
-	
+
 	public Patient getPatient(String cpr) throws RemoteException {
-		return clientModel.getPatient(cpr); 
+		return clientModel.getPatient(cpr);
 	}
-	
+
 	public Doctor getDoctor(String cpr) throws RemoteException {
 		return clientModel.getDoctor(cpr);
 	}
-	
+
 	public PatientList getPatientList() throws RemoteException {
 		return clientModel.getPatientList(); // return all patients from database
 	}
-	
+
 	public DoctorList getDoctorList() throws RemoteException {
 		return clientModel.getDoctorList(); // return all patients from database
 	}
-	
+
 	public PatientList getAssignedPatientList(String cpr) throws RemoteException {
 		return clientModel.getAssignedPatientList(cpr);
 	}
-	
+
 	public boolean assignPatientToDoctor(String patientCpr, String doctorCpr) throws RemoteException {
 		return clientModel.assignPatientToDoctor(patientCpr, doctorCpr);
 	}
-	
+
 	public PatientPrescription getPatientPrescription(String cpr) throws RemoteException {
 		return clientModel.getPatientPrescription(cpr);
 	}
-	
-	public boolean updatePrescription(String cpr,String prescription, LocalDate appointment, String problem,
-			String recommendations) throws RemoteException{
+
+	public boolean updatePrescription(String cpr, String prescription, LocalDate appointment, String problem,
+			String recommendations) throws RemoteException {
 		return clientModel.updatePrescription(cpr, prescription, appointment, problem, recommendations);
 	}
 
-	public boolean updatePatientHistory(String cpr, String ilnesses, String alergies,String height,String weight,
-			String smoker, String vaccines, String familyIlnesses,String insurance,String pregnancy ) throws RemoteException {
-		
-		return clientModel.updatePatientHistory(cpr, ilnesses,  alergies, height, weight,
-				 smoker,  vaccines,  familyIlnesses, insurance, pregnancy );
-		
+	public boolean updatePatientHistory(String cpr, String ilnesses, String alergies, String height, String weight,
+			String smoker, String vaccines, String familyIlnesses, String insurance, String pregnancy)
+			throws RemoteException {
+
+		return clientModel.updatePatientHistory(cpr, ilnesses, alergies, height, weight, smoker, vaccines,
+				familyIlnesses, insurance, pregnancy);
+
 	}
 
+	public void AdminDeleteDoctorPatientController(String type,String CPR) throws RemoteException
+			{
+		if (type.equals("P")) clientModel.deletePatient(CPR);
+		else clientModel.deleteDoctor(CPR);
+		
+		
+			}
+
 	
+
 }
