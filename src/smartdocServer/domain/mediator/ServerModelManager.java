@@ -314,4 +314,13 @@ public class ServerModelManager extends Observable implements ServerModel {
 		dbsPersistance.deleteDoctorByLogin(login);
 		
 	}
+
+	@Override
+	public boolean updatePatientHistory(String cpr, String ilnesses, String alergies, String height, String weight,
+			String smoker, String vaccines, String familyIlnesses, String insurance, String pregnancy) throws RemoteException {
+		System.out.println("BLAHBHA");
+		return dbsPersistance.updatePatientHistory(cpr,ilnesses,alergies,height,weight,smoker,vaccines,familyIlnesses,insurance,pregnancy);
+	}
+	
+	
 }

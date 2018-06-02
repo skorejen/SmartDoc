@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -57,8 +58,6 @@ public class GeneralDoctorManagePatientGUI2Controller2switchController implement
 
 	private String cprFromPreviousScene;
 	
-	@FXML
-	private JFXTextField cprDoctorInput;
 
 	@FXML
 	private Button signOut;
@@ -66,6 +65,26 @@ public class GeneralDoctorManagePatientGUI2Controller2switchController implement
 	private Button back;
 	@FXML
 	private Button apply;
+	
+	@FXML
+	private TextField ilnessTextField;
+	@FXML
+	private TextField alergiesTextField;
+	@FXML
+	private TextField heightTextField;
+	@FXML
+	private TextField weightTextField;
+	@FXML
+	private TextField smokerTextField;
+	@FXML
+	private TextField vaccinesTextField;
+	@FXML
+	private TextField familyIlnessTextField;
+	@FXML
+	private TextField insuranceTextField;
+	@FXML
+	private TextField pregnancyTextField;
+	
 
 
 
@@ -117,12 +136,10 @@ public class GeneralDoctorManagePatientGUI2Controller2switchController implement
 
 	public void applyButtonPressed(ActionEvent event) throws IOException {
 		{
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("SUCCESS");
-			alert.setContentText(
-					"The operation was completed without any errors!");
-			alert.showAndWait();
-
+			System.out.println("BLAH");
+			controller.updatePatientHistory(cprFromPreviousScene, ilnessTextField.getText(),alergiesTextField.getText()
+					,heightTextField.getText(),weightTextField.getText(),smokerTextField.getText(),
+					vaccinesTextField.getText(),familyIlnessTextField.getText(),insuranceTextField.getText(),pregnancyTextField.getText());
 		}
 	}
 

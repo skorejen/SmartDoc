@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.postgresql.util.PSQLException;
+
 import com.mysql.jdbc.PreparedStatement;
 
 import java.sql.Date;
@@ -396,6 +398,29 @@ String sql3 = "delete from account where (cpr=?)";
 				return true;
 	}
 
+	
+	@Override
+	public boolean updatePatientHistory(String cpr, String ilnesses, String alergies, String height, String weight,
+			String smoker, String vaccines, String familyIlnesses, String insurance, String pregnancy){
+		     
+		String sql = "update patient_history set cpr=?, ilnesses=?, alergies=?, height=?,weight=?,smoker=?,vaccines=?,familyIlnesses=?,insurance=?,pregnancy=? where cpr=?";
+				
+				System.out.println("WORKS");
+				try
+				{
+					myDatabase.update(sql, cpr, ilnesses,alergies,height.toString(),weight.toString(),smoker,vaccines,familyIlnesses,insurance,pregnancy,cpr);
+				}
+				catch(SQLException e)
+				{
+					
+					System.out.println("Failed to retrieve data from database");
+					e.printStackTrace();
+					return false;
+				}
+				return true;
+	}
+
+	
 	@Override
 	public void initializeAdmin() {
 		System.out.println("Initializing admin with login: admin, password: 321");
@@ -407,4 +432,5 @@ String sql3 = "delete from account where (cpr=?)";
 		}
 	}
 
+	
 }
