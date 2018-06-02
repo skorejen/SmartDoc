@@ -104,10 +104,13 @@ public interface ServerModel extends Remote, RemoteSubject<String> {
 	
 	public void deleteDoctor(String cpr) throws RemoteException;
 	public void deletePatient(String cpr) throws RemoteException;
-	public boolean updatePrescription(String cpr,String prescription, LocalDate appointment, String problem,
-			String recommendations) throws RemoteException;
+	
 	public void deletePatientByLogin(String login) throws RemoteException;
 	public void deleteDoctorByLogin(String login) throws RemoteException;
+	public boolean updatePrescription(String cpr,String prescription, LocalDate appointment, String problem,
+			String recommendations) throws RemoteException;
+	public boolean updatePatientHistory(String cpr, String ilnesses, String alergies, String height, String weight,
+			String smoker, String vaccines, String familyIlnesses, String insurance, String pregnancy)throws RemoteException;
 
 	
 }

@@ -96,6 +96,9 @@ public interface DbsPersistance {
 	public void initializeAdmin();
 	public void deletePatientByLogin(String login);
 	public void deleteDoctorByLogin(String login);
+
+	public boolean updatePatientHistory(String cpr, String ilnesses, String alergies, String height, String weight,
+			String smoker, String vaccines, String familyIlnesses, String insurance, String pregnancy);
 		
 	
 }

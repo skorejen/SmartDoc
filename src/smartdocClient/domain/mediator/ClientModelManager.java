@@ -167,6 +167,16 @@ public class ClientModelManager extends Observable implements ClientModel {
 	}
 
 	@Override
+	public boolean updatePatientHistory(String cpr, String ilnesses, String alergies, String height, String weight,
+			String smoker, String vaccines, String familyIlnesses, String insurance, String pregnancy)
+			throws RemoteException {
+		System.out.println("ClientController");
+		return server.updatePatientHistory(cpr,ilnesses,alergies,height,weight,smoker,vaccines,familyIlnesses,insurance,pregnancy);
+		
+	}
+
+	
+	@Override
 	public void deleteDoctor(String cpr) throws RemoteException {
 		server.deleteDoctor(cpr);
 		
@@ -189,5 +199,6 @@ public class ClientModelManager extends Observable implements ClientModel {
 		server.deleteDoctorByLogin(login);
 		
 	}
+
 
 }

@@ -151,15 +151,15 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <TextField layoutX="107.0" layoutY="19.0" prefHeight="25.0" prefWidth="862.0" />
-            <TextField layoutX="107.0" layoutY="53.0" prefHeight="25.0" prefWidth="862.0" />
-            <TextField layoutX="95.0" layoutY="88.0" prefHeight="25.0" prefWidth="109.0" />
-            <TextField layoutX="107.0" layoutY="123.0" prefHeight="25.0" prefWidth="109.0" />
-            <TextField layoutX="107.0" layoutY="158.0" prefHeight="25.0" prefWidth="79.0" />
-            <TextField layoutX="118.0" layoutY="190.0" prefHeight="25.0" prefWidth="852.0" />
-            <TextField layoutX="190.0" layoutY="224.0" prefHeight="25.0" prefWidth="779.0" />
-            <TextField layoutX="125.0" layoutY="259.0" prefHeight="25.0" prefWidth="79.0" />
-            <TextField layoutX="135.0" layoutY="297.0" prefHeight="25.0" prefWidth="79.0" />
+            <TextField fx:id="ilnessTextField" layoutX="107.0" layoutY="19.0" prefHeight="25.0" prefWidth="862.0" />
+            <TextField fx:id="alergiesTextField" layoutX="107.0" layoutY="53.0" prefHeight="25.0" prefWidth="862.0" />
+            <TextField fx:id="heightTextField" layoutX="95.0" layoutY="88.0" prefHeight="25.0" prefWidth="109.0" />
+            <TextField fx:id="weightTextField" layoutX="107.0" layoutY="123.0" prefHeight="25.0" prefWidth="109.0" />
+            <TextField fx:id="smokerTextField" layoutX="107.0" layoutY="158.0" prefHeight="25.0" prefWidth="79.0" />
+            <TextField fx:id="vaccinesTextField" layoutX="118.0" layoutY="190.0" prefHeight="25.0" prefWidth="852.0" />
+            <TextField fx:id="familyIlnessTextField" layoutX="190.0" layoutY="224.0" prefHeight="25.0" prefWidth="779.0" />
+            <TextField fx:id="insuranceTextField" layoutX="125.0" layoutY="259.0" prefHeight="25.0" prefWidth="79.0" />
+            <TextField fx:id="pregnancyTextField" layoutX="135.0" layoutY="297.0" prefHeight="25.0" prefWidth="79.0" />
          </children>
       </AnchorPane>
       <Text layoutX="714.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient's Data">

@@ -91,4 +91,14 @@ public class ClientController {
 			String recommendations) throws RemoteException{
 		return clientModel.updatePrescription(cpr, prescription, appointment, problem, recommendations);
 	}
+
+	public boolean updatePatientHistory(String cpr, String ilnesses, String alergies,String height,String weight,
+			String smoker, String vaccines, String familyIlnesses,String insurance,String pregnancy ) throws RemoteException {
+		
+		return clientModel.updatePatientHistory(cpr, ilnesses,  alergies, height, weight,
+				 smoker,  vaccines,  familyIlnesses, insurance, pregnancy );
+		
+	}
+
+	
 }
