@@ -40,7 +40,7 @@ public class DBS implements DbsPersistance {
 
 	/**
 	 * Changes the parameter password into a new hexadecimal String, which is then
-	 * ready to pass to database
+	 * ready to be passed to database
 	 * 
 	 * @param password
 	 * @return password as hexadecimal string

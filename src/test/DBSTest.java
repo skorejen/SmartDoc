@@ -172,7 +172,7 @@ class DBSTest {
 	@Test
 	void deletePatientByLogin() {
 		dbs.deletePatient(this.patient.getCpr());
-		LocalDate date = LocalDate.now();
+		
 		
 		boolean successCreate = dbs.createPatient(loginPatient, passPatient, patient.getFname(), patient.getLname(), this.patient.getCpr(),
 				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
@@ -196,7 +196,6 @@ class DBSTest {
 	@Test
 	void deleteDoctorByLogin() {
 		dbs.deleteDoctor(doctor.getCpr());
-		LocalDate date = LocalDate.now();
 		
 		boolean successCreate = dbs.createDoctor(loginDoctor, passDoctor, doctor.getFname(), doctor.getLname(), doctor.getCpr(), doctor.getPhone(), doctor.getEmail(),
 				doctor.getDob(), doctor.getSpeciality(), doctor.getType(), doctor.getGender());
@@ -215,9 +214,141 @@ class DBSTest {
 		assertTrue(deleteSuccess);
 	}
 	
+	@Test
+	void getSpecialityTest() {
+		boolean successCreate = dbs.createDoctor(loginDoctor, passDoctor, doctor.getFname(), doctor.getLname(), doctor.getCpr(), doctor.getPhone(), doctor.getEmail(),
+				doctor.getDob(), doctor.getSpeciality(), doctor.getType(), doctor.getGender());
+		ArrayList<Object[]> doctor = dbs.getDoctor(this.doctor.getCpr());
+		assertTrue(successCreate);
+		
+		String speciality= (String)dbs.getSpeciality(this.doctor.getCpr()).get(0)[0];
+		assertEquals(this.doctor.getSpeciality(),speciality);
+
+		dbs.deleteDoctorByLogin(loginDoctor);
+	}
 	
+	@Test
+	void getPatientList() {
+		boolean successCreate = dbs.createPatient(loginPatient, passPatient, patient.getFname(), patient.getLname(), this.patient.getCpr(),
+				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
+		ArrayList<Object[]> patient = dbs.getAccountData(this.patient.getCpr());
+		assertTrue(successCreate);
+		ArrayList<Object[]> patients = dbs.getPatientList();
+		
+		boolean successfulReturn = false;
+		if(patients.size()>0) {
+			successfulReturn = true;
+		} else {
+			successfulReturn = false;
+		}
+
+		assertTrue(successfulReturn);
+
+		dbs.deletePatient(this.patient.getCpr());
+	}
 	
+	@Test
+	void getDoctorList() {
+
+		boolean successCreate = dbs.createDoctor(loginDoctor, passDoctor, doctor.getFname(), doctor.getLname(), doctor.getCpr(), doctor.getPhone(), doctor.getEmail(),
+				doctor.getDob(), doctor.getSpeciality(), doctor.getType(), doctor.getGender());
+		ArrayList<Object[]> doctor = dbs.getDoctor(this.doctor.getCpr());
+		assertTrue(successCreate);
+		
+		assertEquals(doctor.get(0)[0],this.doctor.getCpr());
+ArrayList<Object[]> doctors = dbs.getDoctorList();
+		
+		boolean successfulReturn = false;
+		if(doctors.size()>0) {
+			successfulReturn = true;
+		} else {
+			successfulReturn = false;
+		}
+
+		assertTrue(successfulReturn);
+
+		dbs.deleteDoctor(this.doctor.getCpr());
+		
+	}
 	
+	@Test
+	void assignPatientToDoctorTest() {
+		boolean successCreate = dbs.createDoctor(loginDoctor, passDoctor, doctor.getFname(), doctor.getLname(), doctor.getCpr(), doctor.getPhone(), doctor.getEmail(),
+				doctor.getDob(), doctor.getSpeciality(), doctor.getType(), doctor.getGender());
+		ArrayList<Object[]> doctor = dbs.getDoctor(this.doctor.getCpr());
+		assertTrue(successCreate);
+		boolean successCreatePatient = dbs.createPatient(loginPatient, passPatient, patient.getFname(), patient.getLname(), this.patient.getCpr(),
+				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
+		ArrayList<Object[]> patient = dbs.getAccountData(this.patient.getCpr());
+		assertTrue(successCreate);
+		assertTrue(successCreatePatient);
+		boolean success = dbs.assignPatientToDoctor(this.patient.getCpr(), this.doctor.getCpr());
+		
+		assertTrue(success);
+		dbs.deletePatient(this.patient.getCpr());
+		dbs.deleteDoctor(this.doctor.getCpr());
+	}
+	
+	@Test
+	void getAssignedPatientListTest() {
+		boolean successCreate = dbs.createDoctor(loginDoctor, passDoctor, doctor.getFname(), doctor.getLname(), doctor.getCpr(), doctor.getPhone(), doctor.getEmail(),
+				doctor.getDob(), doctor.getSpeciality(), doctor.getType(), doctor.getGender());
+		ArrayList<Object[]> doctor = dbs.getDoctor(this.doctor.getCpr());
+		assertTrue(successCreate);
+		boolean successCreatePatient = dbs.createPatient(loginPatient, passPatient, patient.getFname(), patient.getLname(), this.patient.getCpr(),
+				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
+		ArrayList<Object[]> patient = dbs.getAccountData(this.patient.getCpr());
+		assertTrue(successCreate);
+		assertTrue(successCreatePatient);
+		boolean success = dbs.assignPatientToDoctor(this.patient.getCpr(), this.doctor.getCpr());
+		
+		assertTrue(success);
+		
+		ArrayList<Object[]> assignedPatient = dbs.getAssignedPatientList(this.doctor.getCpr());
+		assertEquals(this.patient.getCpr(),(String) assignedPatient.get(0)[0]);
+		
+		dbs.deletePatient(this.patient.getCpr());
+		dbs.deleteDoctor(this.doctor.getCpr());
+	}
+	
+	@Test
+	void getPatientPrescriptionTest() {
+		
+		boolean successCreate = dbs.createPatient(loginPatient, passPatient, patient.getFname(), patient.getLname(), this.patient.getCpr(),
+				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
+		ArrayList<Object[]> patient = dbs.getAccountData(this.patient.getCpr());
+		assertTrue(successCreate);
+		ArrayList<Object[]> prescription = dbs.getPatientPrescription(this.patient.getCpr());
+
+		boolean successReturn = false;
+		if(prescription.size()>0) {
+			successReturn = true;
+		} else {
+			successReturn = false;
+		}
+		assertTrue(successReturn);
+		dbs.deletePatient(this.patient.getCpr());
+		
+	}
+	
+	@Test
+	void updatePatientPrescriptionTest() {
+		boolean successCreate = dbs.createPatient(loginPatient, passPatient, patient.getFname(), patient.getLname(), this.patient.getCpr(),
+				patient.getPhone(), patient.getEmail(), patient.getDob(), patient.getGender());
+		ArrayList<Object[]> patient = dbs.getAccountData(this.patient.getCpr());
+		assertTrue(successCreate);
+		ArrayList<Object[]> prescription = dbs.getPatientPrescription(this.patient.getCpr());
+		String prescriptionStringFirst = (String) prescription.get(0)[1];
+		
+		dbs.updatePrescription(this.patient.getCpr(), "NOT 0 ANYMORE", this.patient.getDob(), "0", "0");
+		
+		ArrayList<Object[]> prescription2 = dbs.getPatientPrescription(this.patient.getCpr());
+		String prescriptionStringSecond = (String) prescription.get(0)[1];
+		
+		assertEquals(prescriptionStringFirst, prescriptionStringSecond);
+
+		dbs.deletePatient(this.patient.getCpr());
+	}
 
 }
 
