@@ -25,15 +25,13 @@ public class ServerModelManager extends Observable implements ServerModel {
 
 	private static ServerModelManager instance;
 	private DbsPersistance dbsPersistance;
-	RemoteSubjectDelegate<String> subject;
-
+	
 	private ServerModelManager() {
 		try {
-			subject = new RemoteSubjectDelegate<>(this);
 			dbsPersistance = new DBS();
 			Registry reg = LocateRegistry.createRegistry(1099);
 			UnicastRemoteObject.exportObject(this, 0);
-			Naming.rebind("vipassanaServer", this);
+			Naming.rebind("smartdocServer", this);
 			System.out.println("Server is running");
 			dbsPersistance.initializeAdmin();
 
@@ -75,17 +73,6 @@ public class ServerModelManager extends Observable implements ServerModel {
 		return ifsuccessful;
 	}
 
-	@Override
-	public void addObserver(RemoteObserver<String> o) throws RemoteException {
-		subject.addObserver(o);
-
-	}
-
-	@Override
-	public void deleteObserver(RemoteObserver<String> o) throws RemoteException {
-		subject.deleteObserver(o);
-
-	}
 
 	public boolean createPatient(String login, String password, String fname, String lname, String cpr, int phone,
 			String email, LocalDate dob, String gender) throws RemoteException {

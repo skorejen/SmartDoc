@@ -12,7 +12,7 @@ import smartdocServer.domain.model.PatientList;
 import smartdocServer.domain.model.PatientPrescription;
 import utility.observer.RemoteObserver;
 
-public interface ClientModel extends Remote, RemoteObserver<String> {
+public interface ClientModel extends Remote {
 	
 
 	public String verifyLogin(String login, String password) throws RemoteException;

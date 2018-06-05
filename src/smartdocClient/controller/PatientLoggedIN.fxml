@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.PatientLoggedInController">
+   <children>
+      <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back,              " wrappingWidth="431.66943359375">
+         <font>
+            <Font name="Calibri Light" size="34.0" />
+         </font>
+      </Text>
+      <Label layoutX="230.0" layoutY="14.0" prefHeight="40.0" prefWidth="117.0" text="Patient">
+         <font>
+            <Font name="Calibri Light" size="34.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="453.0" fitWidth="560.0" layoutX="252.0" layoutY="147.0">
+         <image>
+            <Image url="@GuiResources/pacientbeinghelped.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="874.0" layoutY="34.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="40.0" prefWidth="126.0" text="Sign-out" />
+      <Button layoutX="1013.0" layoutY="34.0" mnemonicParsing="false" onAction="#goToMyStatusButtonPressed" prefHeight="40.0" prefWidth="126.0" text="Go to my status" />
+      <Button layoutX="1154.0" layoutY="34.0" mnemonicParsing="false" onAction="#myInfoButtonPressed" prefHeight="40.0" prefWidth="126.0" text="My info" />
+   </children>
+</AnchorPane>

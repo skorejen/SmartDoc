@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" style="-fx-background-color: #dbdcdd;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.AdministratorGUIController">
+   <children>
+      <ImageView fitHeight="99.0" fitWidth="106.0" layoutX="596.0" layoutY="34.0" preserveRatio="true">
+         <image>
+            <Image url="@GuiResources/icons8_Admin_100px.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="534.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back !" wrappingWidth="244.0933837890625">
+         <font>
+            <Font name="Helvetica Neue" size="31.0" />
+         </font>
+      </Text>
+      <ButtonBar layoutX="507.0" layoutY="268.0" prefHeight="40.0" prefWidth="200.0" />
+      
+      <Button layoutX="394.0" layoutY="300.0" mnemonicParsing="false" onAction="#createDoctorPressed" prefHeight="62.0" prefWidth="177.0" text="Create Doctor">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteButton" layoutX="690.0" layoutY="300.0" mnemonicParsing="false" onAction="#deleteDoctorPressed" prefHeight="62.0" prefWidth="177.0" text="Delete Doctor/Patient">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <ImageView layoutX="433.0" layoutY="387.0">
+         <image>
+            <Image url="@GuiResources/icons8-add_filled.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="728.0" layoutY="387.0">
+         <image>
+            <Image url="@GuiResources/icons8-delete_sign.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1182.0" layoutY="34.0" mnemonicParsing="false" onAction="#signOutPressed" prefHeight="40.0" prefWidth="85.0" text="Sign out" />
+   </children>
+</AnchorPane>

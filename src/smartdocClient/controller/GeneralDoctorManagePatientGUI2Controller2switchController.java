@@ -100,7 +100,7 @@ public class GeneralDoctorManagePatientGUI2Controller2switchController implement
 
 	public void signOutButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -114,7 +114,7 @@ public class GeneralDoctorManagePatientGUI2Controller2switchController implement
 			String CPR = cprFromPreviousScene;
 			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../view/GeneralDoctorManagePatientGUI(2).fxml"));
+			loader.setLocation(getClass().getResource("GeneralDoctorManagePatientGUI(2).fxml"));
 			
 			Parent root = loader.load();
 			

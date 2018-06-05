@@ -66,7 +66,7 @@ public class CreateDoctorController implements Initializable {
 
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("AdministratorGUI.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -77,7 +77,7 @@ public class CreateDoctorController implements Initializable {
 
 	public void clearButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/CreateDoctor.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("CreateDoctor.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -88,53 +88,65 @@ public class CreateDoctorController implements Initializable {
 
 	public void registerButtonPressed(ActionEvent event) throws IOException {
 		{
-			String firstnameVar = firstName.getText();
-			String lastnameVar = lastName.getText();
-			String cprVar = cPR.getText();
+			
+			try {
+				String firstnameVar = firstName.getText();
+				String lastnameVar = lastName.getText();
+				String cprVar = cPR.getText();
 
-			String specialityVar = speciality.getText();
-			String phonenoVar = phoneNo.getText();
+				String specialityVar = speciality.getText();
+				String phonenoVar = phoneNo.getText();
 
-			String date = dob.getText();
-			String[] dateVariables = new String[2];
-			dateVariables = date.split("-");
-			String trimYear = dateVariables[0];
-			String trimMonth = dateVariables[1];
-			String trimDay = dateVariables[2];
+				String date = dob.getText();
+				String[] dateVariables = new String[2];
+				dateVariables = date.split("-");
+				String trimYear = dateVariables[0];
+				String trimMonth = dateVariables[1];
+				String trimDay = dateVariables[2];
 
-			System.out.println(trimYear + " " + trimMonth + " " + trimDay);
+				System.out.println(trimYear + " " + trimMonth + " " + trimDay);
 
-			LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth),
-					Integer.parseInt(trimDay));
+				LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth),
+						Integer.parseInt(trimDay));
 
-			int phoneNoVar = Integer.parseInt(phonenoVar);
+				int phoneNoVar = Integer.parseInt(phonenoVar);
 
-			String usernameVar = username.getText();
-			String passwordVar = pass.getText();
-			String emailVar = email.getText();
+				String usernameVar = username.getText();
+				String passwordVar = pass.getText();
+				String emailVar = email.getText();
 
-			String gender = genderchoice.getValue().toString();
+				String gender = genderchoice.getValue().toString();
 
-			String doctype = doctortype.getValue().toString();
-			if (doctype.equals("General")) {
-				doctype = "G";
-			} else {
-				doctype = "D";
+				String doctype = doctortype.getValue().toString();
+				if (doctype.equals("General")) {
+					doctype = "G";
+				} else {
+					doctype = "D";
+				}
+
+				if (gender.equals("Male")) {
+					gender = "M";
+				} else if (gender.equals("Female")) {
+					gender = "F";
+				} else {
+					gender = "M";
+				}
+
+				// PASSING DOCTOR INFO TO CLIENT
+				clientController = ClientController.getInstance();
+				clientController.createDoctor(usernameVar, passwordVar, firstnameVar, lastnameVar, cprVar, phoneNoVar,
+						emailVar, dateOfBirthVar, specialityVar, doctype, gender);
+
+			} catch(Exception e) 
+			{
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Failure");
+				alert.setContentText(
+						"The operation failed, make sure data are valid!");
+				alert.showAndWait();
+				return;
 			}
-
-			if (gender.equals("Male")) {
-				gender = "M";
-			} else if (gender.equals("Female")) {
-				gender = "F";
-			} else {
-				gender = "M";
-			}
-
-			// PASSING DOCTOR INFO TO CLIENT
-			clientController = ClientController.getInstance();
-			clientController.createDoctor(usernameVar, passwordVar, firstnameVar, lastnameVar, cprVar, phoneNoVar,
-					emailVar, dateOfBirthVar, specialityVar, doctype, gender);
-
+			
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("SUCCESS");
 			alert.setContentText(

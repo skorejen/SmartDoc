@@ -66,7 +66,7 @@ public class DBS implements DbsPersistance {
 		String passwordHex = sb.toString();
 		return passwordHex.toUpperCase();
 	}
-
+	
 	@Override
 	public String verifyLogin(String login, String password) {
 		String passwordHex = "";

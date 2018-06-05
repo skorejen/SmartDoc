@@ -49,7 +49,7 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 
 	public void signOutButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -59,7 +59,7 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/DoctorLoggedIN.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("DoctorLoggedIN.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -74,7 +74,7 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 			String CPR = inputCPR.getValue().toString();
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/DoctorViewMyPatientsTWO.fxml"));
+		loader.setLocation(getClass().getResource("DoctorViewMyPatientsTWO.fxml"));
 		
 		Parent root = loader.load();
 		
@@ -102,7 +102,7 @@ public class DoctorViewMyPatientsONEcontroller implements Initializable {
 
 	public void clearButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/DoctorViewMyPatientsONE.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("DoctorViewMyPatientsONE.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);

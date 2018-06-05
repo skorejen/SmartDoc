@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.MyInfoDoctorController">
+   <children>
+      <ImageView fitHeight="173.0" fitWidth="173.0" layoutX="573.0" layoutY="17.0" AnchorPane.leftAnchor="573.0" AnchorPane.rightAnchor="573.0">
+         <image>
+            <Image url="@GuiResources/219840730d3ce3fd29bba2dfcb5914a1-character-doctor-woman-by-vexels.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="signOut" layoutX="1117.0" layoutY="25.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Sign-out" />
+      <Button fx:id="back" layoutX="1207.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="37.0" prefWidth="79.0" text="Back" />
+      <AnchorPane layoutX="242.0" layoutY="214.0" prefHeight="370.0" prefWidth="800.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="242.0">
+         <children>
+            <Label fx:id="cprLabel" layoutX="273.0" layoutY="70.0" text="Label" AnchorPane.topAnchor="70.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="116.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPR:" wrappingWidth="97.2906494140625" AnchorPane.topAnchor="70.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="fNameLabel" layoutX="273.0" layoutY="120.0" text="Label" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="116.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" wrappingWidth="97.2906494140625" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="lNameLabel" layoutX="273.0" layoutY="170.0" text="Label" AnchorPane.topAnchor="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="116.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" wrappingWidth="97.2906494140625" AnchorPane.topAnchor="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="phoneLabel" layoutX="273.0" layoutY="220.0" text="Label" AnchorPane.topAnchor="220.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="116.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="97.2906494140625" AnchorPane.topAnchor="220.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="dobLabel" layoutX="273.0" layoutY="269.0" text="Label" AnchorPane.topAnchor="269.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="116.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" wrappingWidth="126.09063720703125" AnchorPane.topAnchor="270.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="emailLabel" layoutX="637.0" layoutY="70.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="480.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" wrappingWidth="126.09063720703125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="typeLabel" layoutX="637.0" layoutY="120.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="480.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" wrappingWidth="126.09063720703125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="genderLabel" layoutX="637.0" layoutY="170.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="480.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="126.09063720703125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="specialityLabel" layoutX="637.0" layoutY="219.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="480.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Speciality:" wrappingWidth="126.09063720703125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

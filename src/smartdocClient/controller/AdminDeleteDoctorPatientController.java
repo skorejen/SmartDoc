@@ -42,7 +42,7 @@ public class AdminDeleteDoctorPatientController {
 
 	public void signOutButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -52,7 +52,7 @@ public class AdminDeleteDoctorPatientController {
 
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("AdministratorGUI.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -79,7 +79,7 @@ public class AdminDeleteDoctorPatientController {
 
 	public void clearButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/AdminDeleteDoctorPatient.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("AdminDeleteDoctorPatient.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);

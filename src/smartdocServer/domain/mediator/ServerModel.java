@@ -12,7 +12,7 @@ import smartdocServer.domain.model.PatientList;
 import smartdocServer.domain.model.PatientPrescription;
 import utility.observer.RemoteSubject;
 
-public interface ServerModel extends Remote, RemoteSubject<String> {
+public interface ServerModel extends Remote {
 
 	/**
 	 * The accesses the database and verifies if the account of the specific login

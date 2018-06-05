@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.GeneralDoctorGUIController">
+   <children>
+      <JFXButton layoutX="520.0" layoutY="288.0" onAction="#managepatientButtonPressed" prefHeight="67.0" prefWidth="262.0" text="Manage Patients" wrapText="true" AnchorPane.bottomAnchor="245.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="518.0" AnchorPane.topAnchor="288.0">
+         <font>
+            <Font size="25.0" />
+         </font></JFXButton>
+      <ImageView fitHeight="133.0" fitWidth="133.0" layoutX="584.0" layoutY="155.0">
+         <image>
+            <Image url="@GuiResources/icons8_Sick_96px.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

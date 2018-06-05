@@ -20,7 +20,7 @@ import smartdocServer.domain.model.PatientList;
 import smartdocServer.domain.model.PatientPrescription;
 import utility.observer.RemoteSubject;
 
-public class ClientModelManager extends Observable implements ClientModel {
+public class ClientModelManager  implements ClientModel {
 
 	private ServerModel server;
 	private static Doctor doctor;
@@ -29,9 +29,9 @@ public class ClientModelManager extends Observable implements ClientModel {
 	public ClientModelManager() {
 
 		try {
-			server = (ServerModel) Naming.lookup("rmi://localhost:1099/vipassanaServer");
+			server = (ServerModel) Naming.lookup("rmi://localhost:1099/smartdocServer");
 			UnicastRemoteObject.exportObject(this, 0);
-			server.addObserver(this);
+			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,9 +44,7 @@ public class ClientModelManager extends Observable implements ClientModel {
 		}
 	}
 
-	public synchronized void update(RemoteSubject<String> subject, String updateMsg) throws RemoteException {
-
-	}
+	
 
 	public String verifyLogin(String login, String password) {
 		try {
@@ -199,6 +197,8 @@ public class ClientModelManager extends Observable implements ClientModel {
 		server.deleteDoctorByLogin(login);
 		
 	}
+
+
 
 
 }

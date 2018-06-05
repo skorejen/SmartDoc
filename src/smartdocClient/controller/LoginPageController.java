@@ -52,7 +52,7 @@ public class LoginPageController implements Initializable {
 				if (cpr.equals("111111-2222")) {
 					// 111111-2222 is a cpr of a admin, so the admin's gui should be displayed
 
-					Parent signin = FXMLLoader.load(getClass().getResource("../view/AdministratorGUI.fxml"));
+					Parent signin = FXMLLoader.load(getClass().getResource("AdministratorGUI.fxml"));
 
 					Scene home_page_scene = new Scene(signin);
 					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -65,14 +65,14 @@ public class LoginPageController implements Initializable {
 					// if type equals D that means that the Doctor's GUI should be displayed
 
 					{
-						Parent signin = FXMLLoader.load(getClass().getResource("../view/DoctorLoggedIN.fxml"));
+						Parent signin = FXMLLoader.load(getClass().getResource("DoctorLoggedIN.fxml"));
 
 						Scene home_page_scene = new Scene(signin);
 						Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 						app_stage.setScene(home_page_scene);
 						app_stage.show();
 					} else if (type.equals("P")) {
-						Parent signin = FXMLLoader.load(getClass().getResource("../view/PatientLoggedIN.fxml"));
+						Parent signin = FXMLLoader.load(getClass().getResource("PatientLoggedIN.fxml"));
 
 						Scene home_page_scene = new Scene(signin);
 						Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -80,7 +80,7 @@ public class LoginPageController implements Initializable {
 						app_stage.show();
 					} else if (type.equals("G"))
 					{
-						Parent signin = FXMLLoader.load(getClass().getResource("../view/GeneralDoctorGUI.fxml"));
+						Parent signin = FXMLLoader.load(getClass().getResource("GeneralDoctorGUI.fxml"));
 
 						Scene home_page_scene = new Scene(signin);
 						Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -102,7 +102,7 @@ public class LoginPageController implements Initializable {
 
 	public void registerButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPageRegister.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("LoginPageRegister.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -113,7 +113,7 @@ public class LoginPageController implements Initializable {
 
 	public void forgotPasswordButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/ForgotPassword.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("ForgotPassword.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);

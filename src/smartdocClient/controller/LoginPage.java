@@ -1,4 +1,4 @@
-package smartdocClient.view;
+package smartdocClient.controller;
 
 import java.util.Observable;
 
@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class LoginPage extends Application implements IClientView {
+public class LoginPage extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -25,10 +25,6 @@ public class LoginPage extends Application implements IClientView {
 		launch(args);
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 }

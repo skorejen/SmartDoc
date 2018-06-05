@@ -102,7 +102,7 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 
 	public void signOutButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -113,7 +113,7 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/GeneralDoctorManagePatientGUI.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("GeneralDoctorManagePatientGUI.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -140,7 +140,7 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 			String CPR = cprFromPreviousScene;
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/GeneralDoctorManagePatientGUI(2)Switch.fxml"));
+		loader.setLocation(getClass().getResource("GeneralDoctorManagePatientGUI(2)Switch.fxml"));
 		
 		Parent root = loader.load();
 		

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartdocClient.controller.DoctorLoggedInController">
+   <children>
+      <Text layoutX="13.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back," wrappingWidth="216.46946716308594">
+         <font>
+            <Font name="Calibri Light" size="34.0" />
+         </font>
+      </Text>
+      <Label fx:id="doctorName" layoutX="220.0" layoutY="10.0" prefHeight="40.0" prefWidth="380.0">
+         <font>
+            <Font name="Calibri Light" size="34.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="345.0" fitWidth="345.0" layoutX="478.0" layoutY="128.0">
+         <image>
+            <Image url="@GuiResources/ffb3ffd037d6ce09fb200b81605bd45f-old-doctor-character-by-vexels%5B1%5D.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="884.0" layoutY="30.0" mnemonicParsing="false" onAction="#signOutButtonPressed" prefHeight="48.0" prefWidth="126.0" text="Sign-out" />
+      <Button layoutX="1020.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToMyPacientsButtonPressed" prefHeight="48.0" prefWidth="126.0" text="Go to my pacients" />
+      <Button layoutX="1160.0" layoutY="30.0" mnemonicParsing="false" onAction="#myInfoButtonPressed" prefHeight="48.0" prefWidth="126.0" text="My info" />
+   </children>
+</AnchorPane>

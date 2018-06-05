@@ -63,7 +63,7 @@ public class LoginPageRegisterController implements Initializable{
 	
 	public void backButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -74,7 +74,7 @@ public class LoginPageRegisterController implements Initializable{
 	
 	public void clearButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPageRegister.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("LoginPageRegister.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -89,44 +89,57 @@ public class LoginPageRegisterController implements Initializable{
 	
 	public void registerButtonPressed(ActionEvent event) throws IOException {
 		{
+		
 			
-			String loginVar = username.getText();
-			String passwordVar = pass.getText();
-			String firstnameVar=firstname.getText();
-			String lastnameVar=lastname.getText();
-			String cprVar=cpr.getText();
-			
-			String emailVar=email.getText();
-			String phoneNoVar=phoneno.getText();
-			
-			int phoneNo = Integer.parseInt(phoneNoVar);
-			
-			String genderVar= genderchoice.getValue().toString();
+			try {
+				String loginVar = username.getText();
+				String passwordVar = pass.getText();
+				String firstnameVar=firstname.getText();
+				String lastnameVar=lastname.getText();
+				String cprVar=cpr.getText();
+				
+				String emailVar=email.getText();
+				String phoneNoVar=phoneno.getText();
+				
+				int phoneNo = Integer.parseInt(phoneNoVar);
+				
+				String genderVar= genderchoice.getValue().toString();
 
-			String date = dob.getText();
-			String [] dateVariables = new String[2];
-			dateVariables = date.split("-");
-			String trimYear = dateVariables[0];
-			String trimMonth = dateVariables[1];
-			String trimDay = dateVariables[2];
-			
-			System.out.println(trimYear+" "+trimMonth+" "+trimDay);
-			
-			LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth), Integer.parseInt(trimDay));
+				String date = dob.getText();
+				String [] dateVariables = new String[2];
+				dateVariables = date.split("-");
+				String trimYear = dateVariables[0];
+				String trimMonth = dateVariables[1];
+				String trimDay = dateVariables[2];
+				
+				System.out.println(trimYear+" "+trimMonth+" "+trimDay);
+				
+				LocalDate dateOfBirthVar = LocalDate.of(Integer.parseInt(trimYear), Integer.parseInt(trimMonth), Integer.parseInt(trimDay));
 
 
-			if(genderVar.equals("Male")) {
-				genderVar = "M";
-			} else if (genderVar.equals("Female"))
+				if(genderVar.equals("Male")) {
+					genderVar = "M";
+				} else if (genderVar.equals("Female"))
+				{
+					genderVar = "F";
+				} else
+				{
+					genderVar = "M";
+				}
+				
+			clientController  = ClientController.getInstance();
+			clientController.createPatient(loginVar, passwordVar, firstnameVar, lastnameVar, cprVar, phoneNo, emailVar, dateOfBirthVar, genderVar);
+				
+
+			} catch(Exception e) 
 			{
-				genderVar = "F";
-			} else
-			{
-				genderVar = "M";
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Failure");
+				alert.setContentText(
+						"The operation failed, make sure data are valid!");
+				alert.showAndWait();
+				return;
 			}
-			
-		clientController  = ClientController.getInstance();
-		clientController.createPatient(loginVar, passwordVar, firstnameVar, lastnameVar, cprVar, phoneNo, emailVar, dateOfBirthVar, genderVar);
 			
 			
 		Alert alert = new Alert(AlertType.INFORMATION);

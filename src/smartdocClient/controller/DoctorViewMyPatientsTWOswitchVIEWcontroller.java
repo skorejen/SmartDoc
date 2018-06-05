@@ -73,7 +73,7 @@ public class DoctorViewMyPatientsTWOswitchVIEWcontroller implements Initializabl
 
 	public void signOutButtonPressed(ActionEvent event) throws IOException {
 		{
-			Parent register = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
+			Parent register = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 			Scene home_page_scene = new Scene(register);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(home_page_scene);
@@ -88,7 +88,7 @@ public class DoctorViewMyPatientsTWOswitchVIEWcontroller implements Initializabl
 			String CPR = cprFromPreviousScene;
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/DoctorViewMyPatientsTWO.fxml"));
+		loader.setLocation(getClass().getResource("DoctorViewMyPatientsTWO.fxml"));
 		
 		Parent root = loader.load();
 		
