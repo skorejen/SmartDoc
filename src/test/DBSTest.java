@@ -34,7 +34,7 @@ class DBSTest {
 
 	@BeforeAll
 	public static void beforeAllOpenDatabase() {
-		dbs = new DBS();
+		dbs = new DBS("postgres","123","5432","localhost","smartdocdatabase");
 		try {
 			myDatabase = new MyDatabase("org.postgresql.Driver",
 					"jdbc:postgresql://localhost:5432/smartdocdatabase", "postgres", "sallie");

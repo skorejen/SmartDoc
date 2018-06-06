@@ -25,15 +25,15 @@ public class ClientModelManagerTest {
 
 	@BeforeAll
 	public static void initialize() {
-		ServerModelManager serverModelManager = ServerModelManager.getInstance();
+		ServerModelManager serverModelManager = ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase");
 		ServerView view = new ServerView(serverModelManager);
-		server = ServerModelManager.getInstance();
+		server = ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase");
 	}
 	
 	@Test
 	void testSingleton() {
-		ServerModelManager c1 = ServerModelManager.getInstance();
-		ServerModelManager c2 = ServerModelManager.getInstance();
+		ServerModelManager c1 = ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase");
+		ServerModelManager c2 = ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase");
 		assertEquals(c1, c2);
 	}
 	@Test

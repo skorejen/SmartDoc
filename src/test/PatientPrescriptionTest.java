@@ -20,7 +20,7 @@ class PatientPrescriptionTest {
 	@BeforeAll
 	
 	public static void initialize() {
-		server = ServerModelManager.getInstance();
+		server = ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase");
 		patientPrescription= new PatientPrescription("070999-1111", "Medicine", date, "Headache", "Sleep");
 	}
 	@Test //Works

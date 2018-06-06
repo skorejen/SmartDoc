@@ -22,7 +22,7 @@ class PatientListTest {
 	
 	@BeforeAll
 		public static void initialize(){
-			server = ServerModelManager.getInstance();
+			server = ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase");
 			patientList = new PatientList();
 			patient1 = new Patient("070999-0000", "Pedro", "Claro", date, 11111111, "claro@gmail.com", "p",
 					"m");

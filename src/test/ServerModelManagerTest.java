@@ -27,13 +27,13 @@ class ServerModelManagerTest {
 	
 	@BeforeAll
 	public static void initialize(){
-		server = ServerModelManager.getInstance();
+		server = ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase");
 	}
 
 	@Test
 	void testSingleton() {
-		String server1=ServerModelManager.getInstance().toString();
-		String server2=ServerModelManager.getInstance().toString();
+		String server1=ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase").toString();
+		String server2=ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase").toString();
 		assertEquals(server1,server2);
 	}
 	
@@ -73,7 +73,7 @@ class ServerModelManagerTest {
 	void testDeletingPatient()
 	{
 		PatientList patientList = new PatientList();
-		DbsPersistance dbsPersistance = new DBS();
+		DbsPersistance dbsPersistance = new DBS("postgres","123","5432","localhost","smartdocdatabase");
 		ArrayList<Object[]> array = dbsPersistance.getPatientList();
 		
 		for(Object[] object: array) 
@@ -133,7 +133,7 @@ class ServerModelManagerTest {
 	void testDeletingDoctor()
 	{
 		DoctorList doctorList = new DoctorList();
-		DbsPersistance dbsPersistance = new DBS();
+		DbsPersistance dbsPersistance = new DBS("postgres","123","5432","localhost","smartdocdatabase");
 		ArrayList<Object[]> array = dbsPersistance.getDoctorList();
 		
 		for(Object[] object: array) 

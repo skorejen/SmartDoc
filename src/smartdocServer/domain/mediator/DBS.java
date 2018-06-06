@@ -30,10 +30,10 @@ public class DBS implements DbsPersistance {
 	/**
 	 * The DBS constructor initializes the connection with the database.
 	 */
-	public DBS() {
+	public DBS(String username, String password, String port, String ip,String databaseName) {
 		try {
-			myDatabase = new MyDatabase("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/smartdocdatabase",
-					"postgres", "sallie");
+			myDatabase = new MyDatabase("org.postgresql.Driver", "jdbc:postgresql://"+ip+":"+port+"/"+databaseName+"",
+					""+username, ""+password);
 		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();

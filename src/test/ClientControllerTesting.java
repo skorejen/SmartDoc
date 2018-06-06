@@ -28,7 +28,7 @@ public class ClientControllerTesting {
 
 	@BeforeAll
 	public static void initialize() {
-		ServerModelManager serverModelManager = ServerModelManager.getInstance();
+		ServerModelManager serverModelManager = ServerModelManager.getInstance("postgres","123","5432","localhost","smartdocdatabase");
 		ServerView view = new ServerView(serverModelManager);
 		clientModel = new ClientModelManager();
 		instance.getInstance();
