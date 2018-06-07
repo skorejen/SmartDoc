@@ -1,1 +1,9 @@
+smartdocClient.controller
+smartdocClient.domain.mediator
+smartdocClient.domain.model
+smartdocClient.view
+smartdocServer.controller
 smartdocServer.domain.mediator
+smartdocServer.domain.model
+smartdocServer.view
+test

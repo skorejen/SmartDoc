@@ -29,7 +29,7 @@ public class ServerModelManager extends Observable implements ServerModel {
 	private ServerModelManager(String username, String password, String port, String ip,String databaseName) {
 		try {
 			
-			dbsPersistance = new DBS("postgres","123","5432","localhost","smartdocdatabase");
+			dbsPersistance = new DBS(username,password,port,ip,databaseName);
 			Registry reg = LocateRegistry.createRegistry(1099);
 			UnicastRemoteObject.exportObject(this, 0);
 			Naming.rebind("smartdocServer", this);
