@@ -124,13 +124,23 @@ public class GeneralDoctorManagePatientGUI2Controller implements Initializable {
 
 	public void applyButtonPressed(ActionEvent event) throws IOException {
 		{
-			controller.assignPatientToDoctor(cprLabel.getText(), cprDoctorInput.getText());
 			
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("SUCCESS");
-			alert.setContentText(
-					"The operation was completed without any errors!");
-			alert.showAndWait();
+				boolean check = controller.assignPatientToDoctor(cprLabel.getText(), cprDoctorInput.getText());
+			if(check) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("SUCCESS");
+				alert.setContentText(
+						"The operation was completed without any errors!");
+				alert.showAndWait();
+			} else {
+
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Failure");
+				alert.setContentText(
+						"The isn't valid or doesn't exist in database");
+				alert.showAndWait();
+			}
+			
 		}
 	}
 	
