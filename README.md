@@ -5,3 +5,4 @@ relevant documentation, but in summary the project was made using Java and conta
 
 * RMI
 * JavaFX
+* PostgreSQL & JDBC
